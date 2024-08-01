@@ -63,19 +63,18 @@ function handleRenderIcon(data: IPropsDataRastreador) {
 
 export default function RastreadorBTC({ data, minBid, maxAsk }: IPropsData) {
   return (
-    <main className="antialiased px-4 py-1">
+    <main className="antialiased py-[0.40rem]">
       <section className="flex flex-row justify-between text-sm ">
         <section className="flex items-center ">
-
-          <Image className="text-center " src={handleRenderIcon(data)} width={25} height={30} alt="Corretora Icon" />
-          <div className={`text-center w-20 p-2 rounded-sm text-white bold}`}>
+          <div className={`text-center  flex w-[6rem]  items-center rounded-sm text-white bold}`}>
+            <Image className="text-center mr-2" src={handleRenderIcon(data)} width={25} height={30} alt="Corretora Icon" />
             {data?.corretora}
           </div>
         </section>
-        <div className={`text-center w-20 p-2 rounded-sm text-white bold ${Number(data.bidPrice) === minBid ? 'bg-green-500' : ''}`}>
+        <div className={`text-center flex items-center justify-center px-2 rounded-sm text-white bold ${Number(data.bidPrice) === minBid ? 'bg-green-500' : ''}`}>
           {Number(data.bidPrice).toFixed(2)}
         </div>
-        <div className={`text-center w-20 p-2 rounded-sm text-white bold ${Number(data.askPrice) === maxAsk ? 'bg-red-500' : ''}`}>
+        <div className={`text-center flex items-center justify-center px-2 rounded-sm text-white bold ${Number(data.askPrice) === maxAsk ? 'bg-red-500' : ''}`}>
           {Number(data.askPrice).toFixed(2)}
         </div>
       </section>
