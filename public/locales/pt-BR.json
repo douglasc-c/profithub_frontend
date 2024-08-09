@@ -1,0 +1,18 @@
+{
+  "Header": {
+      "home": "Home"
+    },
+  "Opportunity": {
+      "buy": "Compra",
+      "sell": "Venda",
+      "spread": "Spread",
+      "fee": "Taxa",
+      "orderBook": "Livro de Ordens",
+      "purchaseBook": "Livro de compra",
+      "salesBook": "Livro de venda",
+      "price": "Preço",
+      "volume": "Volume",
+      "liquidity": "Liquidez",
+      "cancel": "Cancelar"
+    }
+}
