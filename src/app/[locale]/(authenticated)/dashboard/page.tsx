@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
 import { useLayoutContext } from '@/context/layout-context'
 import { Card } from '@/components/cards/card'
@@ -11,6 +13,7 @@ export default function Dashboard() {
   const [isSelectBook, setIsSelectBook] = useState(null)
   const [socket, setSocket] = useState<WebSocket | null>(null)
   const { textOpportunity } = useLayoutContext()
+  const token = useSelector((state: RootState) => state.auth.token)
 
   useEffect(() => {
     const socket = new WebSocket('ws://localhost:3333/websocket')

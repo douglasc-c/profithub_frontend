@@ -10,6 +10,8 @@ interface InputProps {
   autoComplete?: string
   required?: boolean
   className?: string
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function Input({
@@ -20,6 +22,8 @@ export default function Input({
   autoComplete = '',
   required = false,
   className = '',
+  value = '',
+  onChange = () => {},
 }: InputProps) {
   return (
     <input
@@ -30,6 +34,8 @@ export default function Input({
       autoComplete={autoComplete}
       required={required}
       className={`w-full px-3 py-2 border border-gray-700 placeholder-gray-500 bg-transparent text-gray-200 focus:outline-none focus:border-[#589CFF] focus:z-10 sm:text-sm ${className}`}
+      value={value}
+      onChange={onChange}
     />
   )
 }

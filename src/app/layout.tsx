@@ -1,20 +1,23 @@
-import type { Metadata } from 'next'
 import { Roboto_Flex as Roboto } from 'next/font/google'
 import { getLocale, getTranslations } from 'next-intl/server'
 import './globals.css'
 import { LayoutProvider } from '@/context/layout-context'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
+const languages = ['en', 'es', 'pt-BR']
 
-export const metadata: Metadata = {
-  title: 'WiseBot',
-  description: 'Arbitration bot',
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }))
 }
 
 export default async function RootLayout({
   children,
+  params: { lng },
 }: {
   children: React.ReactNode
+  params: {
+    lng: string
+  }
 }) {
   const locale = await getLocale()
   const t = await getTranslations()
@@ -45,7 +48,7 @@ export default async function RootLayout({
   const layoutValue = { textOpportunity, textSigIn, locale }
 
   return (
-    <html lang="en">
+    <html lang={lng}>
       <body
         className={`${roboto.className} bg-global bg-cover font-sans text-gray-100`}
       >
