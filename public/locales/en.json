@@ -1,0 +1,26 @@
+{
+  "Signin": {
+      "email": "E-mail",
+      "password": "Password",
+      "forgotYourPassword": "Forgot your password",
+      "signIn": "Sign in",
+      "dontHaveAnAccount": "Dont't have an account?",
+      "signUp": "Sign up"
+    },
+  "Header": {
+      "home": "Home"
+    },
+  "Opportunity": {
+      "buy": "Buy",
+      "sell": "Sell",
+      "spread": "Spread",
+      "fee": "Fee",
+      "orderBook": "Order book",
+      "purchaseBook": "Purchase book",
+      "salesBook": "Sales book",
+      "price": "Price",
+      "volume": "Volume",
+      "liquidity": "Liquidity",
+      "cancel": "Cancel"
+    }
+}
