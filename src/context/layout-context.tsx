@@ -1,6 +1,8 @@
 'use client'
 
 import React, { createContext, useContext } from 'react'
+import { Provider } from 'react-redux'
+import { store } from '@/redux/store'
 
 interface LayoutContextProps {
   textOpportunity: {
@@ -43,4 +45,8 @@ export const LayoutProvider = ({
 }: {
   children: React.ReactNode
   value: LayoutContextProps
-}) => <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
+}) => (
+  <Provider store={store}>
+    <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
+  </Provider>
+)

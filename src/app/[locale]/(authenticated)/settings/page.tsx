@@ -1,18 +1,13 @@
-import { getLocale, getTranslations } from 'next-intl/server'
+'use client'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
-import Header from '@/components/header/header'
-
-export default async function Settings() {
-  const locale = await getLocale()
-  const t = await getTranslations()
-
-  const textHeader = {
-    home: t('Header.home'),
-  }
+export default function Settings() {
+  const token = useSelector((state: RootState) => state.auth.token)
 
   return (
     <main className="min-h-screen flex flex-col bg-global bg-cover">
-      <Header text={textHeader} locale={locale} />
+      <p className="text-xl from-neutral-200">Token: {token}</p>
     </main>
   )
 }
