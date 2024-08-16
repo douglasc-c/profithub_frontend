@@ -1,4 +1,12 @@
 {
+  "Signin": {
+      "email": "E-mail",
+      "password": "Password",
+      "forgotYourPassword": "Forgot your password",
+      "signIn": "Sign in",
+      "dontHaveAnAccount": "Dont't have an account?",
+      "signUp": "Sign up"
+    },
   "Header": {
       "home": "Home"
     },

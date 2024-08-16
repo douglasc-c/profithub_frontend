@@ -1,6 +1,14 @@
 {
+  "Signin": {
+      "email": "E-mail",
+      "password": "Senha",
+      "forgotYourPassword": "Esqueçeu sua senha",
+      "signIn": "Acessar",
+      "dontHaveAnAccount": "Não tem conta?",
+      "signUp": "Criar"
+    },
   "Header": {
-      "home": "Home"
+      "home": "Inicio"
     },
   "Opportunity": {
       "buy": "Compra",

@@ -4,22 +4,22 @@ import Image from 'next/image'
 
 export function Card({ data, onModal, text }: any) {
   return (
-    <div className="justify-between bg-black p-5 rounded-lg border border-[#365f9c]">
+    <div className="justify-between bg-stone-950 p-5 rounded-lg border border-gray-700">
       <h1 className="text-center font-bold mb-2">{data?.symbol}</h1>
-      <div className="flex justify-between border-b border-t-[0.01rem] border-[#589CFF] p-2">
+      <div className="flex justify-between border-b border-t-[0.01rem] border-gray-700 p-2">
         <section className="flex flex-col w-1/2 items-start">
           <p className="text-sm font-semibold uppercase">{text.buy}</p>
           <div className="flex h-20 items-center">
             <Image
               className="py-4"
-              src={`/images/exchanges/${data.corretoraCompra}.svg`}
-              alt="mercadobitcoin"
+              src={`/images/exchanges/${data.exchangeBuy}.svg`}
+              alt="buy"
               height={50}
               width={50}
             />
           </div>
           <p className="text-sm">
-            <b>$ {data?.priceCompra}</b>
+            <b>$ {data?.buyPrice}</b>
           </p>
         </section>
         <Image
@@ -34,14 +34,14 @@ export function Card({ data, onModal, text }: any) {
           <div className="flex h-20 items-center">
             <Image
               className="py-4"
-              src={`/images/exchanges/${data.corretoraVenda}.svg`}
-              alt="mercadobitcoin"
+              src={`/images/exchanges/${data.exchangeSell}.svg`}
+              alt="sell"
               height={50}
               width={50}
             />
           </div>
           <p className="text-sm text-right">
-            <b>$ {data?.priceVenda}</b>
+            <b>$ {data?.sellPrice}</b>
           </p>
         </section>
       </div>
@@ -64,7 +64,7 @@ export function Card({ data, onModal, text }: any) {
       <div className="flex items-center justify-center mt-2">
         <button
           onClick={onModal}
-          className="bg-[#589CFF] text-sm py-2 rounded-md w-full"
+          className="bg-[#005BEC] text-sm py-2 rounded-md w-full"
         >
           {text.orderBook}
         </button>

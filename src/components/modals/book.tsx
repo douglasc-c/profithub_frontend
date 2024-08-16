@@ -1,15 +1,18 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export function Book({ isOpen, onClose, children, data, text }: any) {
   if (!isOpen) return null
 
   const [isSelected, setIsSelected] = useState('buy')
+  const [isSelectedBook, setIsSelectBook] = useState(data)
   const onSelectBuy = () => setIsSelected('buy')
   const onSelectSell = () => setIsSelected('sell')
-
+  // useEffect(() => {
+  //   setIsSelectBook(data)
+  // }, [])
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
       <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800">
@@ -30,7 +33,7 @@ export function Book({ isOpen, onClose, children, data, text }: any) {
         <div className="flex justify-between px-16 py-3 ">
           <Image
             className="py-4"
-            src={`/images/exchanges/${data.corretoraCompra}.svg`}
+            src={`/images/exchanges/${isSelectedBook.exchangeBuy}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -44,7 +47,7 @@ export function Book({ isOpen, onClose, children, data, text }: any) {
           />
           <Image
             className="py-4"
-            src={`/images/exchanges/${data.corretoraVenda}.svg`}
+            src={`/images/exchanges/${isSelectedBook.exchangeSell}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -67,29 +70,29 @@ export function Book({ isOpen, onClose, children, data, text }: any) {
             </thead>
             <tbody className="h-32 overflow-y-auto bg-zinc-800">
               {isSelected === 'buy'
-                ? data?.orderbookCompra?.asks?.map((order, index) => (
+                ? data?.buyOrderbook?.asks?.map((order, index) => (
                     <tr key={index} className="border-b border-gray-700">
                       <td className="w-1/3 px-6 py-2 text-xs text-left">
-                        {order[0]}
+                        $ {order.price}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-center">
-                        {'X'}
+                        {order.volume}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-right">
-                        {order[1]}
+                        $ {order.liquidity}
                       </td>
                     </tr>
                   ))
-                : data?.orderbookVenda?.bids?.map((order, index) => (
+                : data?.sellOrderbook?.bids?.map((order, index) => (
                     <tr key={index} className="border-b border-gray-700">
                       <td className="w-1/3 px-6 py-2 text-xs text-left">
-                        {order[0]}
+                        $ {order.price}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-center">
-                        {'X'}
+                        {order.volume}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-right">
-                        {order[1]}
+                        $ {order.liquidity}
                       </td>
                     </tr>
                   ))}
