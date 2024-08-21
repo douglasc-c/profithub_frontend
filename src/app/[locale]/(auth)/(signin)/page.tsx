@@ -35,7 +35,7 @@ export default function SignIn() {
       if (response.ok) {
         const data = await response.json()
         dispatch(setToken(data.token))
-        router.push(`${locale}/settings`)
+        router.push(`${locale}/dashboard`)
       } else {
         console.error('Failed to log in')
       }
