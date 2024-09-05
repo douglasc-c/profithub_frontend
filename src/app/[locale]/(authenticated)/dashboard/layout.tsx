@@ -1,6 +1,6 @@
 import { Roboto_Flex as Roboto } from 'next/font/google'
 import '@/app/globals.css'
-import Header from '@/components/header/header'
+// import Header from '@/components/header/header'
 
 import { getLocale, getTranslations } from 'next-intl/server'
 
@@ -20,8 +20,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${roboto.className} bg-cover font-sans text-gray-100`}>
-        <Header text={textHeader} locale={locale} />
+      <body
+        className={`${roboto.className} bg-cover font-sans text-gray-100`}
+      >
+        {/* <Header text={textHeader} locale={locale} /> */}
 
         {children}
       </body>
