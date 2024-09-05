@@ -20,9 +20,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body
-        className={`${roboto.className} bg-global bg-cover font-sans text-gray-100`}
-      >
+      <body className={`${roboto.className} bg-cover font-sans text-gray-100`}>
         <Header text={textHeader} locale={locale} />
 
         {children}
