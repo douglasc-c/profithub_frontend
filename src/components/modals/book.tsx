@@ -1,18 +1,47 @@
-'use client'
-
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
-export function Book({ isOpen, onClose, children, data, text }: any) {
-  if (!isOpen) return null
+interface Order {
+  price: string
+  volume: string
+  liquidity: string
+}
 
+interface OrderBook {
+  asks: Order[]
+  bids: Order[]
+}
+
+interface BookData {
+  buyOrderbook: OrderBook
+  sellOrderbook: OrderBook
+  exchangeBuy: string
+  exchangeSell: string
+}
+
+interface BookProps {
+  isOpen: boolean
+  onClose: () => void
+  children?: React.ReactNode
+  data: BookData
+  text: {
+    purchaseBook: string
+    salesBook: string
+    price: string
+    volume: string
+    liquidity: string
+    cancel: string
+  }
+}
+
+export function Book({ isOpen, onClose, children, data, text }: BookProps) {
   const [isSelected, setIsSelected] = useState('buy')
-  const [isSelectedBook, setIsSelectBook] = useState(data)
+  const [isSelectedBook] = useState(data)
+
   const onSelectBuy = () => setIsSelected('buy')
   const onSelectSell = () => setIsSelected('sell')
-  // useEffect(() => {
-  //   setIsSelectBook(data)
-  // }, [])
+
+  if (!isOpen) return null
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
       <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800">

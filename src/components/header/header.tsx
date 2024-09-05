@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-export default function Header({ text, locale }: any) {
+export default function Header() {
   return (
     <div className="w-full flex justify-between items-center px-10 md:px-20 py-6">
       <a href="/">

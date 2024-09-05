@@ -2,7 +2,42 @@
 
 import Image from 'next/image'
 
-export function Card({ data, onModal, text }: any) {
+interface Data {
+  symbol: string
+  exchangeBuy: string
+  exchangeSell: string
+  buyPrice: number
+  sellPrice: number
+  spreadPercent: number | string
+  withdrawFee: number | string
+}
+
+interface Text {
+  buy: string
+  sell: string
+  spread: string
+  fee: string
+  orderBook: string
+}
+
+type OnModal = () => void
+
+interface CardProps {
+  data: Data
+  text: Text
+  onModal: OnModal
+}
+
+export function Card({ data, onModal, text }: CardProps) {
+  const formatWithdrawFee = (fee: string | number) => {
+    if (typeof fee === 'string') {
+      const numericFee = parseFloat(fee)
+      return numericFee > 0.01 ? numericFee : 0.0
+    } else {
+      return fee > 0.01 ? fee : 0.0
+    }
+  }
+
   return (
     <div className="justify-between bg-stone-950 p-5 rounded-lg border border-gray-700">
       <h1 className="text-center font-bold mb-2">{data?.symbol}</h1>
@@ -57,7 +92,7 @@ export function Card({ data, onModal, text }: any) {
             {text.fee}
           </p>
           <p className="text-xs font-bold text-right text-red-500">
-            0.60% + $ {data?.withdrawFee > 0.01 ? data?.withdrawFee : '0.00'}
+            0.60% + $ {formatWithdrawFee(data?.withdrawFee)}
           </p>
         </section>
       </div>

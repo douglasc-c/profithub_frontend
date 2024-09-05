@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/redux/store'
+// import { useSelector } from 'react-redux'
+// import { RootState } from '@/redux/store'
 
 import { useLayoutContext } from '@/context/layout-context'
 import { Card } from '@/components/cards/card'
@@ -14,8 +14,8 @@ interface Opportunity {
   symbol: string
   spreadPercent: string
   withdrawFee: string
-  buyPrice: string
-  sellPrice: string
+  buyPrice: number 
+  sellPrice: number
   buyOrderbook: {
     bids: Array<{ price: string; volume: string; liquidity: string }>
     asks: Array<{ price: string; volume: string; liquidity: string }>
@@ -31,7 +31,7 @@ export default function Dashboard() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isSelectBook, setIsSelectBook] = useState<Opportunity | null>(null)
   const { textOpportunity } = useLayoutContext()
-  const token = useSelector((state: RootState) => state.auth.token)
+  // const token = useSelector((state: RootState) => state.auth.token)
 
   useEffect(() => {
     const socket = io('http://localhost:3333', {})
@@ -137,7 +137,7 @@ export default function Dashboard() {
         <Book
           isOpen={isOpen}
           onClose={() => setIsOpen(!isOpen)}
-          data={isSelectBook}
+          data={isSelectBook as Opportunity}
           text={textOpportunity}
         />
         {opportunity.map((item, index) => (
