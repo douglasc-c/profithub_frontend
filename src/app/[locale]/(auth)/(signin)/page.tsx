@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import Image from 'next/image'
 import Input from '@/components/inputs/input'
 import { useLayoutContext } from '@/context/layout-context'
@@ -17,7 +17,7 @@ export default function SignIn() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     setLoading(true)
@@ -40,7 +40,7 @@ export default function SignIn() {
         console.error('Failed to log in')
       }
     } catch (error) {
-      setError(error.message)
+      // setError(error.message)
     } finally {
       setLoading(false)
     }
