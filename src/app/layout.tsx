@@ -1,7 +1,5 @@
 import { Roboto_Flex as Roboto } from 'next/font/google'
-/* eslint-disable camelcase */
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-/* eslint-enable camelcase */
+import { getLocale, getTranslations } from 'next-intl/server'
 import './globals.css'
 import { LayoutProvider } from '@/context/layout-context'
 
@@ -21,9 +19,8 @@ export default async function RootLayout({
     lng: string
   }
 }) {
-  unstable_setRequestLocale(lng)
-
-  const t = await getTranslations(lng)
+  const locale = await getLocale()
+  const t = await getTranslations()
 
   const textOpportunity = {
     buy: t('Opportunity.buy'),
@@ -48,7 +45,7 @@ export default async function RootLayout({
     signUp: t('Signin.signUp'),
   }
 
-  const layoutValue = { textOpportunity, textSigIn, locale: lng }
+  const layoutValue = { textOpportunity, textSigIn, locale }
 
   return (
     <html lang={lng}>
