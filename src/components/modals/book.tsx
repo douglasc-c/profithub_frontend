@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+'use client'
+import React from 'react'
 import Image from 'next/image'
 
 interface Order {
@@ -35,16 +36,16 @@ interface BookProps {
 }
 
 export function Book({ isOpen, onClose, children, data, text }: BookProps) {
-  const [isSelected, setIsSelected] = useState('buy')
-  const [isSelectedBook] = useState(data)
+  const [isSelected, setIsSelected] = React.useState('buy')
+
+  if (!isOpen) return null
 
   const onSelectBuy = () => setIsSelected('buy')
   const onSelectSell = () => setIsSelected('sell')
 
-  if (!isOpen) return null
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-      <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
+      <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800 z-50">
         <section className="items-center justify-between flex">
           <button
             className={`border-b-4 p-4 ${isSelected === 'buy' ? 'border-green-600' : 'border-[#2f2f35]'} w-[50%] text-xs`}
@@ -62,7 +63,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
         <div className="flex justify-between px-16 py-3 ">
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelectedBook.exchangeBuy}.svg`}
+            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeBuy : data.exchangeSell}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -76,7 +77,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
           />
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelectedBook.exchangeSell}.svg`}
+            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeSell : data.exchangeBuy}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -99,7 +100,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
             </thead>
             <tbody className="h-32 overflow-y-auto bg-zinc-800">
               {isSelected === 'buy'
-                ? data?.buyOrderbook?.asks?.map((order, index) => (
+                ? data.buyOrderbook.asks.map((order, index) => (
                     <tr key={index} className="border-b border-gray-700">
                       <td className="w-1/3 px-6 py-2 text-xs text-left">
                         $ {order.price}
@@ -112,7 +113,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
                       </td>
                     </tr>
                   ))
-                : data?.sellOrderbook?.bids?.map((order, index) => (
+                : data.sellOrderbook.bids.map((order, index) => (
                     <tr key={index} className="border-b border-gray-700">
                       <td className="w-1/3 px-6 py-2 text-xs text-left">
                         $ {order.price}

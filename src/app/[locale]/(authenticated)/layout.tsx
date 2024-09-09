@@ -1,32 +1,61 @@
+// layout.tsx
+
 import '@/app/globals.css'
 import { Roboto_Flex as Roboto } from 'next/font/google'
-// import { useSelector } from 'react-redux'
-// import { RootState } from '@/redux/store'
-// import { getLocale, getTranslations } from 'next-intl/server'
-
-// import Header from '@/components/header/header'
+import { getLocale, getTranslations } from 'next-intl/server'
+import Header from '@/components/header/header'
+import { LayoutProvider, LayoutContextProps } from '@/context/layout-context'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
+const languages = ['en', 'pt-BR']
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }))
+}
 
 export default async function RootLayout({
   children,
+  params: { lng },
 }: {
   children: React.ReactNode
+  params: {
+    lng: string
+  }
 }) {
-  // const token = useSelector((state: RootState) => state.auth.token)
+  const locale = await getLocale()
+  const t = await getTranslations(lng)
 
-  // const locale = await getLocale()
-  // const t = await getTranslations()
+  const textHeader = {
+    home: t('Header.home'),
+    headmap: t('Header.headmap'),
+    arbitration: t('Header.arbitration'),
+    consulting: t('Header.consulting'),
+    settings: t('Header.settings'),
+  }
 
-  // const textHeader = {
-  //   home: t('Header.home'),
-  // }
+  const textOpportunity = {
+    buy: t('Opportunity.buy'),
+    sell: t('Opportunity.sell'),
+    spread: t('Opportunity.spread'),
+    fee: t('Opportunity.fee'),
+    orderBook: t('Opportunity.orderBook'),
+    purchaseBook: t('Opportunity.purchaseBook'),
+    salesBook: t('Opportunity.salesBook'),
+    price: t('Opportunity.price'),
+    volume: t('Opportunity.volume'),
+    liquidity: t('Opportunity.liquidity'),
+    cancel: t('Opportunity.cancel'),
+  }
+
+  const layoutValue: LayoutContextProps = { textOpportunity, locale }
 
   return (
-    <html lang="en">
-      <body className={`${roboto.className} bg-cover font-sans text-gray-100`}>
-        {/* <Header text={textHeader} locale={locale} /> */}
-        {children}
+    <html lang={lng}>
+      <body className={`${roboto.className} bg-global text-white`}>
+        <LayoutProvider value={layoutValue}>
+          <Header text={textHeader} locale={locale} />
+          <main className="mt-24">{children}</main>
+        </LayoutProvider>
       </body>
     </html>
   )
