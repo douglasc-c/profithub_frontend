@@ -8,7 +8,11 @@
       "signUp": "Sign up"
     },
   "Header": {
-      "home": "Home"
+      "home": "Home",
+      "headmap": "Headmap",
+      "arbitration": "Arbitration",
+      "consulting": "Consulting",
+      "settings": "Settings"
     },
   "Opportunity": {
       "buy": "Buy",

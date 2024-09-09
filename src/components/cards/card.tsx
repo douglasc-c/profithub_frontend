@@ -39,7 +39,7 @@ export function Card({ data, onModal, text }: CardProps) {
   }
 
   return (
-    <div className="justify-between bg-stone-950 p-5 rounded-lg border border-gray-700">
+    <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
       <h1 className="text-center font-bold mb-2">{data?.symbol}</h1>
       <div className="flex justify-between border-b border-t-[0.01rem] border-gray-700 p-2">
         <section className="flex flex-col w-1/2 items-start">
@@ -99,7 +99,7 @@ export function Card({ data, onModal, text }: CardProps) {
       <div className="flex items-center justify-center mt-2">
         <button
           onClick={onModal}
-          className="bg-[#005BEC] text-sm py-2 rounded-md w-full"
+          className="bg-custom-gradient text-sm py-2 rounded-md w-full"
         >
           {text.orderBook}
         </button>

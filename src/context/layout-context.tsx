@@ -1,10 +1,10 @@
+// layout-context.tsx
+
 'use client'
-
 import React, { createContext, useContext } from 'react'
-import { Provider } from 'react-redux'
-import { store } from '@/redux/store'
 
-interface LayoutContextProps {
+export interface LayoutContextProps {
+  // Adicione o modificador 'export' aqui
   textOpportunity: {
     buy: string
     sell: string
@@ -17,14 +17,6 @@ interface LayoutContextProps {
     volume: string
     liquidity: string
     cancel: string
-  }
-  textSigIn: {
-    email: string
-    password: string
-    forgotYourPassword: string
-    signIn: string
-    dontHaveAnAccount: string
-    signUp: string
   }
   locale: string
 }
@@ -45,8 +37,4 @@ export const LayoutProvider = ({
 }: {
   children: React.ReactNode
   value: LayoutContextProps
-}) => (
-  <Provider store={store}>
-    <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
-  </Provider>
-)
+}) => <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>

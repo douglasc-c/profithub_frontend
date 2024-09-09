@@ -9,7 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        'custom-gradient': 'linear-gradient(170deg, #0646EA 5%, #A300A3 70%)',
         global: "url('/images/bg/global.png')",
+        bull: "url('/images/bg/bull.png')",
       },
     },
     fontFamily: {

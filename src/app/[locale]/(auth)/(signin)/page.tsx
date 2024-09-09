@@ -3,13 +3,13 @@
 import { useState, FormEvent } from 'react'
 import Image from 'next/image'
 import Input from '@/components/inputs/input'
-import { useLayoutContext } from '@/context/layout-context'
+import { useAuthContext } from '@/context/auth-context'
 import { useDispatch } from 'react-redux'
 import { setToken } from '@/redux/auth-slice'
 import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
-  const { textSigIn, locale } = useLayoutContext()
+  const { textSignIn, locale } = useAuthContext()
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const router = useRouter()
@@ -35,7 +35,7 @@ export default function SignIn() {
       if (response.ok) {
         const data = await response.json()
         dispatch(setToken(data.token))
-        router.push(`${locale}/dashboard`)
+        router.push(`${locale}/arbitration`)
       } else {
         console.error('Failed to log in')
       }
@@ -47,26 +47,25 @@ export default function SignIn() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-10">
-      <div className="flex flex-col items-center justify-center w-full">
-        <div className="w-full max-w-md p-8 space-y-8 border bg-stone-950 border-gray-700 shadow-lg rounded-lg">
-          <div className="flex flex-col items-center">
+    <main className="min-h-screen flex">
+      <section className="flex flex-col items-center justify-center w-1/2 p-10 bg-stone-950">
+        <div className="w-full max-w-md p-8 space-y-8 shadow-lg rounded-lg">
+          <div className="flex flex-col items-center mb-5">
             <Image
               className="py-4"
-              src="/images/svg/logoWiseBot.svg"
+              src="/images/svg/logo.svg"
               alt="WiseBot Logo"
-              height={200}
-              width={200}
+              height={450}
+              width={450}
             />
           </div>
-
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <Input
                 id="email-address"
                 name="email"
                 type="email"
-                placeholder={textSigIn.email}
+                placeholder={textSignIn.email}
                 autoComplete="email"
                 required
                 className="rounded-md"
@@ -79,7 +78,7 @@ export default function SignIn() {
                 id="password"
                 name="password"
                 type="password"
-                placeholder={textSigIn.password}
+                placeholder={textSignIn.password}
                 autoComplete="current-password"
                 required
                 className="rounded-md"
@@ -94,8 +93,8 @@ export default function SignIn() {
               <div className="flex items-center" />
 
               <div className="text-sm">
-                <a href="#" className="font-semibold text-[#005BEC]">
-                  {textSigIn.forgotYourPassword}
+                <a href="#" className="">
+                  {textSignIn.forgotYourPassword}
                 </a>
               </div>
             </div>
@@ -104,23 +103,18 @@ export default function SignIn() {
               <button
                 type="submit"
                 disabled={loading}
-                className={`group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white ${loading ? 'bg-gray-500' : 'bg-[#005BEC]'}`}
+                className={`group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white ${loading ? 'bg-gray-500' : 'bg-custom-gradient'}`}
               >
-                {loading ? 'Signing In...' : textSigIn.signIn}
+                {loading ? 'Signing In...' : textSignIn.signIn}
               </button>
             </div>
           </form>
-
-          {/* <div className="text-center">
-            <p className="text-sm text-gray-600">
-              {textSigIn.dontHaveAnAccount}{' '}
-              <a href="#" className="font-medium text-[#005BEC]">
-                {textSigIn.signUp}
-              </a>
-            </p>
-          </div> */}
         </div>
-      </div>
+      </section>
+      <section className="w-1/2 h-fulll relative">
+        <div className="absolute inset-0 bg-bull bg-contain bg-right "></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950 to-transparent"></div>
+      </section>
     </main>
   )
 }
