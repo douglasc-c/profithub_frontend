@@ -8,7 +8,7 @@ import Language from '../buttons/language'
 interface HeaderProps {
   text: {
     home: string
-    headmap: string
+    heatmap: string
     arbitration: string
     consulting: string
     settings: string
@@ -56,7 +56,7 @@ export default function Header({ text, locale }: HeaderProps) {
           params={{ title: text.home, path: `/${locale}/dashboard` }}
         />
         <ButtonMenu
-          params={{ title: text.headmap, path: `/${locale}/headmap` }}
+          params={{ title: text.heatmap, path: `/${locale}/heatmap` }}
         />
         <ButtonMenu
           params={{ title: text.arbitration, path: `/${locale}/arbitration` }}

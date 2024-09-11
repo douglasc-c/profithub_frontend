@@ -9,7 +9,7 @@
     },
   "Header": {
       "home": "Home",
-      "headmap": "Headmap",
+      "heatmap": "heatmap",
       "arbitration": "Arbitration",
       "consulting": "Consulting",
       "settings": "Settings"

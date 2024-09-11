@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   const textHeader = {
     home: t('Header.home'),
-    headmap: t('Header.headmap'),
+    heatmap: t('Header.heatmap'),
     arbitration: t('Header.arbitration'),
     consulting: t('Header.consulting'),
     settings: t('Header.settings'),

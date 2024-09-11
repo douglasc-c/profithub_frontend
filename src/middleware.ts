@@ -10,24 +10,29 @@ const intlMiddleware = createMiddleware({
 export function middleware(request: NextRequest) {
   console.log('Middleware Executed:', request.nextUrl.pathname)
 
-  const response = intlMiddleware(request)
-
+  const [, locale] = request.nextUrl.pathname.split('/')
   const token = request.cookies.get('auth-token')
+
+  const protectedRoutes = [
+    'dashboard',
+    'arbitration',
+    'consulting',
+    'heatmap',
+    'settings',
+  ]
 
   if (
     !token &&
-    request.nextUrl.pathname.startsWith(
-      `/${request.nextUrl.locale}/authenticated`,
+    protectedRoutes.some((route) =>
+      request.nextUrl.pathname.startsWith(`/${locale}/${route}`),
     )
   ) {
-    return NextResponse.redirect(
-      new URL(`/${request.nextUrl.locale}/signin`, request.url),
-    )
+    return NextResponse.redirect(new URL(`/${locale}`, request.url))
   }
 
-  return response
+  return intlMiddleware(request)
 }
 
 export const config = {
-  matcher: ['/', '/(en|pt-BR)/:path*', '/authenticated/:path*'],
+  matcher: ['/', '/(en|pt-BR)/:path*'],
 }
