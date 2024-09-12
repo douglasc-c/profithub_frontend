@@ -6,7 +6,7 @@ const Coin360Widget: React.FC = () => {
       <iframe
         src="https://coin360.com/widget/map?utm_source=embed_map"
         frameBorder="0"
-        width="1465"
+        width="100%"
         height="800"
         style={{ border: 'none' }}
         loading="lazy"

@@ -1,6 +1,10 @@
 import { Roboto_Flex as Roboto } from 'next/font/google'
 import type { Metadata } from 'next'
-import { getLocale, getTranslations } from 'next-intl/server'
+import {
+  getLocale,
+  getTranslations,
+  unstable_setRequestLocale,
+} from 'next-intl/server'
 import './globals.css'
 import { AuthProvider } from '@/context/auth-context'
 
@@ -13,6 +17,14 @@ export const metadata: Metadata = {
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
+}
+
+export async function generateMetadata({
+  params: { lng },
+}: {
+  params: { lng: string }
+}) {
+  unstable_setRequestLocale(lng)
 }
 
 export default async function RootLayout({
