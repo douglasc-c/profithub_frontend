@@ -1,5 +1,5 @@
 import { Roboto_Flex as Roboto } from 'next/font/google'
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 import {
   getLocale,
   getTranslations,
@@ -11,9 +11,9 @@ import { AuthProvider } from '@/context/auth-context'
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const languages = ['en', 'pt-BR']
 
-export const metadata: Metadata = {
-  title: 'ProftCloud',
-}
+// export const metadata: Metadata = {
+//   title: 'ProftCloud',
+// }
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
