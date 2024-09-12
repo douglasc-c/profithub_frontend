@@ -1,5 +1,5 @@
 import { Roboto_Flex as Roboto } from 'next/font/google'
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 import {
   getLocale,
   getTranslations,
