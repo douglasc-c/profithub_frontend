@@ -8,7 +8,7 @@ const CointelegraphWidget: React.FC = () => {
 
     const script = document.createElement('script')
     script.src = 'https://cointelegraph.com/news-widget'
-    script.setAttribute('data-ct-widget-limit', '15')
+    script.setAttribute('data-ct-widget-limit', '20')
     script.setAttribute('data-ct-widget-theme', 'dark')
     script.setAttribute('data-ct-widget-size', 'medium')
     script.setAttribute('data-ct-widget-images', 'true')

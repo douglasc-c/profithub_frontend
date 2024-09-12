@@ -2,5 +2,13 @@
   "extends": [
     "@rocketseat/eslint-config/next", 
     "next/core-web-vitals"
-  ]
+  ],
+  "rules": {
+    "camelcase": [
+      "error",
+      {
+        "allow": ["unstable_setRequestLocale"]
+      }
+    ]
+  }
 }

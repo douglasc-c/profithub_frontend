@@ -13,6 +13,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setToken(state, action: PayloadAction<string | null>) {
+      console.log('Token recebido:', action.payload)
       state.token = action.payload
     },
     clearToken(state) {
@@ -22,5 +23,4 @@ const authSlice = createSlice({
 })
 
 export const { setToken, clearToken } = authSlice.actions
-
 export default authSlice.reducer

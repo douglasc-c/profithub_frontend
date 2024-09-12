@@ -7,10 +7,11 @@ import { useAuthContext } from '@/context/auth-context'
 import { useDispatch } from 'react-redux'
 import { setToken } from '@/redux/auth-slice'
 import { useRouter } from 'next/navigation'
+import { AppDispatch } from '@/redux/store'
 
 export default function SignIn() {
   const { textSignIn, locale } = useAuthContext()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const [email, setEmail] = useState('')
   const router = useRouter()
   const [password, setPassword] = useState('')
@@ -24,7 +25,7 @@ export default function SignIn() {
     setError('')
 
     try {
-      const response = await fetch('http://localhost:3333/sessions', {
+      const response = await fetch('http://64.227.6.139/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,13 +35,23 @@ export default function SignIn() {
 
       if (response.ok) {
         const data = await response.json()
-        dispatch(setToken(data.token))
-        router.push(`${locale}/arbitration`)
+
+        if (data.token) {
+          const maxAge = 60 * 60
+          document.cookie = `auth-token=${data.token}; Max-Age=${maxAge}; path=/; Secure; HttpOnly; SameSite=Strict`
+          dispatch(setToken(data.token))
+          router.push(`${locale}/dashboard`)
+        } else {
+          setError('Token não encontrado na resposta')
+          console.error('Token não encontrado na resposta')
+        }
       } else {
-        console.error('Failed to log in')
+        setError('Falha no login')
+        console.error('Falha no login:', response.statusText)
       }
     } catch (error) {
-      // setError(error.message)
+      setError('Erro ao conectar ao servidor')
+      console.error('Erro na requisição:', error)
     } finally {
       setLoading(false)
     }
@@ -112,7 +123,7 @@ export default function SignIn() {
         </div>
       </section>
       <section className="w-1/2 h-fulll relative">
-        <div className="absolute inset-0 bg-bull bg-contain bg-right "></div>
+        <div className="absolute inset-0 bg-bull bg-cover"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 to-transparent"></div>
       </section>
     </main>
