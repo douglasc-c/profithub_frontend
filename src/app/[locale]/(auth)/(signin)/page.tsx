@@ -38,7 +38,7 @@ export default function SignIn() {
 
         if (data.token) {
           const maxAge = 60 * 60
-          document.cookie = `auth-token=${data.token}; Max-Age=${maxAge}; path=/; Secure; SameSite=Strict`
+          document.cookie = `auth-token=${data.token}; Max-Age=${maxAge}; path=/; SameSite=Strict`
           dispatch(setToken(data.token))
           router.push(`${locale}/dashboard`)
         } else {
