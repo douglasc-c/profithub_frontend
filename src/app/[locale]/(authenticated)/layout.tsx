@@ -1,26 +1,15 @@
 import '@/app/globals.css'
 import { Roboto_Flex as Roboto } from 'next/font/google'
-import {
-  getLocale,
-  getTranslations,
-  unstable_setRequestLocale,
-} from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import Header from '@/components/header/header'
 import { LayoutProvider, LayoutContextProps } from '@/context/layout-context'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const languages = ['en', 'pt-BR']
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
-}
-
-export async function generateMetadata({
-  params: { lng },
-}: {
-  params: { lng: string }
-}) {
-  unstable_setRequestLocale(lng)
 }
 
 export default async function RootLayout({
@@ -32,16 +21,6 @@ export default async function RootLayout({
     lng: string
   }
 }) {
-  if (lng === '_not-found') {
-    return (
-      <html lang={lng}>
-        <body className={`${roboto.className} bg-global text-white`}>
-          {children}
-        </body>
-      </html>
-    )
-  }
-
   const locale = await getLocale()
   const t = await getTranslations(lng)
 

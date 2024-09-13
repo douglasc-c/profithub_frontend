@@ -3,7 +3,7 @@ import { Roboto_Flex as Roboto } from 'next/font/google'
 import {
   getLocale,
   getTranslations,
-  unstable_setRequestLocale,
+  // unstable_setRequestLocale,
 } from 'next-intl/server'
 import './globals.css'
 import { AuthProvider } from '@/context/auth-context'
@@ -19,14 +19,14 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
 }
 
-export async function generateMetadata({
-  params: { lng },
-}: {
-  params: { lng: string }
-}) {
-  unstable_setRequestLocale(lng)
-}
-
+// export async function generateMetadata({
+//   params: { lng },
+// }: {
+//   params: { lng: string }
+// }) {
+//   unstable_setRequestLocale(lng)
+// }
+export const dynamic = 'force-dynamic'
 export default async function RootLayout({
   children,
   params: { lng },
@@ -36,18 +36,9 @@ export default async function RootLayout({
     lng: string
   }
 }) {
-  if (lng === '_not-found') {
-    return (
-      <html lang={lng}>
-        <body className={`${roboto.className} bg-global text-white`}>
-          {children}
-        </body>
-      </html>
-    )
-  }
-
   const locale = await getLocale()
   const t = await getTranslations(lng)
+  // unstable_setRequestLocale(lng)
 
   const textSignIn = {
     email: t('Signin.email'),
