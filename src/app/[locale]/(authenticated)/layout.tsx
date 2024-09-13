@@ -3,7 +3,7 @@ import { Roboto_Flex as Roboto } from 'next/font/google'
 import {
   getLocale,
   getTranslations,
-  unstable_setRequestLocale,
+  // unstable_setRequestLocale,
 } from 'next-intl/server'
 import Header from '@/components/header/header'
 import { LayoutProvider, LayoutContextProps } from '@/context/layout-context'
@@ -15,13 +15,13 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }))
 }
 
-export async function generateMetadata({
-  params: { lng },
-}: {
-  params: { lng: string }
-}) {
-  unstable_setRequestLocale(lng)
-}
+// export async function generateMetadata({
+//   params: { lng },
+// }: {
+//   params: { lng: string }
+// }) {
+//   unstable_setRequestLocale(lng)
+// }
 
 export default async function RootLayout({
   children,

@@ -36,6 +36,16 @@ export default async function RootLayout({
     lng: string
   }
 }) {
+  if (lng === '_not-found') {
+    return (
+      <html lang={lng}>
+        <body className={`${roboto.className} bg-global text-white`}>
+          {children}
+        </body>
+      </html>
+    )
+  }
+
   const locale = await getLocale()
   const t = await getTranslations(lng)
 
