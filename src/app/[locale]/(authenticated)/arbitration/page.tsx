@@ -33,7 +33,7 @@ export default function Arbitration() {
   const { textOpportunity } = useLayoutContext()
 
   useEffect(() => {
-    const socket = io('http://64.227.6.139', {})
+    const socket = io('https://profit.avaloncapital.fund', {})
     socket.on('connect', () => {
       console.log('Conectado ao servidor WebSocket')
       sendSymbols(socket, [
