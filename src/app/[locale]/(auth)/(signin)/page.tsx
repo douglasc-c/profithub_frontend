@@ -8,15 +8,23 @@ import { useDispatch } from 'react-redux'
 import { setToken } from '@/redux/auth-slice'
 import { useRouter } from 'next/navigation'
 import { AppDispatch } from '@/redux/store'
+import api from '@/lib/api'
 
 export default function SignIn() {
   const { textSignIn, locale } = useAuthContext()
   const dispatch = useDispatch<AppDispatch>()
-  const [email, setEmail] = useState('')
   const router = useRouter()
-  const [password, setPassword] = useState('')
+  const [formData, setFormData] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+  }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -25,16 +33,10 @@ export default function SignIn() {
     setError('')
 
     try {
-      const response = await fetch('http://64.227.6.139/sessions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
+      const response = await api.post('/sessions', formData)
 
-      if (response.ok) {
-        const data = await response.json()
+      if (response.status === 200) {
+        const data = response.data
 
         if (data.token) {
           const maxAge = 60 * 60
@@ -80,8 +82,8 @@ export default function SignIn() {
                 autoComplete="email"
                 required
                 className="rounded-md"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -93,8 +95,8 @@ export default function SignIn() {
                 autoComplete="current-password"
                 required
                 className="rounded-md"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
 
