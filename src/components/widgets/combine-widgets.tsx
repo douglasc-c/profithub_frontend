@@ -17,7 +17,7 @@ const CombinedWidgets = () => {
       isTransparent: true,
       displayMode: 'regular',
       width: '100%',
-      height: '725',
+      height: '755',
       colorTheme: 'dark',
       locale: 'en',
       market: 'crypto',
@@ -46,7 +46,7 @@ const CombinedWidgets = () => {
       showSymbolLogo: true,
       showFloatingTooltip: false,
       width: '100%',
-      height: '590',
+      height: '593',
       plotLineColorGrowing: 'rgba(41, 98, 255, 1)',
       plotLineColorFalling: 'rgba(41, 98, 255, 1)',
       gridLineColor: 'rgba(240, 243, 250, 0)',
@@ -91,18 +91,18 @@ const CombinedWidgets = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      <div className="flex-1">
+      <div className="col-span-1">
         <div className="tradingview-news-container">
           <div className="tradingview-news-container__widget" />
         </div>
       </div>
-      <div className="flex-1 relative mt-4">
+      <div className="col-span-1 relative">
         <CoinConvert />
-        <div className="tradingview-market-overview-container bg-[#0d1218] rounded-2xl -mt-5 absolute w-full border-2 border-[#384a61]">
+        <div className="tradingview-market-overview-container bg-[#0d1218] rounded-2xl mt-3 absolute w-full border-2 border-[#384a61]">
           <div className="tradingview-market-overview-container__widget" />
         </div>
       </div>
-      <div className="flex-1 mt-4">
+      <div className="col-span-1 flex items-end">
         <CoinStatsWidget />
       </div>
     </div>

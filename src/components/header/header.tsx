@@ -41,17 +41,11 @@ export default function Header({ text, locale }: HeaderProps) {
   }, [])
 
   return (
-    <div
-      className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center px-10 md:px-20 py-5 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-black bg-opacity-100 shadow-lg'
-          : 'bg-black bg-opacity-70'
-      }`}
-    >
-      <a href="/">
-        <Image src="/images/svg/logo.svg" alt="Logo" width={420} height={200} />
+    <div className="fixed top-0 left-0 w-full h-40 z-50 flex justify-between items-top px-10 md:px-20 py-5 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-tramsparet">
+      <a href="/" className="-mt-5">
+        <Image src="/images/svg/logo.svg" alt="Logo" width={320} height={200} />
       </a>
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row">
         <ButtonMenu
           params={{ title: text.home, path: `/${locale}/dashboard` }}
         />
@@ -67,7 +61,9 @@ export default function Header({ text, locale }: HeaderProps) {
         <ButtonMenu
           params={{ title: text.settings, path: `/${locale}/settings` }}
         />
-        <Language locale={locale} availableLocales={availableLocales} />
+        <div className="-mt-1">
+          <Language locale={locale} availableLocales={availableLocales} />
+        </div>
       </div>
     </div>
   )
