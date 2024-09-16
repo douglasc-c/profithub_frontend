@@ -21,7 +21,7 @@ export default function Header({ text, locale }: HeaderProps) {
 
   const availableLocales = [
     { code: 'en', flag: '/images/flags/en.svg', label: 'English' },
-    { code: 'pt-BR', flag: '/images/flags/pt-br.svg', label: 'Português' },
+    { code: 'pt-BR', flag: '/images/flags/pt-BR.svg', label: 'Português' },
   ]
 
   useEffect(() => {

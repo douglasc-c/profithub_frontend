@@ -1,11 +1,17 @@
 'use client'
 
-import News from '@/components/widgets/news'
+import CoinsPriceMarquee from '@/components/widgets/coins-price-marquee'
+import CombineWidgets from '@/components/widgets/combine-widgets'
 
 export default function Dashboard() {
   return (
     <main className="min-h-screen flex flex-col">
-      <News />
+      <div className="mt-28">
+        <CoinsPriceMarquee />
+      </div>
+      <div className="px-5">
+        <CombineWidgets />
+      </div>
     </main>
   )
 }
