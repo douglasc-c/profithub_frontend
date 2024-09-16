@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import ButtonMenu from '../buttons/menu'
 import Language from '../buttons/language'
@@ -17,28 +16,10 @@ interface HeaderProps {
 }
 
 export default function Header({ text, locale }: HeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false)
-
   const availableLocales = [
     { code: 'en', flag: '/images/flags/en.svg', label: 'English' },
     { code: 'pt-BR', flag: '/images/flags/pt-BR.svg', label: 'Português' },
   ]
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   return (
     <div className="fixed top-0 left-0 w-full h-40 z-50 flex justify-between items-top px-10 md:px-20 py-5 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-tramsparet">
