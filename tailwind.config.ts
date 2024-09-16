@@ -13,6 +13,16 @@ const config: Config = {
         global: "url('/images/bg/global.png')",
         bull: "url('/images/bg/bull.png')",
       },
+      fontFamily: {
+        euclid: ['EuclidCircularA', 'sans-serif'],
+      },
+      fontWeight: {
+        light: '300',
+        regular: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+      },
     },
     fontFamily: {
       sans: '"Inter var", sans-serif',

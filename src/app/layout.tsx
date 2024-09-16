@@ -1,10 +1,8 @@
-import { Roboto_Flex as Roboto } from 'next/font/google'
 import type { Metadata } from 'next'
 import { getLocale, getTranslations } from 'next-intl/server'
 import './globals.css'
 import { AuthProvider } from '@/context/auth-context'
 
-const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const languages = ['en', 'pt-BR']
 
 export const metadata: Metadata = {
@@ -41,7 +39,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lng}>
-      <body className={`${roboto.className} bg-global text-white`}>
+      <body className="bg-global text-white">
         <AuthProvider value={layoutValue}>{children}</AuthProvider>
       </body>
     </html>
