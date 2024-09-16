@@ -42,7 +42,7 @@ export default function Header({ text, locale }: HeaderProps) {
         <ButtonMenu
           params={{ title: text.settings, path: `/${locale}/settings` }}
         />
-        <div className="-mt-1">
+        <div className="-mt-[6px]">
           <Language locale={locale} availableLocales={availableLocales} />
         </div>
       </div>

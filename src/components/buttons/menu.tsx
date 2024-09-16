@@ -13,11 +13,11 @@ export default function ButtonMenu({ params }: DataProps) {
   const { title, path } = params
 
   return (
-    <ul>
-      <li>
+    <ul className="px-2">
+      <li className="gradient-border">
         <a
           href={path}
-          className={`flex items-center p-2 duration-300 hover:scale-110 font-semibold uppercase`}
+          className={`flex items-center px-2 py-1 font-regular text-sm uppercase`}
         >
           {title}
         </a>
