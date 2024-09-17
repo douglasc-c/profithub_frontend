@@ -6,12 +6,11 @@ import CoinStatsWidget from './fear-greed'
 
 const CombinedWidgets = () => {
   useEffect(() => {
-    // Load News widget
+    // Load TradingView News widget
     const newsScript = document.createElement('script')
     newsScript.src =
       'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js'
     newsScript.async = true
-
     newsScript.innerHTML = JSON.stringify({
       feedMode: 'market',
       isTransparent: true,
@@ -22,7 +21,6 @@ const CombinedWidgets = () => {
       locale: 'en',
       market: 'crypto',
     })
-
     const newsContainer = document.querySelector(
       '.tradingview-news-container__widget',
     )
@@ -30,12 +28,11 @@ const CombinedWidgets = () => {
       newsContainer.appendChild(newsScript)
     }
 
-    // Load Coin Market Overview widget
+    // Load TradingView Market Overview widget
     const marketOverviewScript = document.createElement('script')
     marketOverviewScript.src =
       'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js'
     marketOverviewScript.async = true
-
     marketOverviewScript.innerHTML = JSON.stringify({
       colorTheme: 'dark',
       dateRange: '12M',
@@ -71,12 +68,37 @@ const CombinedWidgets = () => {
         },
       ],
     })
-
     const marketOverviewContainer = document.querySelector(
       '.tradingview-market-overview-container__widget',
     )
     if (marketOverviewContainer) {
       marketOverviewContainer.appendChild(marketOverviewScript)
+    }
+
+    // Load TradingView Ticker Tape widget
+    const tickerScript = document.createElement('script')
+    tickerScript.src =
+      'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js'
+    tickerScript.async = true
+    tickerScript.innerHTML = JSON.stringify({
+      symbols: [
+        { proName: 'BINANCE:BTCUSD', title: 'Bitcoin' },
+        { proName: 'BINANCE:ETHUSD', title: 'Ethereum' },
+        { proName: 'BINANCE:SOLUSD', title: 'Solana' },
+        { proName: 'BINANCE:LINKUSD', title: 'Link' },
+        { proName: 'BINANCE:XRPUSD', title: 'Ripple' },
+      ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      displayMode: 'adaptive',
+      colorTheme: 'dark',
+      locale: 'en',
+    })
+    const tickerContainer = document.querySelector(
+      '.tradingview-ticker-container__widget',
+    )
+    if (tickerContainer) {
+      tickerContainer.appendChild(tickerScript)
     }
 
     return () => {
@@ -86,24 +108,34 @@ const CombinedWidgets = () => {
       if (marketOverviewContainer) {
         marketOverviewContainer.innerHTML = ''
       }
+      if (tickerContainer) {
+        tickerContainer.innerHTML = ''
+      }
     }
   }, [])
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-1">
-        <div className="tradingview-news-container">
-          <div className="tradingview-news-container__widget" />
+    <div>
+      <div className="mt-28">
+        <div className="tradingview-ticker-container">
+          <div className="tradingview-ticker-container__widget" />
         </div>
       </div>
-      <div className="col-span-1 relative">
-        <CoinConvert />
-        <div className="tradingview-market-overview-container bg-[#0d1218] rounded-2xl mt-3 absolute w-full border-2 border-[#384a61]">
-          <div className="tradingview-market-overview-container__widget" />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-1">
+          <div className="tradingview-news-container rounded-2xl">
+            <div className="tradingview-news-container__widget" />
+          </div>
         </div>
-      </div>
-      <div className="col-span-1 flex items-end">
-        <CoinStatsWidget />
+        <div className="col-span-1 relative">
+          <CoinConvert />
+          <div className="tradingview-market-overview-container bg-[#0d1218] rounded-2xl mt-3 absolute w-full border-2 border-[#384a61]">
+            <div className="tradingview-market-overview-container__widget" />
+          </div>
+        </div>
+        <div className="col-span-1 flex items-end">
+          <CoinStatsWidget />
+        </div>
       </div>
     </div>
   )
