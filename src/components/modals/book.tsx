@@ -42,7 +42,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
 
   const onSelectBuy = () => setIsSelected('buy')
   const onSelectSell = () => setIsSelected('sell')
-
+  console.log(data)
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
       <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800 z-50">
@@ -63,7 +63,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
         <div className="flex justify-between px-16 py-3 ">
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeBuy : data.exchangeSell}.svg`}
+            src={`/images/exchanges/${data.exchangeBuy}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -77,7 +77,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
           />
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeSell : data.exchangeBuy}.svg`}
+            src={`/images/exchanges/${data.exchangeSell}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}

@@ -128,7 +128,7 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 md:mt-2 sm:mt-2">
         <div className="col-span-1">
           <div className="tradingview-news-container rounded-2xl bg-[#0d1218] border-2 border-[#384a61]">
             <div className="tradingview-news-container__widget" />
