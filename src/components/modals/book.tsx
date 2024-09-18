@@ -63,7 +63,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
         <div className="flex justify-between px-16 py-3 ">
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeBuy : data.exchangeSell}.svg`}
+            src={`/images/exchanges/${data.exchangeBuy}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
@@ -77,7 +77,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
           />
           <Image
             className="py-4"
-            src={`/images/exchanges/${isSelected === 'buy' ? data.exchangeSell : data.exchangeBuy}.svg`}
+            src={`/images/exchanges/${data.exchangeSell}.svg`}
             alt="mercadobitcoin"
             height={50}
             width={50}
