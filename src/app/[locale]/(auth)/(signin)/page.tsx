@@ -61,7 +61,7 @@ export default function SignIn() {
 
   return (
     <main className="min-h-screen flex">
-      <section className="flex flex-col items-center justify-center w-1/2 p-10 bg-stone-950">
+      <section className="flex flex-col items-center justify-center md:w-1/2 w-full p-10 bg-stone-950">
         <div className="w-full max-w-md p-8 space-y-8 shadow-lg rounded-lg">
           <div className="flex flex-col items-center mb-5">
             <Image
@@ -124,7 +124,7 @@ export default function SignIn() {
           </form>
         </div>
       </section>
-      <section className="w-1/2 h-fulll relative">
+      <section className="hidden md:block w-1/2 relative">
         <div className="absolute inset-0 bg-bull bg-cover"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 to-transparent"></div>
       </section>

@@ -26,5 +26,11 @@
       "volume": "Volume",
       "liquidity": "Liquidez",
       "cancel": "Cancelar"
+    },
+    "Widgets":{
+      "fearGreedIndex": "Índice de Medo e Ganância",
+      "fear": "Medo",
+      "greed": "Ganância",
+      "lastUpdated": "Última atualização"
     }
 }
