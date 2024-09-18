@@ -42,7 +42,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
 
   const onSelectBuy = () => setIsSelected('buy')
   const onSelectSell = () => setIsSelected('sell')
-  console.log(data)
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
       <div className="bg-stone-950 rounded-t-md rounded-b-md shadow-lg max-w-md w-full border border-stone-800 z-50">
