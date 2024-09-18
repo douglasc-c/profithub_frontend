@@ -36,11 +36,21 @@ export default function Header({ text, locale }: HeaderProps) {
       </a>
 
       <div className="hidden md:flex flex-row items-center space-x-4">
-        <ButtonMenu params={{ title: text.home, path: `/${locale}/dashboard` }} />
-        <ButtonMenu params={{ title: text.heatmap, path: `/${locale}/heatmap` }} />
-        <ButtonMenu params={{ title: text.arbitration, path: `/${locale}/arbitration` }} />
-        <ButtonMenu params={{ title: text.consulting, path: `/${locale}/consulting` }} />
-        <ButtonMenu params={{ title: text.settings, path: `/${locale}/settings` }} />
+        <ButtonMenu
+          params={{ title: text.home, path: `/${locale}/dashboard` }}
+        />
+        <ButtonMenu
+          params={{ title: text.heatmap, path: `/${locale}/heatmap` }}
+        />
+        <ButtonMenu
+          params={{ title: text.arbitration, path: `/${locale}/arbitration` }}
+        />
+        <ButtonMenu
+          params={{ title: text.consulting, path: `/${locale}/consulting` }}
+        />
+        <ButtonMenu
+          params={{ title: text.settings, path: `/${locale}/settings` }}
+        />
         <Language locale={locale} availableLocales={availableLocales} />
       </div>
 
@@ -55,11 +65,21 @@ export default function Header({ text, locale }: HeaderProps) {
 
       {isMobileMenuOpen && (
         <div className="absolute top-0 left-0 w-full h-screen bg-black/90 flex flex-col items-center justify-center space-y-6 z-40">
-          <ButtonMenu params={{ title: text.home, path: `/${locale}/dashboard` }} />
-          <ButtonMenu params={{ title: text.heatmap, path: `/${locale}/heatmap` }} />
-          <ButtonMenu params={{ title: text.arbitration, path: `/${locale}/arbitration` }} />
-          <ButtonMenu params={{ title: text.consulting, path: `/${locale}/consulting` }} />
-          <ButtonMenu params={{ title: text.settings, path: `/${locale}/settings` }} />
+          <ButtonMenu
+            params={{ title: text.home, path: `/${locale}/dashboard` }}
+          />
+          <ButtonMenu
+            params={{ title: text.heatmap, path: `/${locale}/heatmap` }}
+          />
+          <ButtonMenu
+            params={{ title: text.arbitration, path: `/${locale}/arbitration` }}
+          />
+          <ButtonMenu
+            params={{ title: text.consulting, path: `/${locale}/consulting` }}
+          />
+          <ButtonMenu
+            params={{ title: text.settings, path: `/${locale}/settings` }}
+          />
           <Language locale={locale} availableLocales={availableLocales} />
         </div>
       )}

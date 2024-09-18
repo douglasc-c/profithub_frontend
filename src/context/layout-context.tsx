@@ -1,10 +1,8 @@
-// layout-context.tsx
-
 'use client'
+
 import React, { createContext, useContext } from 'react'
 
 export interface LayoutContextProps {
-
   textOpportunity: {
     buy: string
     sell: string

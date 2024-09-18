@@ -147,7 +147,6 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
         </div>
       </div>
     </div>
-
   )
 }
 
