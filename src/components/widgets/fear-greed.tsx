@@ -53,8 +53,8 @@ const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
     { color: '#34B349', startValue: 80, endValue: 100 },
   ]
 
-  const barWidth = 300
-  const segmentWidth = barWidth / 3.5
+  const barWidth = 350
+  const segmentWidth = barWidth / segments.length
 
   const calculateIndicatorPosition = (value: number) => {
     const position = (value / 100) * barWidth
@@ -64,36 +64,36 @@ const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
   const indicatorPosition = calculateIndicatorPosition(fearGreedValue)
 
   return (
-    <div className="bg-[#0d1218] rounded-2xl text-white w-full p-4  border-2 border-[#384a61]">
+    <div className="bg-[#0d1218] rounded-2xl text-white w-full p-4 border-2 border-[#384a61]">
       <h2 className="text-2xl font-semibold mb-4 text-center">
         {text.fearGreedIndex}
       </h2>
-      <div className="relative mt-4">
-        <div className="flex items-center justify-between w-full">
+      <div className="relative flex justify-center">
+        <div
+          className="pb-3 pt-1"
+          style={{ position: 'relative', width: `${barWidth}px` }}
+        >
           {segments.map((segment, index) => (
             <div
               key={index}
               style={{
                 backgroundColor: segment.color,
                 width: `${segmentWidth}px`,
-                height: '10px',
                 borderRadius: '10px',
+                height: '10px',
+                display: 'inline-block',
+                position: 'absolute',
+                left: `${segmentWidth * index}px`,
               }}
             />
           ))}
-        </div>
-        <div
-          className="absolute"
-          style={{
-            left: `${indicatorPosition - 8}px`,
-            top: '50%',
-            transform: 'translateY(-50%)',
-          }}
-        >
           <div
             className="w-4 h-4 rounded-full"
             style={{
               backgroundColor: '#ffffff',
+              position: 'absolute',
+              left: `${indicatorPosition - 2}px`,
+              transform: 'translateY(-20%)',
             }}
           />
         </div>
