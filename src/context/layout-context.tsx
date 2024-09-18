@@ -4,7 +4,7 @@
 import React, { createContext, useContext } from 'react'
 
 export interface LayoutContextProps {
-  // Adicione o modificador 'export' aqui
+
   textOpportunity: {
     buy: string
     sell: string
@@ -17,6 +17,12 @@ export interface LayoutContextProps {
     volume: string
     liquidity: string
     cancel: string
+  }
+  textWidgets: {
+    fearGreedIndex: string
+    fear: string
+    greed: string
+    lastUpdated: string
   }
   locale: string
 }

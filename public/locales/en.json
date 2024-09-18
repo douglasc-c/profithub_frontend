@@ -26,5 +26,11 @@
       "volume": "Volume",
       "liquidity": "Liquidity",
       "cancel": "Cancel"
+    },
+    "Widgets":{
+      "fearGreedIndex": "Fear & Greed Index",
+      "fear": "Fear",
+      "greed": "Greed",
+      "lastUpdated": "Last updated"
     }
 }

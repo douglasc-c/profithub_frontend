@@ -45,8 +45,15 @@ export default async function RootLayout({
     liquidity: t('Opportunity.liquidity'),
     cancel: t('Opportunity.cancel'),
   }
+  
+  const textWidgets = {
+    fearGreedIndex: t('Widgets.fearGreedIndex'),
+    fear: t('Widgets.fear'),
+    greed: t('Widgets.greed'),
+    lastUpdated: t('Widgets.lastUpdated'),
+  }
 
-  const layoutValue: LayoutContextProps = { textOpportunity, locale }
+  const layoutValue: LayoutContextProps = { textOpportunity, textWidgets, locale }
 
   return (
     <html lang={lng}>

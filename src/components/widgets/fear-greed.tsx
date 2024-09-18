@@ -7,7 +7,16 @@ interface FearGreedData {
   timestamp: string
 }
 
-const FearGreedWidget: React.FC = () => {
+interface WidgetProps {
+  text: {
+    fearGreedIndex: string
+    fear: string
+    greed: string
+    lastUpdated: string
+  }
+}
+
+const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
   const [fearGreedIndex, setFearGreedIndex] = useState<FearGreedData | null>(
     null,
   )
@@ -57,7 +66,7 @@ const FearGreedWidget: React.FC = () => {
   return (
     <div className="bg-[#0d1218] rounded-2xl text-white w-full p-4  border-2 border-[#384a61]">
       <h2 className="text-2xl font-semibold mb-4 text-center">
-        Fear & Greed Index
+        {text.fearGreedIndex}
       </h2>
       <div className="relative mt-4">
         <div className="flex items-center justify-between w-full">
@@ -94,10 +103,12 @@ const FearGreedWidget: React.FC = () => {
         {fearGreedValue}
       </p>
       <p className="text-center text-lg">
-        {fearGreedIndex?.value_classification}
+        {fearGreedIndex?.value_classification === 'Fear'
+          ? text.fear
+          : text.greed}
       </p>
       <p className="text-center text-sm mt-2">
-        Last updated:{' '}
+        {text.lastUpdated}:{' '}
         {new Date(
           parseInt(fearGreedIndex?.timestamp || '') * 1000,
         ).toLocaleDateString()}
