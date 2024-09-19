@@ -19,6 +19,7 @@ export interface LayoutContextProps {
   textWidgets: {
     fearGreedIndex: string
     fear: string
+    neutral: string
     greed: string
     lastUpdated: string
   }

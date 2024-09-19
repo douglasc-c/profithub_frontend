@@ -30,6 +30,7 @@
     "Widgets":{
       "fearGreedIndex": "Índice de Medo e Ganância",
       "fear": "Medo",
+      "neutral": "Neutro",
       "greed": "Ganância",
       "lastUpdated": "Última atualização"
     }
