@@ -60,7 +60,7 @@ export default function SignIn() {
   }
 
   return (
-    <main className="min-h-screen flex">
+    <main className="h-screen flex">
       <section className="flex flex-col items-center justify-center md:w-1/2 w-full p-10 bg-stone-950">
         <div className="w-full max-w-md p-8 space-y-8 shadow-lg rounded-lg">
           <div className="flex flex-col items-center mb-5">

@@ -49,6 +49,7 @@ export default async function RootLayout({
   const textWidgets = {
     fearGreedIndex: t('Widgets.fearGreedIndex'),
     fear: t('Widgets.fear'),
+    neutral: t('Widgets.neutral'),
     greed: t('Widgets.greed'),
     lastUpdated: t('Widgets.lastUpdated'),
   }
@@ -62,8 +63,9 @@ export default async function RootLayout({
   return (
     <html lang={lng}>
       <body className={`${roboto.className} bg-global text-white`}>
+        <Header text={textHeader} locale={locale} />
         <LayoutProvider value={layoutValue}>
-          <Header text={textHeader} locale={locale} />
+          <div className="h-24" />
           {children}
         </LayoutProvider>
       </body>

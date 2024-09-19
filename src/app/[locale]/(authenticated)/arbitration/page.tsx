@@ -131,7 +131,7 @@ export default function Arbitration() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col md:px-20 px-10 py-10 pt-28">
+    <main className="md:px-20 px-10 py-5">
       <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-9 w-full items-center justify-between">
         <Book
           isOpen={isOpen}

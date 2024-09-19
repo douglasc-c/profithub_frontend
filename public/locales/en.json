@@ -30,6 +30,7 @@
     "Widgets":{
       "fearGreedIndex": "Fear & Greed Index",
       "fear": "Fear",
+      "neutral": "Neutral",
       "greed": "Greed",
       "lastUpdated": "Last updated"
     }

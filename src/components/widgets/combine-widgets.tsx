@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
-import CoinConvert from './coin-convert'
 import CoinStatsWidget from './fear-greed'
 
 interface WidgetProps {
   text: {
     fearGreedIndex: string
     fear: string
+    neutral: string
     greed: string
     lastUpdated: string
   }
@@ -24,7 +24,7 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
       isTransparent: true,
       displayMode: 'regular',
       width: '100%',
-      height: '695',
+      height: '100%',
       colorTheme: 'dark',
       locale: 'en',
       market: 'crypto',
@@ -50,7 +50,7 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
       showSymbolLogo: true,
       showFloatingTooltip: false,
       width: '100%',
-      height: '538',
+      height: '100%',
       plotLineColorGrowing: 'rgba(41, 98, 255, 1)',
       plotLineColorFalling: 'rgba(41, 98, 255, 1)',
       gridLineColor: 'rgba(240, 243, 250, 0)',
@@ -121,28 +121,19 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
   }, [])
 
   return (
-    <div>
-      <div className="mt-28">
-        <div className="tradingview-ticker-container">
-          <div className="tradingview-ticker-container__widget" />
-        </div>
-      </div>
+    <div className="h-[calc(100vh-9rem)]">
+      <div className="tradingview-ticker-container__widget" />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 md:mt-2 sm:mt-2">
-        <div className="col-span-1">
-          <div className="tradingview-news-container rounded-2xl bg-[#0d1218] border-2 border-[#384a61]">
-            <div className="tradingview-news-container__widget" />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-5 py-3 h-full">
+        <div className="col-span-1 rounded-2xl bg-[#0d1218] border-2 border-[#384a61]">
+          <div className="tradingview-news-container__widget w-full h-full" />
+        </div>
+
+        <div className="col-span-1 bg-[#0d1218] rounded-2xl border-2 border-[#384a61]">
+          <div className="tradingview-market-overview-container__widget w-full h-full" />
         </div>
 
         <div className="col-span-1">
-          <CoinConvert />
-          <div className="tradingview-market-overview-container bg-[#0d1218] rounded-2xl mt-3 border-2 border-[#384a61]">
-            <div className="tradingview-market-overview-container__widget" />
-          </div>
-        </div>
-
-        <div className="col-span-1 flex items-end">
           <CoinStatsWidget text={text} />
         </div>
       </div>
