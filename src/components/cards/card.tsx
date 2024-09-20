@@ -1,5 +1,6 @@
 'use client'
 
+import { useLayoutContext } from '@/context/layout-context'
 import Image from 'next/image'
 
 interface Data {
@@ -12,23 +13,15 @@ interface Data {
   withdrawFee: number | string
 }
 
-interface Text {
-  buy: string
-  sell: string
-  spread: string
-  fee: string
-  orderBook: string
-}
-
 type OnModal = () => void
 
 interface CardProps {
   data: Data
-  text: Text
   onModal: OnModal
 }
 
-export function Card({ data, onModal, text }: CardProps) {
+export function Card({ data, onModal }: CardProps) {
+  const { textOpportunity } = useLayoutContext()
   const formatWithdrawFee = (fee: string | number) => {
     if (typeof fee === 'string') {
       const numericFee = parseFloat(fee)
@@ -43,7 +36,9 @@ export function Card({ data, onModal, text }: CardProps) {
       <h1 className="text-center font-bold mb-2">{data?.symbol}</h1>
       <div className="flex justify-between border-b border-t-[0.01rem] border-gray-700 p-2">
         <section className="flex flex-col w-1/2 items-start">
-          <p className="text-sm font-semibold uppercase">{text.buy}</p>
+          <p className="text-sm font-semibold uppercase">
+            {textOpportunity.buy}
+          </p>
           <div className="flex h-20 items-center">
             <Image
               className="py-4"
@@ -65,7 +60,9 @@ export function Card({ data, onModal, text }: CardProps) {
           height={30}
         />
         <section className="flex flex-col w-1/2 items-end justify-end">
-          <p className="text-sm font-semibold uppercase">{text.sell}</p>
+          <p className="text-sm font-semibold uppercase">
+            {textOpportunity.sell}
+          </p>
           <div className="flex h-20 items-center">
             <Image
               className="py-4"
@@ -82,14 +79,16 @@ export function Card({ data, onModal, text }: CardProps) {
       </div>
       <div className="flex justify-between p-2">
         <section>
-          <p className="text-xs py-1 font-semibold uppercase">{text.spread}</p>
+          <p className="text-xs py-1 font-semibold uppercase">
+            {textOpportunity.spread}
+          </p>
           <p className="text-xs text-green-500 font-bold">
             {data?.spreadPercent}%
           </p>
         </section>
         <section>
           <p className="text-xs text-right py-1 font-semibold uppercase">
-            {text.fee}
+            {textOpportunity.fee}
           </p>
           <p className="text-xs font-bold text-right text-red-500">
             0.60% + $ {formatWithdrawFee(data?.withdrawFee)}
@@ -101,7 +100,7 @@ export function Card({ data, onModal, text }: CardProps) {
           onClick={onModal}
           className="bg-custom-gradient text-sm py-2 rounded-md w-full"
         >
-          {text.orderBook}
+          {textOpportunity.orderBook}
         </button>
       </div>
     </div>

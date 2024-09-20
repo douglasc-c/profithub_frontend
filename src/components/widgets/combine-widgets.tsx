@@ -1,19 +1,10 @@
 'use client'
 
 import { useEffect } from 'react'
-import CoinStatsWidget from './fear-greed'
+import FearGreedIndex from './fear-greed'
+import ProfitCalculator from '../modals/profit-calculator'
 
-interface WidgetProps {
-  text: {
-    fearGreedIndex: string
-    fear: string
-    neutral: string
-    greed: string
-    lastUpdated: string
-  }
-}
-
-const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
+const CombinedWidgets: React.FC = () => {
   useEffect(() => {
     const newsScript = document.createElement('script')
     newsScript.src =
@@ -133,8 +124,9 @@ const CombinedWidgets: React.FC<WidgetProps> = ({ text }) => {
           <div className="tradingview-market-overview-container__widget w-full h-full" />
         </div>
 
-        <div className="col-span-1">
-          <CoinStatsWidget text={text} />
+        <div className="col-span-1 grid gap-4">
+          <ProfitCalculator />
+          <FearGreedIndex />
         </div>
       </div>
     </div>
