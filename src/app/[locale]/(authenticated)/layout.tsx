@@ -1,10 +1,8 @@
 import '@/app/globals.css'
-import { Roboto_Flex as Roboto } from 'next/font/google'
 import { getLocale, getTranslations } from 'next-intl/server'
 import Header from '@/components/header/header'
 import { LayoutProvider, LayoutContextProps } from '@/context/layout-context'
 
-const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const languages = ['en', 'pt-BR']
 export const dynamic = 'force-dynamic'
 
@@ -46,23 +44,38 @@ export default async function RootLayout({
     cancel: t('Opportunity.cancel'),
   }
 
-  const textWidgets = {
-    fearGreedIndex: t('Widgets.fearGreedIndex'),
-    fear: t('Widgets.fear'),
-    neutral: t('Widgets.neutral'),
-    greed: t('Widgets.greed'),
-    lastUpdated: t('Widgets.lastUpdated'),
+  const textFearGreedIndex = {
+    fearGreedIndex: t('FearGreedIndex.fearGreedIndex'),
+    fear: t('FearGreedIndex.fear'),
+    neutral: t('FearGreedIndex.neutral'),
+    greed: t('FearGreedIndex.greed'),
+    lastUpdated: t('FearGreedIndex.lastUpdated'),
+  }
+
+  const textProfitCalculator = {
+    profitCalculator: t('ProfitCalculator.profitCalculator'),
+    buyValue: t('ProfitCalculator.buyValue'),
+    sellValue: t('ProfitCalculator.sellValue'),
+    liquidity: t('ProfitCalculator.liquidity'),
+    fee: t('ProfitCalculator.fee'),
+    withdrawalValue: t('ProfitCalculator.withdrawalValue'),
+    results: t('ProfitCalculator.results'),
+    actualSaleValue: t('ProfitCalculator.actualSaleValue'),
+    profitPerCurrency: t('ProfitCalculator.profitPerCurrency'),
+    grossProfit: t('ProfitCalculator.grossProfit'),
+    netProfit: t('ProfitCalculator.netProfit'),
   }
 
   const layoutValue: LayoutContextProps = {
     textOpportunity,
-    textWidgets,
+    textFearGreedIndex,
+    textProfitCalculator,
     locale,
   }
 
   return (
     <html lang={lng}>
-      <body className={`${roboto.className} bg-global text-white`}>
+      <body className="bg-global text-white">
         <Header text={textHeader} locale={locale} />
         <LayoutProvider value={layoutValue}>
           <div className="h-24" />

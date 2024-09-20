@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import { useLayoutContext } from '@/context/layout-context'
 
 interface FearGreedData {
   value: string
@@ -9,17 +10,9 @@ interface FearGreedData {
   timestamp: string
 }
 
-interface WidgetProps {
-  text: {
-    fearGreedIndex: string
-    fear: string
-    neutral: string
-    greed: string
-    lastUpdated: string
-  }
-}
+const FearGreedWidget: React.FC = () => {
+  const { textFearGreedIndex } = useLayoutContext()
 
-const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
   const [fearGreedIndex, setFearGreedIndex] = useState<FearGreedData | null>(
     null,
   )
@@ -53,7 +46,7 @@ const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
   return (
     <div className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center">
       <h2 className="text-2xl font-medium mb-3 text-center">
-        {text.fearGreedIndex}
+        {textFearGreedIndex.fearGreedIndex}
       </h2>
       <div className="relative w-64 h-32 mb-4">
         <svg width="0" height="0">
@@ -99,15 +92,15 @@ const FearGreedWidget: React.FC<WidgetProps> = ({ text }) => {
           {fearGreedValue}
           <p className="text-center text-xl font-semibold">
             {fearGreedIndex?.value_classification === 'Fear'
-              ? text.fear
+              ? textFearGreedIndex.fear
               : fearGreedIndex?.value_classification === 'Neutral'
-                ? text.neutral
+                ? textFearGreedIndex.neutral
                 : fearGreedIndex?.value_classification === 'Greed'
-                  ? text.greed
+                  ? textFearGreedIndex.greed
                   : 'Unknown'}{' '}
           </p>
           <p className="text-center text-sm mt-2">
-            {text.lastUpdated}:{' '}
+            {textFearGreedIndex.lastUpdated}:{' '}
             {new Date(
               parseInt(fearGreedIndex?.timestamp || '') * 1000,
             ).toLocaleDateString()}

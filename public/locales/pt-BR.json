@@ -27,11 +27,24 @@
       "liquidity": "Liquidez",
       "cancel": "Cancelar"
     },
-    "Widgets":{
+    "FearGreedIndex":{
       "fearGreedIndex": "Índice de Medo e Ganância",
       "fear": "Medo",
       "neutral": "Neutro",
       "greed": "Ganância",
       "lastUpdated": "Última atualização"
+    },
+    "ProfitCalculator": {
+      "profitCalculator": "Calculadora de lucro",
+      "buyValue": "Valor de compra",
+      "sellValue": "Valor de venda",
+      "liquidity": "Liquidez",
+      "fee": "Taxa",
+      "withdrawalValue": "Valor de saque",
+      "results": "Resultados",
+      "actualSaleValue": "Valor real da venda",
+      "profitPerCurrency": "Lucro por moeda",
+      "grossProfit": "Lucro bruto",
+      "netProfit": "Lucro liquidot"
     }
 }

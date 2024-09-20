@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
+import { useLayoutContext } from '@/context/layout-context'
 
 interface Order {
   price: string
@@ -25,17 +26,11 @@ interface BookProps {
   onClose: () => void
   children?: React.ReactNode
   data: BookData
-  text: {
-    purchaseBook: string
-    salesBook: string
-    price: string
-    volume: string
-    liquidity: string
-    cancel: string
-  }
 }
 
-export function Book({ isOpen, onClose, children, data, text }: BookProps) {
+export function Book({ isOpen, onClose, children, data }: BookProps) {
+  const { textOpportunity } = useLayoutContext()
+
   const [isSelected, setIsSelected] = React.useState('buy')
 
   if (!isOpen) return null
@@ -51,13 +46,13 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
             className={`border-b-4 p-4 ${isSelected === 'buy' ? 'border-green-600' : 'border-[#2f2f35]'} w-[50%] text-xs`}
             onClick={onSelectBuy}
           >
-            <a className="font-bold">{text.purchaseBook}</a>
+            <a className="font-bold">{textOpportunity.purchaseBook}</a>
           </button>
           <button
             className={`border-b-4 p-4 ${isSelected === 'sell' ? 'border-red-600' : 'border-[#2f2f35]'} w-[50%] text-xs`}
             onClick={onSelectSell}
           >
-            <a className="font-bold">{text.salesBook}</a>
+            <a className="font-bold">{textOpportunity.salesBook}</a>
           </button>
         </section>
         <div className="flex justify-between px-16 py-3 ">
@@ -88,13 +83,13 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
             <thead className="text-xs bg-zinc-800 uppercase text-gray-400 border-b ">
               <tr>
                 <th scope="col" className="w-1/3 px-6 py-3 text-left">
-                  {text.price}
+                  {textOpportunity.price}
                 </th>
                 <th scope="col" className="w-1/3 px-6 py-3 text-center">
-                  {text.volume}
+                  {textOpportunity.volume}
                 </th>
                 <th scope="col" className="w-1/3 px-6 py-3 text-right">
-                  {text.liquidity}
+                  {textOpportunity.liquidity}
                 </th>
               </tr>
             </thead>
@@ -134,7 +129,7 @@ export function Book({ isOpen, onClose, children, data, text }: BookProps) {
             className="items-center justify-center flex bg-red-500 w-[40%] p-1 m-2 rounded-md"
             onClick={onClose}
           >
-            <a className="text-sm">{text.cancel}</a>
+            <a className="text-sm">{textOpportunity.cancel}</a>
           </button>
         </section>
         {children}

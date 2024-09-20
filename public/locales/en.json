@@ -27,11 +27,24 @@
       "liquidity": "Liquidity",
       "cancel": "Cancel"
     },
-    "Widgets":{
+    "FearGreedIndex":{
       "fearGreedIndex": "Fear & Greed Index",
       "fear": "Fear",
       "neutral": "Neutral",
       "greed": "Greed",
       "lastUpdated": "Last updated"
+    },
+    "ProfitCalculator": {
+      "profitCalculator": "Profit calculator",
+      "buyValue": "Buy value",
+      "sellValue": "Sell value",
+      "liquidity": "Liquidity",
+      "fee": "Fee",
+      "withdrawalValue": "Withdrawal value",
+      "results": "Results",
+      "actualSaleValue": "Actual sale value",
+      "profitPerCurrency": "Profit per currency",
+      "grossProfit": "Gross profit",
+      "netProfit": "Net profit"
     }
 }

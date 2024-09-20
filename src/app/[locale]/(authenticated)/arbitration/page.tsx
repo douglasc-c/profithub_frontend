@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 // import { useSelector } from 'react-redux'
 // import { RootState } from '@/redux/store'
 
-import { useLayoutContext } from '@/context/layout-context'
 import { Card } from '@/components/cards/card'
 import { Book } from '@/components/modals/book'
 import { io, Socket } from 'socket.io-client'
@@ -30,7 +29,6 @@ export default function Arbitration() {
   const [opportunity, setOpportunity] = useState<Opportunity[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isSelectBook, setIsSelectBook] = useState<Opportunity | null>(null)
-  const { textOpportunity } = useLayoutContext()
 
   useEffect(() => {
     const socket = io('https://proft.avaloncapital.fund', {})
@@ -137,13 +135,11 @@ export default function Arbitration() {
           isOpen={isOpen}
           onClose={() => setIsOpen(!isOpen)}
           data={isSelectBook as Opportunity}
-          text={textOpportunity}
         />
         {opportunity.map((item, index) => (
           <Card
             key={index}
             data={item}
-            text={textOpportunity}
             onModal={() => onLoadIsOpenModal(item)}
           />
         ))}
