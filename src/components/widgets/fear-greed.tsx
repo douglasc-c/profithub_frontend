@@ -44,7 +44,7 @@ const FearGreedWidget: React.FC = () => {
   const rotation = (100 - fearGreedValue) * (180 / 100)
 
   return (
-    <div className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center">
+    <div className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center justify-center">
       <h2 className="text-2xl font-medium mb-3 text-center">
         {textFearGreedIndex.fearGreedIndex}
       </h2>

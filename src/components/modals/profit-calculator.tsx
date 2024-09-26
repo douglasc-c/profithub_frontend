@@ -23,8 +23,8 @@ const ProfitCalculator: React.FC = () => {
     calculateProfit()
 
   return (
-    <div className="flex flex-col p-4 mx-auto bg-[#0d1218] rounded-2xl border-2 border-[#384a61]">
-      <h2 className="text-xl font-semibold mb-6">
+    <div className="flex flex-col p-4 mx-auto bg-[#0d1218] rounded-2xl border-2 border-[#384a61] justify-center">
+      <h2 className="text-2xl font-medium mb-6">
         {textProfitCalculator.profitCalculator}
       </h2>
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -87,7 +87,7 @@ const ProfitCalculator: React.FC = () => {
         </div>
       </div>
       <div className="mt-6">
-        <h3 className="text-lg font-medium">{textProfitCalculator.results}:</h3>
+        <h3 className="text-xl font-medium">{textProfitCalculator.results}:</h3>
         <p>
           {textProfitCalculator.actualSaleValue}: {netSaleValue.toFixed(8)}
         </p>

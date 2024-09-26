@@ -48,9 +48,9 @@ export default function Header({ text, locale }: HeaderProps) {
         <ButtonMenu
           params={{ title: text.consulting, path: `/${locale}/consulting` }}
         />
-        <ButtonMenu
+        {/* <ButtonMenu
           params={{ title: text.settings, path: `/${locale}/settings` }}
-        />
+        /> */}
         <Language locale={locale} availableLocales={availableLocales} />
       </div>
 
@@ -77,9 +77,9 @@ export default function Header({ text, locale }: HeaderProps) {
           <ButtonMenu
             params={{ title: text.consulting, path: `/${locale}/consulting` }}
           />
-          <ButtonMenu
+          {/* <ButtonMenu
             params={{ title: text.settings, path: `/${locale}/settings` }}
-          />
+          /> */}
           <Language locale={locale} availableLocales={availableLocales} />
         </div>
       )}
