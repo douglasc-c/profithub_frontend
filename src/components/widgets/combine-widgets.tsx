@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import FearGreedIndex from './fear-greed'
-import ProfitCalculator from '../modals/profit-calculator'
 
 const CombinedWidgets: React.FC = () => {
   useEffect(() => {
@@ -25,52 +24,6 @@ const CombinedWidgets: React.FC = () => {
     )
     if (newsContainer) {
       newsContainer.appendChild(newsScript)
-    }
-
-    const marketOverviewScript = document.createElement('script')
-    marketOverviewScript.src =
-      'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js'
-    marketOverviewScript.async = true
-    marketOverviewScript.innerHTML = JSON.stringify({
-      colorTheme: 'dark',
-      dateRange: '12M',
-      showChart: true,
-      locale: 'en',
-      largeChartUrl: '',
-      isTransparent: true,
-      showSymbolLogo: true,
-      showFloatingTooltip: false,
-      width: '100%',
-      height: '100%',
-      plotLineColorGrowing: 'rgba(41, 98, 255, 1)',
-      plotLineColorFalling: 'rgba(41, 98, 255, 1)',
-      gridLineColor: 'rgba(240, 243, 250, 0)',
-      scaleFontColor: 'rgba(209, 212, 220, 1)',
-      belowLineFillColorGrowing: 'rgba(0, 0, 0, 0.12)',
-      belowLineFillColorFalling: 'rgba(0, 0, 0, 0.12)',
-      belowLineFillColorGrowingBottom: 'rgba(0, 0, 0, 0)',
-      belowLineFillColorFallingBottom: 'rgba(0, 0, 0, 0)',
-      symbolActiveColor: 'rgba(0, 0, 0, 0.12)',
-      tabs: [
-        {
-          title: 'Cripto',
-          symbols: [
-            { s: 'BINANCE:BTCUSD' },
-            { s: 'BINANCE:ETHUSD' },
-            { s: 'BINANCE:SOLUSD' },
-            { s: 'BINANCE:LINKUSD' },
-            { s: 'BINANCE:XRPUSD' },
-            { s: 'CRYPTOCAP:TRX' },
-          ],
-          originalTitle: 'Indices',
-        },
-      ],
-    })
-    const marketOverviewContainer = document.querySelector(
-      '.tradingview-market-overview-container__widget',
-    )
-    if (marketOverviewContainer) {
-      marketOverviewContainer.appendChild(marketOverviewScript)
     }
 
     const tickerScript = document.createElement('script')
@@ -102,9 +55,6 @@ const CombinedWidgets: React.FC = () => {
       if (newsContainer) {
         newsContainer.innerHTML = ''
       }
-      if (marketOverviewContainer) {
-        marketOverviewContainer.innerHTML = ''
-      }
       if (tickerContainer) {
         tickerContainer.innerHTML = ''
       }
@@ -120,12 +70,9 @@ const CombinedWidgets: React.FC = () => {
           <div className="tradingview-news-container__widget w-full h-full" />
         </div>
 
-        <div className="col-span-1 bg-[#0d1218] rounded-2xl border-2 border-[#384a61]">
-          <div className="tradingview-market-overview-container__widget w-full h-full" />
-        </div>
+        <div className="col-span-1"></div>
 
-        <div className="col-span-1 grid gap-4">
-          <ProfitCalculator />
+        <div className="col-span-1">
           <FearGreedIndex />
         </div>
       </div>
