@@ -1,11 +1,11 @@
 'use client'
-import { useEffect, useState } from 'react'
-// import { useSelector } from 'react-redux'
-// import { RootState } from '@/redux/store'
 
+import { useEffect, useState } from 'react'
 import { Card } from '@/components/cards/card'
 import { Book } from '@/components/modals/book'
 import { io, Socket } from 'socket.io-client'
+import ProfitCalculator from '@/components/modals/profit-calculator'
+import Image from 'next/image'
 
 interface Opportunity {
   exchangeBuy: string
@@ -28,6 +28,7 @@ interface Opportunity {
 export default function Arbitration() {
   const [opportunity, setOpportunity] = useState<Opportunity[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
   const [isSelectBook, setIsSelectBook] = useState<Opportunity | null>(null)
 
   useEffect(() => {
@@ -115,10 +116,6 @@ export default function Arbitration() {
     }
   }, [])
 
-  // useEffect(() => {
-  //   console.log('Opportunity updated:', opportunity)
-  // }, [opportunity])
-
   const sendSymbols = (socket: Socket, symbols: string[]) => {
     socket.emit('subscribe', { action: 'subscribe', symbols })
   }
@@ -128,8 +125,38 @@ export default function Arbitration() {
     setIsOpen(true)
   }
 
+  function toggleCalculatorModal() {
+    setIsOpenModal(!isOpenModal)
+  }
+
   return (
-    <main className="md:px-20 px-10 py-5">
+    <main className="flex md:px-20 px-10 py-5 relative">
+      <div
+        className="bg-white fixed z-50 rounded-l-md right-0 top-22 flex justify-center items-center cursor-pointer"
+        onClick={toggleCalculatorModal}
+      >
+        <Image
+          className="py-6 px-2"
+          src={`/images/svg/arrowLeft.svg`}
+          alt="buy"
+          height={30}
+          width={30}
+        />
+      </div>
+
+      <div
+        className={`fixed top-0 right-0 z-40 h-full w-1/3 transform transition-transform duration-500 ${
+          isOpenModal ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="p-4">
+          <ProfitCalculator
+            isOpen={isOpenModal}
+            onClose={() => setIsOpenModal(false)}
+          />
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-9 w-full items-center justify-between">
         <Book
           isOpen={isOpen}
