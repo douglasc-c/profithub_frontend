@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { Card } from '@/components/cards/card'
 import { Book } from '@/components/modals/book'
-import { io, Socket } from 'socket.io-client'
 import ProfitCalculator from '@/components/modals/profit-calculator'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
 
 interface Opportunity {
   exchangeBuy: string
@@ -32,67 +32,18 @@ export default function Arbitration() {
   const [isSelectBook, setIsSelectBook] = useState<Opportunity | null>(null)
 
   useEffect(() => {
-    const socket = io('https://proft.avaloncapital.fund', {})
+    const socket = io('http://localhost:3335', {
+      transports: ['websocket'],
+    })
+
     socket.on('connect', () => {
       console.log('Conectado ao servidor WebSocket')
-      sendSymbols(socket, [
-        'BTC',
-        'ETH',
-        'XRP',
-        'SOL',
-        'SYS',
-        'LINK',
-        'ZEC',
-        'SUSHI',
-        'DOGE',
-        'ADA',
-        'TRX',
-        'DOT',
-        'NEAR',
-        'MATIC',
-        'UNI',
-        'PEPE',
-        'ICP',
-        'APT',
-        'XLM',
-        'XMR',
-        'CRO',
-        'STX',
-        'FET',
-        'FIL',
-        'ATOM',
-        'MKR',
-        'ARB',
-        'VET',
-        'RENDER',
-        'INJ',
-        'FTM',
-        'JASMY',
-        'ALGO',
-        'QNT',
-        'EOS',
-        'AXS',
-        'XTZ',
-        'AKT',
-        'NEO',
-        'ZEC',
-        'SAND',
-        'NEXO',
-        'GALA',
-        'MANA',
-        'IOTA',
-        'RAY',
-        'CAKE',
-        'COMP',
-        '1INCH',
-        'DASH',
-        'GMT',
-        'ENG',
-        'QTUM',
-      ])
+
+      socket.emit('subscribe')
     })
 
     socket.on('updateOpportunity', (data: string) => {
+      console.log('Dados recebidos xxxxxxxxx ', data)
       try {
         const parsedData: Opportunity[] = JSON.parse(data)
 
@@ -115,10 +66,6 @@ export default function Arbitration() {
       socket.close()
     }
   }, [])
-
-  const sendSymbols = (socket: Socket, symbols: string[]) => {
-    socket.emit('subscribe', { action: 'subscribe', symbols })
-  }
 
   function onLoadIsOpenModal(item: Opportunity) {
     setIsSelectBook(item)
@@ -145,9 +92,8 @@ export default function Arbitration() {
       </div>
 
       <div
-        className={`fixed top-0 right-0 z-40 h-full w-1/3 transform transition-transform duration-500 ${
-          isOpenModal ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 z-40 h-full w-1/3 transform transition-transform duration-500 ${isOpenModal ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="p-4">
           <ProfitCalculator
