@@ -42,7 +42,6 @@ export default function Arbitration() {
     })
 
     socket.on('updateOpportunity', (data: string) => {
-      console.log('Dados recebidos xxxxxxxxx ', data)
       try {
         const parsedData: Opportunity[] = JSON.parse(data)
 
