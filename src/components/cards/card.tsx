@@ -98,7 +98,7 @@ export function Card({ data, onModal }: CardProps) {
       <div className="flex items-center justify-center mt-2">
         <button
           onClick={onModal}
-          className="bg-custom-gradient text-sm py-2 rounded-md w-full"
+          className="bg-gradient-to-b from-[#3d2b70] via-[#784bb2] to-[#4c00a3] text-sm py-2 rounded-md w-full"
         >
           {textOpportunity.orderBook}
         </button>
