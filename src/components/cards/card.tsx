@@ -100,7 +100,7 @@ export function Card({ data, onModal }: CardProps) {
           onClick={onModal}
           className="bg-gradient-to-b from-[#3d2b70] via-[#784bb2] to-[#4c00a3] text-sm py-2 rounded-md w-full"
         >
-          {textOpportunity.orderBook}
+          {textOpportunity.operationDetails}
         </button>
       </div>
     </div>

@@ -3,23 +3,15 @@
 import { useLayoutContext } from '@/context/layout-context'
 import React, { useState } from 'react'
 
-interface ProfitCalculatorProps {
-  isOpen: boolean
-  onClose: () => void
-}
+interface ProfitCalculatorProps {}
 
-const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
-  isOpen,
-  onClose,
-}) => {
+const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
   const { textProfitCalculator } = useLayoutContext()
   const [saleValue, setSaleValue] = useState<number>(0)
   const [taxPercentage, setTaxPercentage] = useState<number>(0)
   const [purchaseValue, setPurchaseValue] = useState<number>(0)
   const [liquidity, setLiquidity] = useState<number>(0)
   const [withdrawalValue, setWithdrawalValue] = useState<number>(0)
-
-  if (!isOpen) return null
 
   const calculateProfit = () => {
     const netSaleValue = saleValue - saleValue * (taxPercentage / 100)
@@ -33,14 +25,8 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
     calculateProfit()
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="bg-[#0d1218] p-6 rounded-2xl border-2 border-[#384a61] max-w-md mx-auto relative">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-white text-xl"
-        >
-          &times;
-        </button>
+    <div className="flex items-center justify-center">
+      <div className="bg-[#0d1218] p-6 rounded-2xl border-2 border-[#384a61]">
         <h2 className="text-2xl font-medium mb-6">
           {textProfitCalculator.profitCalculator}
         </h2>

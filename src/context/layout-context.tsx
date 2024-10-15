@@ -8,7 +8,7 @@ export interface LayoutContextProps {
     sell: string
     spread: string
     fee: string
-    orderBook: string
+    operationDetails: string
     purchaseBook: string
     salesBook: string
     price: string

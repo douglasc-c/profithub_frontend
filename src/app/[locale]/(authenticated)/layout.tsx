@@ -35,7 +35,7 @@ export default async function RootLayout({
     sell: t('Opportunity.sell'),
     spread: t('Opportunity.spread'),
     fee: t('Opportunity.fee'),
-    orderBook: t('Opportunity.orderBook'),
+    operationDetails: t('Opportunity.operationDetails'),
     purchaseBook: t('Opportunity.purchaseBook'),
     salesBook: t('Opportunity.salesBook'),
     price: t('Opportunity.price'),
