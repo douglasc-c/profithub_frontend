@@ -1,9 +1,9 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { useLayoutContext } from '@/context/layout-context'
-import ProfitCalculator from '../widgets/profit-calculator'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { OrderBook } from '../cards/order-book'
+import ProfitCalculator from '../widgets/profit-calculator'
 
 interface Order {
   price: string
@@ -16,7 +16,7 @@ interface OrderBook {
   bids: Order[]
 }
 
-interface BookData {
+interface Opportunity {
   name: string
   symbol: string
   spreadPercent: number
@@ -31,19 +31,30 @@ interface BookData {
 interface BookProps {
   isOpen: boolean
   onClose: () => void
-  children?: React.ReactNode
-  data: BookData
+  symbol: string
+  opportunities: Opportunity[]
 }
 
-export function OperationDetails({ isOpen, onClose, data }: BookProps) {
+export function OperationDetails({
+  isOpen,
+  onClose,
+  symbol,
+  opportunities,
+}: BookProps) {
   const { textOpportunity } = useLayoutContext()
-  const [localData, setLocalData] = useState(data)
+  const [localData, setLocalData] = useState<Opportunity | null>(null)
 
   useEffect(() => {
-    setLocalData({ ...data })
-  }, [data])
+    const selectedOpportunity = opportunities.find(
+      (opportunity) => opportunity.symbol === symbol,
+    )
 
-  if (!isOpen) return null
+    if (selectedOpportunity) {
+      setLocalData(selectedOpportunity)
+    }
+  }, [symbol, opportunities])
+
+  if (!isOpen || !localData) return null
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 px-5">

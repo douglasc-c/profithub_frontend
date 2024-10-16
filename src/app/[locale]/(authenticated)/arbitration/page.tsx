@@ -28,7 +28,7 @@ interface Opportunity {
 export default function Arbitration() {
   const [opportunity, setOpportunity] = useState<Opportunity[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [isSelectBook, setIsSelectBook] = useState<Opportunity | null>(null)
+  const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
 
   useEffect(() => {
     const socket = io('http://localhost:3335', {
@@ -50,16 +50,6 @@ export default function Arbitration() {
           )
 
           setOpportunity(sortedData)
-
-          if (isOpen && isSelectBook) {
-            const updatedItem = sortedData.find(
-              (item) => item.symbol === isSelectBook.symbol,
-            )
-
-            if (updatedItem) {
-              setIsSelectBook({ ...updatedItem })
-            }
-          }
         } else {
           console.error('Expected an array but received:', parsedData)
         }
@@ -72,21 +62,22 @@ export default function Arbitration() {
       socket.off('updateOpportunity')
       socket.close()
     }
-  }, [isOpen, isSelectBook])
+  }, [])
 
-  function onLoadIsOpenModal(item: Opportunity) {
-    setIsSelectBook({ ...item })
+  function onLoadIsOpenModal(symbol: string) {
+    setSelectedSymbol(symbol)
     setIsOpen(true)
   }
 
   return (
     <main className="flex md:px-20 px-10 py-5 relative">
       <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-9 w-full items-center justify-between">
-        {isSelectBook && (
+        {selectedSymbol && (
           <OperationDetails
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
-            data={isSelectBook}
+            symbol={selectedSymbol}
+            opportunities={opportunity}
           />
         )}
 
@@ -94,7 +85,7 @@ export default function Arbitration() {
           <Card
             key={index}
             data={item}
-            onModal={() => onLoadIsOpenModal(item)}
+            onModal={() => onLoadIsOpenModal(item.symbol)}
           />
         ))}
       </div>
