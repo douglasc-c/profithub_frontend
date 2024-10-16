@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import ButtonMenu from '../buttons/menu'
-import Language from '../buttons/language'
+import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import Language from '../buttons/language'
+import ButtonMenu from '../buttons/menu'
 
 interface HeaderProps {
   text: {
