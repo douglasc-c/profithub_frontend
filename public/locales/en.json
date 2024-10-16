@@ -38,7 +38,7 @@
       "profitCalculator": "Profit calculator",
       "buyValue": "Buy value",
       "sellValue": "Sell value",
-      "liquidity": "Liquidity",
+      "volume": "Volume",
       "fee": "Fee",
       "withdrawalValue": "Withdrawal value",
       "results": "Results",

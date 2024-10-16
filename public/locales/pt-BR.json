@@ -38,7 +38,7 @@
       "profitCalculator": "Calculadora de lucro",
       "buyValue": "Valor de compra",
       "sellValue": "Valor de venda",
-      "liquidity": "Liquidez",
+      "volume": "Volume",
       "fee": "Taxa",
       "withdrawalValue": "Valor de saque",
       "results": "Resultados",

@@ -6,7 +6,6 @@ import { useLayoutContext } from '@/context/layout-context'
 interface Order {
   price: string
   volume: string
-  liquidity: string
 }
 
 interface OrderBook {
@@ -89,7 +88,7 @@ export function Book({ isOpen, onClose, children, data }: BookProps) {
                   {textOpportunity.volume}
                 </th>
                 <th scope="col" className="w-1/3 px-6 py-3 text-right">
-                  {textOpportunity.liquidity}
+                  {textOpportunity.volume}
                 </th>
               </tr>
             </thead>
@@ -104,7 +103,7 @@ export function Book({ isOpen, onClose, children, data }: BookProps) {
                         {order.volume}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-right">
-                        $ {order.liquidity}
+                        $ {order.volume}
                       </td>
                     </tr>
                   ))
@@ -117,7 +116,7 @@ export function Book({ isOpen, onClose, children, data }: BookProps) {
                         {order.volume}
                       </td>
                       <td className="w-1/3 px-6 py-2 text-xs text-right">
-                        $ {order.liquidity}
+                        $ {order.volume}
                       </td>
                     </tr>
                   ))}

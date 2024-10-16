@@ -56,7 +56,7 @@ export default async function RootLayout({
     profitCalculator: t('ProfitCalculator.profitCalculator'),
     buyValue: t('ProfitCalculator.buyValue'),
     sellValue: t('ProfitCalculator.sellValue'),
-    liquidity: t('ProfitCalculator.liquidity'),
+    volume: t('ProfitCalculator.volume'),
     fee: t('ProfitCalculator.fee'),
     withdrawalValue: t('ProfitCalculator.withdrawalValue'),
     results: t('ProfitCalculator.results'),

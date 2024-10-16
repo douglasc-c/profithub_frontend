@@ -27,7 +27,7 @@ export interface LayoutContextProps {
     profitCalculator: string
     buyValue: string
     sellValue: string
-    liquidity: string
+    volume: string
     fee: string
     withdrawalValue: string
     results: string
