@@ -37,7 +37,6 @@ export default function Arbitration() {
 
     socket.on('connect', () => {
       console.log('Conectado ao servidor WebSocket')
-
       socket.emit('subscribe')
     })
 
@@ -51,6 +50,16 @@ export default function Arbitration() {
           )
 
           setOpportunity(sortedData)
+
+          if (isOpen && isSelectBook) {
+            const updatedItem = sortedData.find(
+              (item) => item.symbol === isSelectBook.symbol,
+            )
+
+            if (updatedItem) {
+              setIsSelectBook({ ...updatedItem })
+            }
+          }
         } else {
           console.error('Expected an array but received:', parsedData)
         }
@@ -63,21 +72,24 @@ export default function Arbitration() {
       socket.off('updateOpportunity')
       socket.close()
     }
-  }, [])
+  }, [isOpen, isSelectBook])
 
   function onLoadIsOpenModal(item: Opportunity) {
-    setIsSelectBook(item)
+    setIsSelectBook({ ...item })
     setIsOpen(true)
   }
 
   return (
     <main className="flex md:px-20 px-10 py-5 relative">
       <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-9 w-full items-center justify-between">
-        <OperationDetails
-          isOpen={isOpen}
-          onClose={() => setIsOpen(!isOpen)}
-          data={isSelectBook as Opportunity}
-        />
+        {isSelectBook && (
+          <OperationDetails
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            data={isSelectBook}
+          />
+        )}
+
         {opportunity.map((item, index) => (
           <Card
             key={index}
