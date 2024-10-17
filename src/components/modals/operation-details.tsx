@@ -16,6 +16,7 @@ interface OrderBook {
   asks: Order[]
   bids: Order[]
 }
+
 interface Network {
   exchange: string
   network: string
@@ -37,31 +38,27 @@ interface Opportunity {
   allNetworksSell: Network[]
 }
 
-interface BookProps {
+interface OpportunityProps {
   isOpen: boolean
   onClose: () => void
   symbol: string
-  opportunities: Opportunity[]
+  opportunity: Opportunity | null
 }
 
 export function OperationDetails({
   isOpen,
   onClose,
   symbol,
-  opportunities,
-}: BookProps) {
+  opportunity,
+}: OpportunityProps) {
   const { textOpportunity } = useLayoutContext()
   const [localData, setLocalData] = useState<Opportunity | null>(null)
 
   useEffect(() => {
-    const selectedOpportunity = opportunities.find(
-      (opportunity) => opportunity.symbol === symbol,
-    )
-
-    if (selectedOpportunity) {
-      setLocalData(selectedOpportunity)
+    if (opportunity && opportunity.symbol === symbol) {
+      setLocalData(opportunity)
     }
-  }, [symbol, opportunities])
+  }, [symbol, opportunity])
   if (!isOpen || !localData) return null
 
   return (
