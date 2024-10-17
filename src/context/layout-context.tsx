@@ -40,6 +40,7 @@ export interface LayoutContextProps {
   }
 
   textNetwork: {
+    networks: string
     network: string
     withdrawalFee: string
     avaliableForWithdrawal: string

@@ -67,6 +67,7 @@ export default async function RootLayout({
   }
 
   const textNetwork = {
+    networks: t('Network.networks'),
     network: t('Network.network'),
     withdrawalFee: t('Network.withdrawalFee'),
     avaliableForWithdrawal: t('Network.avaliableForWithdrawal'),

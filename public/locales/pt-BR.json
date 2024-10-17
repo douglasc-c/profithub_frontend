@@ -48,10 +48,11 @@
       "netProfit": "Lucro liquidot"
     },
     "Network": {
+      "networks": "Redes",
       "network": "Rede",
       "withdrawalFee": "Taxa de saque",
-      "avaliableForWithdrawal": "Disponível para saque",
-      "avaliableForDeposit": "Disponível para depósito",
+      "avaliableForWithdrawal": "Saque",
+      "avaliableForDeposit": "Depósito",
       "avaliable": "Disponível",
       "notAvaliable": "Não disponível"
     }

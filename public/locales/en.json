@@ -48,10 +48,11 @@
       "netProfit": "Net profit"
     },
     "Network": {
+      "networks": "Networks",
       "network": "Network",
       "withdrawalFee": "Withdrawal fee",
-      "avaliableForWithdrawal": "Avaliable for withdrawal",
-      "avaliableForDeposit": "Avaliable for deposite",
+      "avaliableForWithdrawal": "Withdrawal",
+      "avaliableForDeposit": "Deposit",
       "avaliable": "Avaliable",
       "notAvaliable": "Not Avaliable"
     }
