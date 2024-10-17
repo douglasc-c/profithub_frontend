@@ -22,8 +22,9 @@ export default function ButtonMenu({ params }: IDataProps) {
       >
         <a
           href={path}
-          className={`block px-6 py-[0.38rem] rounded-lg font-regular text-sm uppercase transition-colors duration-300 ${isActive ? 'bg-white text-black' : 'bg-black text-white'
-            }`}
+          className={`block px-6 py-[0.38rem] rounded-lg font-regular text-sm uppercase transition-colors duration-300 ${
+            isActive ? 'bg-white text-black' : 'bg-black text-white'
+          }`}
         >
           {title}
         </a>
