@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { OrderBook } from '../cards/order-book'
 import ProfitCalculator from '../widgets/profit-calculator'
-import { Network } from '../cards/network'
+import { Networks } from '../cards/networks'
 
 interface Order {
   price: string
@@ -96,7 +96,7 @@ export function OperationDetails({
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <Network
+          <Networks
             networksBuy={localData?.allNetworksBuy}
             networksSell={localData?.allNetworksSell}
           />
