@@ -5,6 +5,24 @@ import { OperationDetails } from '@/components/modals/operation-details'
 import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 
+interface Order {
+  price: string
+  volume: string
+  liquidity: string
+}
+
+interface OrderBook {
+  asks: Order[]
+  bids: Order[]
+}
+
+interface Network {
+  exchange: string
+  network: string
+  symbol: string
+  withdrawFee: string
+}
+
 interface Opportunity {
   name: string
   symbol: string
@@ -15,14 +33,10 @@ interface Opportunity {
   exchangeSell: string
   buyPrice: number
   sellPrice: number
-  buyOrderbook: {
-    bids: Array<{ price: string; volume: string; liquidity: string }>
-    asks: Array<{ price: string; volume: string; liquidity: string }>
-  }
-  sellOrderbook: {
-    bids: Array<{ price: string; volume: string; liquidity: string }>
-    asks: Array<{ price: string; volume: string; liquidity: string }>
-  }
+  buyOrderbook: OrderBook
+  sellOrderbook: OrderBook
+  allNetworksBuy: Network[]
+  allNetworksSell: Network[]
 }
 
 export default function Arbitration() {
@@ -77,7 +91,9 @@ export default function Arbitration() {
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
             symbol={selectedSymbol}
-            opportunities={opportunity}
+            opportunity={
+              opportunity.find((op) => op.symbol === selectedSymbol) || null
+            }
           />
         )}
 

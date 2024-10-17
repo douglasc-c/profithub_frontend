@@ -46,5 +46,13 @@
       "profitPerCurrency": "Profit per currency",
       "grossProfit": "Gross profit",
       "netProfit": "Net profit"
+    },
+    "Network": {
+      "network": "Network",
+      "withdrawalFee": "Withdrawal fee",
+      "avaliableForWithdrawal": "Avaliable for withdrawal",
+      "avaliableForDeposit": "Avaliable for deposite",
+      "avaliable": "Avaliable",
+      "notAvaliable": "Not Avaliable"
     }
 }

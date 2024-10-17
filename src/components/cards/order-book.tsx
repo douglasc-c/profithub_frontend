@@ -20,10 +20,10 @@ export function OrderBook({ title, orders, exchangeIcon, isBuy }: BookProps) {
   const { textOpportunity } = useLayoutContext()
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl p-3">
-      <div className="flex flex-row items-center space-x-3">
+    <div className="flex flex-col border border-gray-600 rounded-xl min-h-[470px] max-h-[470px]">
+      <div className="flex flex-row items-center space-x-3 p-3">
         <Image
-          className="py-2"
+          className=""
           src={exchangeIcon}
           alt="exchange"
           height={40}
@@ -35,8 +35,8 @@ export function OrderBook({ title, orders, exchangeIcon, isBuy }: BookProps) {
           {title}
         </h2>
       </div>
-      <table className="min-w-full text-sm text-gray-400">
-        <thead className="text-xs uppercase text-gray-400 border-b">
+      <table className="min-w-full text-sm">
+        <thead className="text-medium uppercase border-b">
           <tr>
             <th scope="col" className="w-1/3 px-6 py-3 text-left">
               {textOpportunity.price}
@@ -51,14 +51,17 @@ export function OrderBook({ title, orders, exchangeIcon, isBuy }: BookProps) {
         </thead>
         <tbody className="h-32 overflow-y-auto">
           {orders.map((order, index) => (
-            <tr key={index} className="border-b border-gray-700">
-              <td className="w-1/3 px-6 py-2 text-xs text-left">
+            <tr
+              key={index}
+              className={`${index % 2 === 0 ? 'bg-zinc-900' : ''}`}
+            >
+              <td className="w-1/3 px-6 py-2 text-sm font-medium text-left">
                 $ {order.price}
               </td>
-              <td className="w-1/3 px-6 py-2 text-xs text-center">
+              <td className="w-1/3 px-6 py-2 text-sm font-medium text-center">
                 {order.volume}
               </td>
-              <td className="w-1/3 px-6 py-2 text-xs text-right">
+              <td className="w-1/3 px-6 py-2 text-sm font-medium text-right">
                 $ {order.liquidity}
               </td>
             </tr>

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { OrderBook } from '../cards/order-book'
 import ProfitCalculator from '../widgets/profit-calculator'
+import { Network } from '../cards/network'
 
 interface Order {
   price: string
@@ -16,44 +17,48 @@ interface OrderBook {
   bids: Order[]
 }
 
+interface Network {
+  exchange: string
+  network: string
+  symbol: string
+  withdrawFee: string
+}
+
 interface Opportunity {
   name: string
   symbol: string
   spreadPercent: number
   withdrawFee: number
   network: string
-  buyOrderbook: OrderBook
-  sellOrderbook: OrderBook
   exchangeBuy: string
   exchangeSell: string
+  buyOrderbook: OrderBook
+  sellOrderbook: OrderBook
+  allNetworksBuy: Network[]
+  allNetworksSell: Network[]
 }
 
-interface BookProps {
+interface OpportunityProps {
   isOpen: boolean
   onClose: () => void
   symbol: string
-  opportunities: Opportunity[]
+  opportunity: Opportunity | null
 }
 
 export function OperationDetails({
   isOpen,
   onClose,
   symbol,
-  opportunities,
-}: BookProps) {
+  opportunity,
+}: OpportunityProps) {
   const { textOpportunity } = useLayoutContext()
   const [localData, setLocalData] = useState<Opportunity | null>(null)
 
   useEffect(() => {
-    const selectedOpportunity = opportunities.find(
-      (opportunity) => opportunity.symbol === symbol,
-    )
-
-    if (selectedOpportunity) {
-      setLocalData(selectedOpportunity)
+    if (opportunity && opportunity.symbol === symbol) {
+      setLocalData(opportunity)
     }
-  }, [symbol, opportunities])
-
+  }, [symbol, opportunity])
   if (!isOpen || !localData) return null
 
   return (
@@ -77,7 +82,7 @@ export function OperationDetails({
               {textOpportunity.spread}: {localData.spreadPercent}%
             </p>
             <p>
-              {textOpportunity.fee}: 0.60% + ${localData.withdrawFee}
+              {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
             </p>
           </div>
           <div className="flex flex-row py-2 items-center justify-end">
@@ -91,7 +96,10 @@ export function OperationDetails({
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <div />
+          <Network
+            networksBuy={localData?.allNetworksBuy}
+            networksSell={localData?.allNetworksSell}
+          />
           <ProfitCalculator />
 
           <OrderBook
