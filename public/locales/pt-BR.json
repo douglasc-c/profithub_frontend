@@ -46,5 +46,13 @@
       "profitPerCurrency": "Lucro por moeda",
       "grossProfit": "Lucro bruto",
       "netProfit": "Lucro liquidot"
+    },
+    "Network": {
+      "network": "Rede",
+      "withdrawalFee": "Taxa de saque",
+      "avaliableForWithdrawal": "Disponível para saque",
+      "avaliableForDeposit": "Disponível para depósito",
+      "avaliable": "Disponível",
+      "notAvaliable": "Não disponível"
     }
 }

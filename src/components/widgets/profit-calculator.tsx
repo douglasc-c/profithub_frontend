@@ -25,7 +25,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
     calculateProfit()
 
   return (
-    <div className="p-3 rounded-2xl border border-gray-600">
+    <div className="p-3 rounded-2xl border border-gray-600 min-h-[282px] max-h-[282px]">
       <h2 className="text-xl font-medium mb-3">
         {textProfitCalculator.profitCalculator}
       </h2>

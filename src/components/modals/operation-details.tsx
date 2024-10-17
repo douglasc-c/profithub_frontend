@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { OrderBook } from '../cards/order-book'
 import ProfitCalculator from '../widgets/profit-calculator'
+import { Network } from '../cards/network'
 
 interface Order {
   price: string
@@ -15,6 +16,12 @@ interface OrderBook {
   asks: Order[]
   bids: Order[]
 }
+interface Network {
+  exchange: string
+  network: string
+  symbol: string
+  withdrawFee: string
+}
 
 interface Opportunity {
   name: string
@@ -22,10 +29,12 @@ interface Opportunity {
   spreadPercent: number
   withdrawFee: number
   network: string
-  buyOrderbook: OrderBook
-  sellOrderbook: OrderBook
   exchangeBuy: string
   exchangeSell: string
+  buyOrderbook: OrderBook
+  sellOrderbook: OrderBook
+  allNetworksBuy: Network[]
+  allNetworksSell: Network[]
 }
 
 interface BookProps {
@@ -53,7 +62,6 @@ export function OperationDetails({
       setLocalData(selectedOpportunity)
     }
   }, [symbol, opportunities])
-
   if (!isOpen || !localData) return null
 
   return (
@@ -77,7 +85,7 @@ export function OperationDetails({
               {textOpportunity.spread}: {localData.spreadPercent}%
             </p>
             <p>
-              {textOpportunity.fee}: 0.60% + ${localData.withdrawFee}
+              {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
             </p>
           </div>
           <div className="flex flex-row py-2 items-center justify-end">
@@ -91,7 +99,10 @@ export function OperationDetails({
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <div />
+          <Network
+            networksBuy={localData?.allNetworksBuy}
+            networksSell={localData?.allNetworksSell}
+          />
           <ProfitCalculator />
 
           <OrderBook

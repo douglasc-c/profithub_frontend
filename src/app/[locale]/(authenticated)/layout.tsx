@@ -66,10 +66,20 @@ export default async function RootLayout({
     netProfit: t('ProfitCalculator.netProfit'),
   }
 
+  const textNetwork = {
+    network: t('Network.network'),
+    withdrawalFee: t('Network.withdrawalFee'),
+    avaliableForWithdrawal: t('Network.avaliableForWithdrawal'),
+    avaliableForDeposit: t('Network.avaliableForDeposit'),
+    available: t('Network.avaliable'),
+    notAvailable: t('Network.notAvaliable'),
+  }
+
   const layoutValue: LayoutContextProps = {
     textOpportunity,
     textFearGreedIndex,
     textProfitCalculator,
+    textNetwork,
     locale,
   }
 

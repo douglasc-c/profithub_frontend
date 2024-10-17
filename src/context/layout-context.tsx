@@ -16,6 +16,7 @@ export interface LayoutContextProps {
     liquidity: string
     cancel: string
   }
+
   textFearGreedIndex: {
     fearGreedIndex: string
     fear: string
@@ -23,6 +24,7 @@ export interface LayoutContextProps {
     greed: string
     lastUpdated: string
   }
+
   textProfitCalculator: {
     profitCalculator: string
     buyValue: string
@@ -36,6 +38,16 @@ export interface LayoutContextProps {
     grossProfit: string
     netProfit: string
   }
+
+  textNetwork: {
+    network: string
+    withdrawalFee: string
+    avaliableForWithdrawal: string
+    avaliableForDeposit: string
+    available: string
+    notAvailable: string
+  }
+
   locale: string
 }
 
