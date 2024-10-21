@@ -45,7 +45,7 @@
       "actualSaleValue": "Valor real da venda",
       "profitPerCurrency": "Lucro por moeda",
       "grossProfit": "Lucro bruto",
-      "netProfit": "Lucro liquidot"
+      "netProfit": "Lucro líquido"
     },
     "Network": {
       "networks": "Redes",
