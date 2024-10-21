@@ -53,8 +53,9 @@ export function OrderBook({ title, orders, exchangeIcon, isBuy }: BookProps) {
           {orders.map((order, index) => (
             <tr
               key={index}
-              className={`${index % 2 === 0 ? ' rounded-xl' : ''
-                } ${index === orders.length - 1 ? 'rounded-b-lg' : ''}`}
+              className={`${
+                index % 2 === 0 ? ' rounded-xl' : ''
+              } ${index === orders.length - 1 ? 'rounded-b-lg' : ''}`}
             >
               <td className="w-1/3 px-6 py-2 text-sm font-medium text-left">
                 $ {order.price}
