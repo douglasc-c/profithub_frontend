@@ -2,9 +2,9 @@
 import { useLayoutContext } from '@/context/layout-context'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { Networks } from '../cards/networks'
 import { OrderBook } from '../cards/order-book'
 import ProfitCalculator from '../widgets/profit-calculator'
-import { Networks } from '../cards/networks'
 
 interface Order {
   price: string
@@ -55,6 +55,17 @@ export function OperationDetails({
   const [localData, setLocalData] = useState<Opportunity | null>(null)
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     if (opportunity && opportunity.symbol === symbol) {
       setLocalData(opportunity)
     }
@@ -62,8 +73,8 @@ export function OperationDetails({
   if (!isOpen || !localData) return null
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-50 px-5">
-      <div className="bg-stone-950 rounded-xl h-[95%] border border-stone-800 px-5">
+    <div className="fixed inset-0 flex justify-center items-center z-50 ">
+      <div className="bg-stone-950 rounded-xl border w-full border-stone-800 px-10 h-full p">
         <div className="flex justify-between py-4">
           <div className="flex flex-row items-center space-x-5">
             <div className="flex flex-row items-center">
@@ -73,7 +84,7 @@ export function OperationDetails({
                 height={50}
                 width={50}
               />
-              <p className="font-semibold text-2xl ml-2">{localData.name} </p>
+              <p className="font-semibold text-2xl ml-2 ">{localData.name} </p>
               <p className="font-semibold text-2xl ml-2">
                 ({localData.symbol})
               </p>

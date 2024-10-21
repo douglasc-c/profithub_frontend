@@ -5,6 +5,8 @@ import Image from 'next/image'
 
 interface Data {
   symbol: string
+  coinName: string
+  svgIcon: string
   exchangeBuy: string
   exchangeSell: string
   buyPrice: number
@@ -20,8 +22,15 @@ interface CardProps {
   onModal: OnModal
 }
 
+const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+  return svgContent
+    .replace(/width="[^"]*"/, `width="${width}"`)
+    .replace(/height="[^"]*"/, `height="${height}"`)
+}
+
 export function Card({ data, onModal }: CardProps) {
   const { textOpportunity } = useLayoutContext()
+
   const formatWithdrawFee = (fee: string | number) => {
     if (typeof fee === 'string') {
       const numericFee = parseFloat(fee)
@@ -33,7 +42,23 @@ export function Card({ data, onModal }: CardProps) {
 
   return (
     <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
-      <h1 className="text-center font-bold mb-2">{data?.symbol}</h1>
+      {/* Ajustando o tamanho do SVG dinamicamente */}
+      <div
+        className="py-4"
+        dangerouslySetInnerHTML={{
+          __html: adjustSvgSize(data.svgIcon, '30px', '30px'), // Defina o tamanho desejado
+        }}
+        aria-label="coin-icon"
+        style={{
+          display: 'block',
+          width: '20px', // Definindo o tamanho manualmente
+          height: '20px',
+          objectFit: 'contain',
+        }}
+      />
+      <h1 className="text-center font-bold mb-2">
+        {data.coinName} ({data?.symbol})
+      </h1>
       <div className="flex justify-between border-b border-t-[0.01rem] border-gray-700 p-2">
         <section className="flex flex-col w-1/2 items-start">
           <p className="text-sm font-semibold uppercase">

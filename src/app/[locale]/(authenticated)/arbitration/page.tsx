@@ -26,6 +26,9 @@ interface Network {
 interface Opportunity {
   name: string
   symbol: string
+  coinName: string
+  svgIcon: string
+  nameCoin: string
   spreadPercent: number
   withdrawFee: number
   network: string
@@ -57,6 +60,8 @@ export default function Arbitration() {
     socket.on('updateOpportunity', (data: string) => {
       try {
         const parsedData: Opportunity[] = JSON.parse(data)
+
+        console.log(data)
 
         if (Array.isArray(parsedData)) {
           const sortedData = parsedData.sort(
