@@ -25,7 +25,8 @@ interface Network {
 }
 
 interface Opportunity {
-  name: string
+  svgIcon: string
+  coinName: string
   symbol: string
   spreadPercent: number
   withdrawFee: number
@@ -72,19 +73,40 @@ export function OperationDetails({
   }, [symbol, opportunity])
   if (!isOpen || !localData) return null
 
+  const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+    return svgContent
+      .replace(/width="[^"]*"/, `width="${width}"`)
+      .replace(/height="[^"]*"/, `height="${height}"`)
+  }
+
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 ">
       <div className="bg-stone-950 rounded-xl border w-full border-stone-800 px-10 h-full p">
         <div className="flex justify-between py-4">
           <div className="flex flex-row items-center space-x-5">
             <div className="flex flex-row items-center">
+              <div
+                className="py-4"
+                dangerouslySetInnerHTML={{
+                  __html: adjustSvgSize(localData.svgIcon, '20px', '20px'),
+                }}
+                aria-label="coin-icon"
+                style={{
+                  display: 'block',
+                  width: '20px',
+                  height: '20px',
+                  objectFit: 'contain',
+                }}
+              />
               <Image
                 src={`/images/svg/coin.svg`}
                 alt="mercadobitcoin"
                 height={50}
                 width={50}
               />
-              <p className="font-semibold text-2xl ml-2 ">{localData.name} </p>
+              <p className="font-semibold text-2xl ml-2 ">
+                {localData.coinName}{' '}
+              </p>
               <p className="font-semibold text-2xl ml-2">
                 ({localData.symbol})
               </p>

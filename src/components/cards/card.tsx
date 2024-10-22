@@ -42,16 +42,15 @@ export function Card({ data, onModal }: CardProps) {
 
   return (
     <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
-      {/* Ajustando o tamanho do SVG dinamicamente */}
       <div
         className="py-4"
         dangerouslySetInnerHTML={{
-          __html: adjustSvgSize(data.svgIcon, '30px', '30px'), // Defina o tamanho desejado
+          __html: adjustSvgSize(data.svgIcon, '20px', '20px'),
         }}
         aria-label="coin-icon"
         style={{
           display: 'block',
-          width: '20px', // Definindo o tamanho manualmente
+          width: '20px',
           height: '20px',
           objectFit: 'contain',
         }}
