@@ -42,23 +42,19 @@ export function Card({ data, onModal }: CardProps) {
 
   return (
     <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
-      {/* Ajustando o tamanho do SVG dinamicamente */}
-      <div
-        className="py-4"
-        dangerouslySetInnerHTML={{
-          __html: adjustSvgSize(data.svgIcon, '30px', '30px'), // Defina o tamanho desejado
-        }}
-        aria-label="coin-icon"
-        style={{
-          display: 'block',
-          width: '20px', // Definindo o tamanho manualmente
-          height: '20px',
-          objectFit: 'contain',
-        }}
-      />
-      <h1 className="text-center font-bold mb-2">
-        {data.coinName} ({data?.symbol})
-      </h1>
+      <div className="flex justify-center items-center space-x-3 pb-3">
+        <div
+          className=""
+          dangerouslySetInnerHTML={{
+            __html: adjustSvgSize(data.svgIcon, '30px', '30px'),
+          }}
+          aria-label="coin-icon"
+          style={{}}
+        />
+        <h1 className="font-bold">
+          {data.coinName} ({data?.symbol})
+        </h1>
+      </div>
       <div className="flex justify-between border-b border-t-[0.01rem] border-gray-700 p-2">
         <section className="flex flex-col w-1/2 items-start">
           <p className="text-sm font-semibold uppercase">
