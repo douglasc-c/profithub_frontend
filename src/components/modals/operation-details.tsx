@@ -86,23 +86,12 @@ export function OperationDetails({
           <div className="flex flex-row items-center space-x-5">
             <div className="flex flex-row items-center">
               <div
-                className="py-4"
+                className=""
                 dangerouslySetInnerHTML={{
-                  __html: adjustSvgSize(localData.svgIcon, '20px', '20px'),
+                  __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
                 }}
                 aria-label="coin-icon"
-                style={{
-                  display: 'block',
-                  width: '20px',
-                  height: '20px',
-                  objectFit: 'contain',
-                }}
-              />
-              <Image
-                src={`/images/svg/coin.svg`}
-                alt="mercadobitcoin"
-                height={50}
-                width={50}
+                style={{}}
               />
               <p className="font-semibold text-2xl ml-2 ">
                 {localData.coinName}{' '}
