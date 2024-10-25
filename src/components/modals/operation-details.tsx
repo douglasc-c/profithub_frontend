@@ -125,14 +125,14 @@ export function OperationDetails({
 
           <OrderBook
             title={textOpportunity.purchaseBook}
-            orders={localData.buyOrderbook.bids}
+            orders={localData.buyOrderbook.asks}
             exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
             isBuy={true}
           />
 
           <OrderBook
             title={textOpportunity.salesBook}
-            orders={localData.sellOrderbook.asks}
+            orders={localData.sellOrderbook.bids}
             exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
             isBuy={false}
           />
