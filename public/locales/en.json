@@ -25,7 +25,8 @@
       "price": "Price",
       "volume": "Volume",
       "liquidity": "Liquidity",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "lastPrice": "Last price"
     },
     "FearGreedIndex":{
       "fearGreedIndex": "Fear & Greed Index",

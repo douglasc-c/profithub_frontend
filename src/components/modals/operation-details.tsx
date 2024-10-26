@@ -30,6 +30,8 @@ interface Opportunity {
   spreadPercent: number
   withdrawFee: number
   network: string
+  buyPrice: number
+  sellPrice: number
   exchangeBuy: string
   exchangeSell: string
   buyOrderbook: OrderBook
@@ -79,13 +81,12 @@ export function OperationDetails({
   }
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-50 ">
-      <div className="bg-stone-950 rounded-xl border w-full border-stone-800 px-10 h-full p">
+    <div className="fixed inset-0 flex justify-center items-center z-50">
+      <div className="bg-stone-950 rounded-xl border w-full border-stone-800 px-10 h-full">
         <div className="flex justify-between py-4">
           <div className="flex flex-row items-center space-x-5">
             <div className="flex flex-row items-center">
               <div
-                className=""
                 dangerouslySetInnerHTML={{
                   __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
                 }}
@@ -126,6 +127,7 @@ export function OperationDetails({
           <OrderBook
             title={textOpportunity.purchaseBook}
             orders={localData.buyOrderbook.asks}
+            lastPrice={localData.buyPrice}
             exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
             isBuy={true}
           />
@@ -133,6 +135,7 @@ export function OperationDetails({
           <OrderBook
             title={textOpportunity.salesBook}
             orders={localData.sellOrderbook.bids}
+            lastPrice={localData.sellPrice}
             exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
             isBuy={false}
           />

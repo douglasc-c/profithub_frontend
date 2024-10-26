@@ -42,6 +42,7 @@ export default async function RootLayout({
     volume: t('Opportunity.volume'),
     liquidity: t('Opportunity.liquidity'),
     cancel: t('Opportunity.cancel'),
+    lastPrice: t('Opportunity.lastPrice'),
   }
 
   const textFearGreedIndex = {

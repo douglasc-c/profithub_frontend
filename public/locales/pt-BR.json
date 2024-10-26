@@ -25,7 +25,8 @@
       "price": "Preço",
       "volume": "Volume",
       "liquidity": "Liquidez",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "lastPrice": "Ultimo preço"
     },
     "FearGreedIndex":{
       "fearGreedIndex": "Índice de Medo e Ganância",
