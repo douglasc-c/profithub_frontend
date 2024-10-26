@@ -30,8 +30,8 @@ interface Opportunity {
   spreadPercent: number
   withdrawFee: number
   network: string
-  buyPrice: string
-  sellPrice: string
+  buyPrice: number
+  sellPrice: number
   exchangeBuy: string
   exchangeSell: string
   buyOrderbook: OrderBook

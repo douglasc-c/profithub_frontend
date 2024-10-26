@@ -13,7 +13,7 @@ interface BookProps {
   title: string
   orders: Order[]
   exchangeIcon: string
-  lastPrice: string
+  lastPrice: number
   isBuy: boolean
 }
 
