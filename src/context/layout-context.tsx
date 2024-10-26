@@ -15,6 +15,7 @@ export interface LayoutContextProps {
     volume: string
     liquidity: string
     cancel: string
+    lastPrice: string
   }
 
   textFearGreedIndex: {
