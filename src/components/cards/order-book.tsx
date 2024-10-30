@@ -27,7 +27,7 @@ export function OrderBook({
   const { textOpportunity } = useLayoutContext()
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl max-h-[460px]">
+    <div className="flex flex-col border border-gray-600 rounded-xl h-[80%]">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-3 p-3">
           <Image

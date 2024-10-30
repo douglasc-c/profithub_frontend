@@ -33,7 +33,7 @@ export function Networks({ networksBuy, networksSell }: NetworkProps) {
   })
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl min-h-[282px] max-h-[282px]">
+    <div className="flex flex-col border border-gray-600 rounded-xl ">
       <h2 className="text-xl font-medium p-3">{textNetwork.networks}</h2>
       <div className="overflow-x-auto h-56">
         <table className="min-w-full text-sm text-center">

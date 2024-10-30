@@ -81,8 +81,8 @@ export function OperationDetails({
   }
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-50">
-      <div className="bg-stone-950 rounded-xl border w-full border-stone-800 px-10 h-full">
+    <div className="fixed inset-0 z-50 flex items-center justify-center h-[100vh] w-[100vw] overflow-hidden">
+      <div className="bg-stone-950 rounded-xl border w-full h-full border-stone-800 px-10">
         <div className="flex justify-between py-4">
           <div className="flex flex-row items-center space-x-5">
             <div className="flex flex-row items-center">
@@ -91,7 +91,6 @@ export function OperationDetails({
                   __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
                 }}
                 aria-label="coin-icon"
-                style={{}}
               />
               <p className="font-semibold text-2xl ml-2 ">
                 {localData.coinName}{' '}
@@ -109,7 +108,7 @@ export function OperationDetails({
           </div>
           <div className="flex flex-row py-2 items-center justify-end">
             <button
-              className="items-center justify-center flex bg-red-500 w-full p-1 px-3 rounded-md"
+              className="items-center justify-center flex bg-red-500 p-1 px-3 rounded-md"
               onClick={onClose}
             >
               <a className="text-sm">{textOpportunity.cancel}</a>
@@ -117,7 +116,7 @@ export function OperationDetails({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 h-full">
           <Networks
             networksBuy={localData?.allNetworksBuy}
             networksSell={localData?.allNetworksSell}
