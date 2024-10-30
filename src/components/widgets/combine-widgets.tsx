@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import FearGreedIndex from './fear-greed'
+import TopBottomMovers from './top-bottom-movers'
 
 const CombinedWidgets: React.FC = () => {
   useEffect(() => {
@@ -70,7 +71,9 @@ const CombinedWidgets: React.FC = () => {
           <div className="tradingview-news-container__widget w-full h-full" />
         </div>
 
-        <div className="col-span-1"></div>
+        <div className="col-span-1">
+          <TopBottomMovers />
+        </div>
 
         <div className="col-span-1">
           <FearGreedIndex />

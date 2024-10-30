@@ -48,32 +48,30 @@ export default function Arbitration() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
 
   useEffect(() => {
-    const socket = io('http://localhost:3335', {
+    const socket = io('http://localhost:3337', {
       transports: ['websocket'],
     })
 
     socket.on('connect', () => {
-      console.log('Conectado ao servidor WebSocket')
+      console.log('Conectado ao servidor WebSocket ------')
       socket.emit('subscribe')
     })
 
-    socket.on('updateOpportunity', (data: string) => {
+    socket.on('updateOpportunity', (data: Opportunity[]) => {
       try {
-        const parsedData: Opportunity[] = JSON.parse(data)
+        console.log('Oportunidades recebidas:', data)
 
-        console.log(data)
-
-        if (Array.isArray(parsedData)) {
-          const sortedData = parsedData.sort(
+        if (Array.isArray(data)) {
+          const sortedData = data.sort(
             (a, b) => b.spreadPercent - a.spreadPercent,
           )
 
           setOpportunity(sortedData)
         } else {
-          console.error('Expected an array but received:', parsedData)
+          console.error('Expected an array but received:', data)
         }
       } catch (error) {
-        console.error('Error parsing JSON data:', error)
+        console.error('Error processing data:', error)
       }
     })
 
