@@ -54,6 +54,10 @@ export interface LayoutContextProps {
   textHighestHighsLows: {
     highestHighs: string
     highestLows: string
+    rank: string
+    name: string
+    symbol: string
+    price: string
   }
 
   locale: string
