@@ -1,3 +1,4 @@
+import { useLayoutContext } from '@/context/layout-context'
 import { FC } from 'react'
 
 interface CryptoData {
@@ -24,22 +25,32 @@ const HighestHighsLows: FC<HighestHighsLowsProps> = ({
   loading,
   title,
 }) => {
+  const { textHighestHighsLows } = useLayoutContext()
+
   return (
-    <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] p-4">
+    <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] p-4 h-full flex flex-col">
       <h2 className="text-2xl font-medium mb-3">{title}</h2>
 
       {loading ? (
         <p className="text-white">Loading...</p>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto flex-grow">
           <table className="min-w-full rounded-2xl text-sm text-gray-300">
             <thead>
               <tr className="text-gray-400">
-                <th className="py-1 px-0 text-center font-medium">Rank</th>
-                <th className="py-1 px-4 text-left font-medium">Nome</th>
-                <th className="py-1 px-4 text-center font-medium">Símbolo</th>
-                <th className="py-1 px-4 text-center font-medium">%</th>
-                <th className="py-1 px-4 text-center font-medium">Preço</th>
+                <th className="py-1 px-0 text-center font-medium">
+                  {textHighestHighsLows.rank}
+                </th>
+                <th className="py-1 px-4 text-left font-medium">
+                  {textHighestHighsLows.name}
+                </th>
+                <th className="py-1 px-4 text-center font-medium">
+                  {textHighestHighsLows.symbol}
+                </th>
+                <th className="py-1 px-4 text-center font-medium">24h %</th>
+                <th className="py-1 px-4 text-center font-medium">
+                  {textHighestHighsLows.price}
+                </th>
               </tr>
             </thead>
             <tbody>

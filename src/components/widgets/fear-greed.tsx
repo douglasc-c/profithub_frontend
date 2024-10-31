@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { useLayoutContext } from '@/context/layout-context'
@@ -7,40 +6,25 @@ import { useLayoutContext } from '@/context/layout-context'
 interface FearGreedData {
   value: string
   value_classification: string
-  timestamp: string
+  update_time: string
 }
 
-const FearGreedWidget: React.FC = () => {
+interface FearGreedWidgetProps {
+  fearGreedData: FearGreedData | null
+  loading: boolean
+}
+
+const FearGreedWidget: React.FC<FearGreedWidgetProps> = ({
+  fearGreedData,
+  loading,
+}) => {
   const { textFearGreedIndex } = useLayoutContext()
 
-  const [fearGreedIndex, setFearGreedIndex] = useState<FearGreedData | null>(
-    null,
-  )
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchFearGreedIndex = async () => {
-      try {
-        const response = await axios.get(
-          'https://api.alternative.me/fng/?format=json',
-        )
-        setFearGreedIndex(response.data.data[0])
-        setLoading(false)
-      } catch (err) {
-        setError('Failed to load Fear & Greed Index.')
-        setLoading(false)
-      }
-    }
-
-    fetchFearGreedIndex()
-  }, [])
-
   if (loading) return <div>Loading...</div>
-  if (error) return <div className="text-red-500">{error}</div>
+  if (!fearGreedData)
+    return <div className="text-red-500">No data available.</div>
 
-  const fearGreedValue = parseInt(fearGreedIndex?.value || '0')
-
+  const fearGreedValue = parseInt(fearGreedData.value || '0')
   const rotation = (100 - fearGreedValue) * (180 / 100)
 
   return (
@@ -91,21 +75,19 @@ const FearGreedWidget: React.FC = () => {
         <div className="absolute top-[92px] w-full text-center transform -translate-y-1/2 text-2xl  text-white">
           {fearGreedValue}
           <p className="text-center text-xl font-semibold">
-            {fearGreedIndex?.value_classification === 'Fear'
+            {fearGreedData.value_classification === 'Fear'
               ? textFearGreedIndex.fear
-              : fearGreedIndex?.value_classification === 'Neutral'
+              : fearGreedData.value_classification === 'Neutral'
                 ? textFearGreedIndex.neutral
-                : fearGreedIndex?.value_classification === 'Greed'
+                : fearGreedData.value_classification === 'Greed'
                   ? textFearGreedIndex.greed
-                  : fearGreedIndex?.value_classification === 'Extreme Greed'
+                  : fearGreedData.value_classification === 'Extreme Greed'
                     ? textFearGreedIndex.extremeGreed
                     : 'Unknown'}{' '}
           </p>
           <p className="text-center text-sm mt-2">
             {textFearGreedIndex.lastUpdated}:{' '}
-            {new Date(
-              parseInt(fearGreedIndex?.timestamp || '') * 1000,
-            ).toLocaleDateString()}
+            {new Date(fearGreedData?.update_time).toLocaleDateString('pt-BR')}
           </p>
         </div>
       </div>

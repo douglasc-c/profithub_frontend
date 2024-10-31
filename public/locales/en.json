@@ -60,6 +60,10 @@
     },
     "Highest": {
       "highestHighs": "Highest highs",
-      "highestLows": "Highest lows"
+      "highestLows": "Highest lows",
+      "rank": "Rank",
+      "name": "Name",
+      "symbol": "Symbol",
+      "price": "Price"
     }
 }

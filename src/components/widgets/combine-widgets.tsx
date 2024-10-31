@@ -19,10 +19,17 @@ interface CryptoData {
   }
 }
 
+interface FearGreedData {
+  value: string
+  value_classification: string
+  update_time: string
+}
+
 const CombinedWidgets: React.FC = () => {
   const { textHighestHighsLows } = useLayoutContext()
   const [highs, setHighs] = useState<CryptoData[]>([])
   const [lows, setLows] = useState<CryptoData[]>([])
+  const [fearGreed, setFearGreed] = useState<FearGreedData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -90,6 +97,7 @@ const CombinedWidgets: React.FC = () => {
         console.log(response)
         setHighs(response.data.highestHighs)
         setLows(response.data.highestLows)
+        setFearGreed(response.data.fearGreedIndex)
       } catch (error) {
         console.error('Erro ao buscar dados:', error)
       } finally {
@@ -104,26 +112,30 @@ const CombinedWidgets: React.FC = () => {
     <div className="h-[calc(100vh-9rem)]">
       <div className="tradingview-ticker-container__widget" />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-5 py-3 h-full">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-5 py-3 h-full">
         <div className="col-span-1 rounded-2xl bg-[#0d1218] border-2 border-[#384a61]">
           <div className="tradingview-news-container__widget w-full h-full" />
         </div>
 
-        <div className="col-span-1">
-          <HighestHighsLows
-            data={highs}
-            loading={loading}
-            title={textHighestHighsLows.highestHighs}
-          />
+        <div className="col-span-2 space-y-4 h-full flex flex-col">
+          <div className="h-full flex-grow">
+            <HighestHighsLows
+              data={highs}
+              loading={loading}
+              title={textHighestHighsLows.highestHighs}
+            />
+          </div>
+          <div className="h-full flex-grow">
+            <HighestHighsLows
+              data={lows}
+              loading={loading}
+              title={textHighestHighsLows.highestLows}
+            />
+          </div>
         </div>
 
         <div className="col-span-1 space-y-4">
-          <HighestHighsLows
-            data={lows}
-            loading={loading}
-            title={textHighestHighsLows.highestLows}
-          />
-          <FearGreedIndex />
+          <FearGreedIndex fearGreedData={fearGreed} loading={loading} />
         </div>
       </div>
     </div>

@@ -81,6 +81,10 @@ export default async function RootLayout({
   const textHighestHighsLows = {
     highestHighs: t('Highest.highestHighs'),
     highestLows: t('Highest.highestLows'),
+    rank: t('Highest.rank'),
+    name: t('Highest.name'),
+    symbol: t('Highest.symbol'),
+    price: t('Highest.price'),
   }
 
   const layoutValue: LayoutContextProps = {
