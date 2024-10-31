@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  // baseURL: 'https://proft.avaloncapital.fund/',
-  baseURL: 'http://localhost:3335/',
+  baseURL: 'https://sys.profithub.tech/',
 })
 
 export default api
