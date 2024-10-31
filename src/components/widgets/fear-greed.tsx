@@ -97,7 +97,9 @@ const FearGreedWidget: React.FC = () => {
                 ? textFearGreedIndex.neutral
                 : fearGreedIndex?.value_classification === 'Greed'
                   ? textFearGreedIndex.greed
-                  : 'Unknown'}{' '}
+                  : fearGreedIndex?.value_classification === 'Extreme Greed'
+                    ? textFearGreedIndex.extremeGreed
+                    : 'Unknown'}{' '}
           </p>
           <p className="text-center text-sm mt-2">
             {textFearGreedIndex.lastUpdated}:{' '}

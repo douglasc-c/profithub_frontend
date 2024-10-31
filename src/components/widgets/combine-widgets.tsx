@@ -1,10 +1,30 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import FearGreedIndex from './fear-greed'
-import TopBottomMovers from './top-bottom-movers'
+import HighestHighsLows from './highest-highs-lows'
+import api from '@/lib/api'
+import { useLayoutContext } from '@/context/layout-context'
+
+interface CryptoData {
+  id: number
+  name: string
+  symbol: string
+  cmc_rank: number
+  quote: {
+    USD: {
+      percent_change_24h: number
+      price: number
+    }
+  }
+}
 
 const CombinedWidgets: React.FC = () => {
+  const { textHighestHighsLows } = useLayoutContext()
+  const [highs, setHighs] = useState<CryptoData[]>([])
+  const [lows, setLows] = useState<CryptoData[]>([])
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     const newsScript = document.createElement('script')
     newsScript.src =
@@ -62,6 +82,24 @@ const CombinedWidgets: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true)
+      try {
+        const response = await api.get('/highest')
+        console.log(response)
+        setHighs(response.data.highestHighs)
+        setLows(response.data.highestLows)
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <div className="h-[calc(100vh-9rem)]">
       <div className="tradingview-ticker-container__widget" />
@@ -72,10 +110,19 @@ const CombinedWidgets: React.FC = () => {
         </div>
 
         <div className="col-span-1">
-          <TopBottomMovers />
+          <HighestHighsLows
+            data={highs}
+            loading={loading}
+            title={textHighestHighsLows.highestHighs}
+          />
         </div>
 
-        <div className="col-span-1">
+        <div className="col-span-1 space-y-4">
+          <HighestHighsLows
+            data={lows}
+            loading={loading}
+            title={textHighestHighsLows.highestLows}
+          />
           <FearGreedIndex />
         </div>
       </div>

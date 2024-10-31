@@ -6,7 +6,7 @@ import { AuthProvider } from '@/context/auth-context'
 const languages = ['en', 'pt-BR']
 
 export const metadata: Metadata = {
-  title: 'ProftCloud',
+  title: 'ProfitHub',
 }
 
 export async function generateStaticParams() {
