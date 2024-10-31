@@ -48,7 +48,7 @@ export default function Arbitration() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
 
   useEffect(() => {
-    const socket = io('http://localhost:3337', {
+    const socket = io('https://socket.profithub.tech/', {
       transports: ['websocket'],
     })
 
