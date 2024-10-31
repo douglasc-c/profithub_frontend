@@ -3,7 +3,7 @@
 import { useLayoutContext } from '@/context/layout-context'
 import React, { useState } from 'react'
 
-interface ProfitCalculatorProps { }
+interface ProfitCalculatorProps {}
 
 const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
   const { textProfitCalculator } = useLayoutContext()

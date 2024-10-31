@@ -23,6 +23,7 @@ export interface LayoutContextProps {
     fear: string
     neutral: string
     greed: string
+    extremeGreed: string
     lastUpdated: string
   }
 
@@ -48,6 +49,11 @@ export interface LayoutContextProps {
     avaliableForDeposit: string
     available: string
     notAvailable: string
+  }
+
+  textHighestHighsLows: {
+    highestHighs: string
+    highestLows: string
   }
 
   locale: string

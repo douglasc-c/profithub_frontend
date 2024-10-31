@@ -33,6 +33,7 @@
       "fear": "Medo",
       "neutral": "Neutro",
       "greed": "Ganância",
+      "extremeGreed": "Ganância extrema",
       "lastUpdated": "Última atualização"
     },
     "ProfitCalculator": {
@@ -56,5 +57,9 @@
       "avaliableForDeposit": "Depósito",
       "avaliable": "Disponível",
       "notAvaliable": "Não disponível"
+    },
+    "Highest": {
+      "highestHighs": "Maiores altas",
+      "highestLows": "Maiores baixas"
     }
 }

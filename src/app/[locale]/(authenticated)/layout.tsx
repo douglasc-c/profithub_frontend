@@ -50,6 +50,7 @@ export default async function RootLayout({
     fear: t('FearGreedIndex.fear'),
     neutral: t('FearGreedIndex.neutral'),
     greed: t('FearGreedIndex.greed'),
+    extremeGreed: t('FearGreedIndex.extremeGreed'),
     lastUpdated: t('FearGreedIndex.lastUpdated'),
   }
 
@@ -77,11 +78,17 @@ export default async function RootLayout({
     notAvailable: t('Network.notAvaliable'),
   }
 
+  const textHighestHighsLows = {
+    highestHighs: t('Highest.highestHighs'),
+    highestLows: t('Highest.highestLows'),
+  }
+
   const layoutValue: LayoutContextProps = {
     textOpportunity,
     textFearGreedIndex,
     textProfitCalculator,
     textNetwork,
+    textHighestHighsLows,
     locale,
   }
 

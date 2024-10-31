@@ -33,6 +33,7 @@
       "fear": "Fear",
       "neutral": "Neutral",
       "greed": "Greed",
+      "extremeGreed": "Extreme Greed",
       "lastUpdated": "Last updated"
     },
     "ProfitCalculator": {
@@ -56,5 +57,9 @@
       "avaliableForDeposit": "Deposit",
       "avaliable": "Avaliable",
       "notAvaliable": "Not Avaliable"
+    },
+    "Highest": {
+      "highestHighs": "Highest highs",
+      "highestLows": "Highest lows"
     }
 }
