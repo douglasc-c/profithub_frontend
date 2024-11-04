@@ -7,6 +7,7 @@ const languages = ['en', 'pt-BR']
 
 export const metadata: Metadata = {
   title: 'ProfitHub',
+  description: 'Arbitration in realtime',
 }
 
 export async function generateStaticParams() {
