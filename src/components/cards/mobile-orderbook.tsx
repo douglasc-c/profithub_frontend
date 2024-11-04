@@ -38,8 +38,9 @@ export function MobileOrderBook({
             className="rounded-full"
           />
           <h2
-            className={`text-xl font-medium ${isBuy ? 'text-green-600' : 'text-red-600'
-              }`}
+            className={`text-xl font-medium ${
+              isBuy ? 'text-green-600' : 'text-red-600'
+            }`}
           >
             {title}
           </h2>
@@ -72,8 +73,9 @@ export function MobileOrderBook({
             {orders.map((order, index) => (
               <tr
                 key={index}
-                className={`${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'} ${index === orders.length - 1 ? 'last:rounded-b-xl' : ''
-                  }`}
+                className={`${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'} ${
+                  index === orders.length - 1 ? 'last:rounded-b-xl' : ''
+                }`}
               >
                 <td className="w-1/3 px-6 py-2 text-sm font-medium text-left">
                   $ {order.price}

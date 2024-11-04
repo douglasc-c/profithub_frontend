@@ -38,8 +38,9 @@ export function OrderBook({
             className="rounded-full"
           />
           <h2
-            className={`text-xl font-medium ${isBuy ? 'text-green-600' : 'text-red-600'
-              }`}
+            className={`text-xl font-medium ${
+              isBuy ? 'text-green-600' : 'text-red-600'
+            }`}
           >
             {title}
           </h2>
@@ -70,8 +71,9 @@ export function OrderBook({
             {orders.map((order, index) => (
               <tr
                 key={index}
-                className={`${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'} ${index === orders.length - 1 ? 'last:rounded-b-xl' : ''
-                  }`}
+                className={`${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'} ${
+                  index === orders.length - 1 ? 'last:rounded-b-xl' : ''
+                }`}
               >
                 <td className="w-1/3 px-6 py-2 text-sm font-medium text-left">
                   $ {order.price}
@@ -93,8 +95,9 @@ export function OrderBook({
         {orders.map((order, index) => (
           <div
             key={index}
-            className={`flex justify-between p-2 rounded-lg ${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'
-              }`}
+            className={`flex justify-between p-2 rounded-lg ${
+              index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'
+            }`}
           >
             <div>
               <p className="text-gray-400 text-xs uppercase">

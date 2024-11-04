@@ -49,8 +49,9 @@ export function Networks({ networksBuy, networksSell }: NetworkProps) {
             {uniqueNetworks.map((networkData, index: number) => (
               <tr
                 key={index}
-                className={`text-sm font-medium text-white ${index % 2 === 0 ? 'bg-zinc-900' : ''
-                  }`}
+                className={`text-sm font-medium text-white ${
+                  index % 2 === 0 ? 'bg-zinc-900' : ''
+                }`}
               >
                 <td className="p-2 uppercase">{networkData.network}</td>
                 <td className="p-2">$ {networkData.withdrawFee}</td>
