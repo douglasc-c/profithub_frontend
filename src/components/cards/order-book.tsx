@@ -27,7 +27,7 @@ export function OrderBook({
   const { textOpportunity } = useLayoutContext()
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full  overflow-hidden h-[80%]">
+    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full  overflow-hidden h-[78%]">
       <div className="flex flex-row items-center justify-between p-3 border-b border-gray-600">
         <div className="flex flex-row items-center space-x-3">
           <Image
@@ -51,7 +51,6 @@ export function OrderBook({
         </div>
       </div>
 
-      {/* Tabela para telas grandes */}
       <div className="hidden md:block overflow-x-auto">
         <table className="min-w-full">
           <thead className="text-[0.90rem] uppercase text-gray-200">

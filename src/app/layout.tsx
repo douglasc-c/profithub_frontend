@@ -20,7 +20,6 @@ export async function generateStaticParams() {
 
 export const dynamic = 'force-dynamic'
 
-// Importação e configuração das fontes
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const baiJamjuree = BaiJamjuree({
   subsets: ['latin'],
