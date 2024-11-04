@@ -1,5 +1,5 @@
-import ModalHeaderDesktop from '../HeaderModalDeskop'
-import ModalHeaderMobile from '../HeaderModalMobile'
+import ModalHeaderDesktop from './HeaderModalDesktop'
+import ModalHeaderMobile from './HeaderModalMobile'
 
 interface HeaderModalProps {
   svgIcon: string

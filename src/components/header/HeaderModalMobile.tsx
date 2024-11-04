@@ -15,7 +15,7 @@ interface ModalHeaderMobileProps {
   adjustSvgSize: (svgContent: string, width: string, height: string) => string
 }
 
-const ModalHeaderMobile: React.FC<ModalHeaderMobileProps> = ({
+const HeaderModalMobile: React.FC<ModalHeaderMobileProps> = ({
   svgIcon,
   coinName,
   symbol,
@@ -26,7 +26,7 @@ const ModalHeaderMobile: React.FC<ModalHeaderMobileProps> = ({
   adjustSvgSize,
 }) => {
   return (
-    <div className="flex flex-col items-center py-4 px-4 space-y-2">
+    <div className="flex  items-center">
       <div className="flex items-center space-x-4">
         <div
           className="flex items-center"
@@ -58,4 +58,4 @@ const ModalHeaderMobile: React.FC<ModalHeaderMobileProps> = ({
   )
 }
 
-export default ModalHeaderMobile
+export default HeaderModalMobile

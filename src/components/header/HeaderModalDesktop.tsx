@@ -15,7 +15,7 @@ interface ModalHeaderDesktopProps {
   adjustSvgSize: (svgContent: string, width: string, height: string) => string
 }
 
-const ModalHeaderDesktop: React.FC<ModalHeaderDesktopProps> = ({
+const HeaderModalDesktop: React.FC<ModalHeaderDesktopProps> = ({
   svgIcon,
   coinName,
   symbol,
@@ -59,4 +59,4 @@ const ModalHeaderDesktop: React.FC<ModalHeaderDesktopProps> = ({
   )
 }
 
-export default ModalHeaderDesktop
+export default HeaderModalDesktop

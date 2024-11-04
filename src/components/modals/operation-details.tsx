@@ -3,7 +3,7 @@ import { useLayoutContext } from '@/context/layout-context'
 import { useEffect, useState } from 'react'
 import { Networks } from '../cards/networks'
 import { OrderBook } from '../cards/order-book'
-import { HeaderModal } from '../HeaderModal'
+import { HeaderModal } from '../header/HeaderModal'
 import ProfitCalculator from '../widgets/profit-calculator'
 
 interface Order {
