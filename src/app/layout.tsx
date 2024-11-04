@@ -1,7 +1,11 @@
+import { AuthProvider } from '@/context/auth-context'
 import type { Metadata } from 'next'
 import { getLocale, getTranslations } from 'next-intl/server'
+import {
+  Bai_Jamjuree as BaiJamjuree,
+  Roboto_Flex as Roboto,
+} from 'next/font/google'
 import './globals.css'
-import { AuthProvider } from '@/context/auth-context'
 
 const languages = ['en', 'pt-BR']
 
@@ -14,6 +18,15 @@ export async function generateStaticParams() {
 }
 
 export const dynamic = 'force-dynamic'
+
+// Importação e configuração das fontes
+const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
+const baiJamjuree = BaiJamjuree({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-bai-jamjuree',
+})
+
 export default async function RootLayout({
   children,
   params: { lng },
@@ -39,7 +52,9 @@ export default async function RootLayout({
 
   return (
     <html lang={lng}>
-      <body className="bg-global text-white">
+      <body
+        className={`${roboto.variable} ${baiJamjuree.variable} antialiased bg-global text-white font-sans`}
+      >
         <AuthProvider value={layoutValue}>{children}</AuthProvider>
       </body>
     </html>
