@@ -3,6 +3,7 @@ import { useLayoutContext } from '@/context/layout-context'
 import { useEffect, useState } from 'react'
 import { Networks } from '../cards/networks'
 import { OrderBook } from '../cards/order-book'
+import { HeaderModal } from '../HeaderModal'
 import ProfitCalculator from '../widgets/profit-calculator'
 
 interface Order {
@@ -11,7 +12,7 @@ interface Order {
   liquidity: string
 }
 
-interface OrderBook {
+interface OrderBookData {
   asks: Order[]
   bids: Order[]
 }
@@ -24,7 +25,7 @@ interface Network {
 }
 
 interface Opportunity {
-  svgIcon: string
+  svgIcon?: string
   coinName: string
   symbol: string
   spreadPercent: number
@@ -34,8 +35,8 @@ interface Opportunity {
   sellPrice: number
   exchangeBuy: string
   exchangeSell: string
-  buyOrderbook: OrderBook
-  sellOrderbook: OrderBook
+  buyOrderbook: OrderBookData
+  sellOrderbook: OrderBookData
   allNetworksBuy: Network[]
   allNetworksSell: Network[]
 }
@@ -72,6 +73,7 @@ export function OperationDetails({
       setLocalData(opportunity)
     }
   }, [symbol, opportunity])
+
   if (!isOpen || !localData) return null
 
   const adjustSvgSize = (svgContent: string, width: string, height: string) => {
@@ -81,64 +83,49 @@ export function OperationDetails({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center h-[100vh] w-[100vw] overflow-hidden">
-      <div className="bg-stone-950 rounded-xl border w-full h-full border-stone-800 px-10">
-        <div className="flex justify-between py-4">
-          <div className="flex flex-row items-center space-x-5">
-            <div className="flex flex-row items-center">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
-                }}
-                aria-label="coin-icon"
-              />
-              <p className="font-semibold text-2xl ml-2 ">
-                {localData.coinName}{' '}
-              </p>
-              <p className="font-semibold text-2xl ml-2">
-                ({localData.symbol})
-              </p>
-            </div>
-            <p>
-              {textOpportunity.spread}: {localData.spreadPercent}%
-            </p>
-            <p>
-              {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
-            </p>
-          </div>
-          <div className="flex flex-row py-2 items-center justify-end">
-            <button
-              className="items-center justify-center flex bg-red-500 p-1 px-3 rounded-md"
-              onClick={onClose}
-            >
-              <a className="text-sm">{textOpportunity.cancel}</a>
-            </button>
-          </div>
-        </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen overflow-hidden px-4 md:px-10 ">
+        <section className="py-4">
+          <HeaderModal
+            svgIcon={localData.svgIcon || ''}
+            coinName={localData.coinName}
+            symbol={localData.symbol}
+            spreadPercent={localData.spreadPercent}
+            withdrawFee={localData.withdrawFee}
+            textOpportunity={textOpportunity}
+            onClose={onClose}
+            adjustSvgSize={adjustSvgSize}
+          />
+        </section>
 
-        <div className="grid grid-cols-2 gap-4 h-full">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <Networks
             networksBuy={localData?.allNetworksBuy}
             networksSell={localData?.allNetworksSell}
           />
           <ProfitCalculator />
+        </section>
 
-          <OrderBook
-            title={textOpportunity.purchaseBook}
-            orders={localData.buyOrderbook.asks}
-            lastPrice={localData.buyPrice}
-            exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
-            isBuy={true}
-          />
-
-          <OrderBook
-            title={textOpportunity.salesBook}
-            orders={localData.sellOrderbook.bids}
-            lastPrice={localData.sellPrice}
-            exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
-            isBuy={false}
-          />
-        </div>
+        <section className="flex flex-row gap-6 h-[calc(100%-300px)]">
+          <div className="w-1/2 overflow-y-auto h-full">
+            <OrderBook
+              title={textOpportunity.purchaseBook}
+              orders={localData.buyOrderbook.asks}
+              lastPrice={localData.buyPrice}
+              exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
+              isBuy={true}
+            />
+          </div>
+          <div className="w-1/2 overflow-y-auto h-full">
+            <OrderBook
+              title={textOpportunity.salesBook}
+              orders={localData.sellOrderbook.bids}
+              lastPrice={localData.sellPrice}
+              exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
+              isBuy={false}
+            />
+          </div>
+        </section>
       </div>
     </div>
   )

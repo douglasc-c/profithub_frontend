@@ -17,7 +17,7 @@ interface BookProps {
   isBuy: boolean
 }
 
-export function OrderBook({
+export function MobileOrderBook({
   title,
   orders,
   exchangeIcon,
@@ -27,7 +27,7 @@ export function OrderBook({
   const { textOpportunity } = useLayoutContext()
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full  overflow-hidden h-[80%]">
+    <div className="flex flex-col border border-gray-600 rounded-xl w-full h-full max-h-[88%] overflow-hidden">
       <div className="flex flex-row items-center justify-between p-3 border-b border-gray-600">
         <div className="flex flex-row items-center space-x-3">
           <Image
@@ -50,23 +50,25 @@ export function OrderBook({
         </div>
       </div>
 
-      {/* Tabela para telas grandes */}
-      <div className="hidden md:block overflow-x-auto">
-        <table className="min-w-full">
-          <thead className="text-[0.90rem] uppercase text-gray-200">
-            <tr>
-              <th scope="col" className="w-1/3 px-6 py-3 text-left">
-                {textOpportunity.price}
-              </th>
-              <th scope="col" className="w-1/3 px-6 py-3 text-center">
-                {textOpportunity.volume}
-              </th>
-              <th scope="col" className="w-1/3 px-6 py-3 text-right">
-                {textOpportunity.liquidity}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="overflow-y-auto max-h-[500px]">
+      <table className="min-w-full ">
+        <thead className="text-[0.90rem] uppercase text-gray-200 ">
+          <tr>
+            <th scope="col" className="w-1/3 px-6 py-3 text-left">
+              {textOpportunity.price}
+            </th>
+            <th scope="col" className="w-1/3 px-6 py-3 text-center">
+              {textOpportunity.volume}
+            </th>
+            <th scope="col" className="w-1/3 px-6 py-3 text-right">
+              {textOpportunity.liquidity}
+            </th>
+          </tr>
+        </thead>
+      </table>
+
+      <div className="overflow-y-auto max-h-[500px]">
+        <table className="min-w-full  font-light">
+          <tbody>
             {orders.map((order, index) => (
               <tr
                 key={index}
@@ -86,36 +88,6 @@ export function OrderBook({
             ))}
           </tbody>
         </table>
-      </div>
-
-      {/* Lista para telas menores */}
-      <div className="md:hidden overflow-y-auto max-h-[500px] px-3">
-        {orders.map((order, index) => (
-          <div
-            key={index}
-            className={`flex justify-between p-2 rounded-lg ${index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'
-              }`}
-          >
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.price}
-              </p>
-              <p className="text-white text-sm">$ {order.price}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.volume}
-              </p>
-              <p className="text-white text-sm">{order.volume}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.liquidity}
-              </p>
-              <p className="text-white text-sm">$ {order.liquidity}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   )

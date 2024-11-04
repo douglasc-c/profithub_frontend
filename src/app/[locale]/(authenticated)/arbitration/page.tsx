@@ -59,8 +59,6 @@ export default function Arbitration() {
 
     socket.on('updateOpportunity', (data: Opportunity[]) => {
       try {
-        console.log('Oportunidades recebidas:', data)
-
         if (Array.isArray(data)) {
           const sortedData = data.sort(
             (a, b) => b.spreadPercent - a.spreadPercent,

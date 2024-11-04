@@ -3,7 +3,7 @@
 import { useLayoutContext } from '@/context/layout-context'
 import React, { useState } from 'react'
 
-interface ProfitCalculatorProps {}
+interface ProfitCalculatorProps { }
 
 const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
   const { textProfitCalculator } = useLayoutContext()
@@ -25,7 +25,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
     calculateProfit()
 
   return (
-    <div className="p-3 rounded-2xl border border-gray-600 ">
+    <div className="p-3 rounded-2xl border border-gray-600 w-full max-w-full overflow-hidden">
       <h2 className="text-xl font-medium mb-3">
         {textProfitCalculator.profitCalculator}
       </h2>

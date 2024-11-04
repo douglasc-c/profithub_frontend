@@ -33,11 +33,11 @@ export function Networks({ networksBuy, networksSell }: NetworkProps) {
   })
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl ">
+    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden">
       <h2 className="text-xl font-medium p-3">{textNetwork.networks}</h2>
-      <div className="overflow-x-auto h-56">
+      <div className="overflow-x-auto">
         <table className="min-w-full text-sm text-center">
-          <thead className="border-b ">
+          <thead className="border-b">
             <tr className="text-white text-base">
               <th className="p-2">{textNetwork.network}</th>
               <th className="p-2">{textNetwork.withdrawalFee}</th>
@@ -49,7 +49,8 @@ export function Networks({ networksBuy, networksSell }: NetworkProps) {
             {uniqueNetworks.map((networkData, index: number) => (
               <tr
                 key={index}
-                className={`text-sm font-medium text-whit overflow-y-auto ${index % 2 === 0 ? 'bg-zinc-900' : ''}`}
+                className={`text-sm font-medium text-white ${index % 2 === 0 ? 'bg-zinc-900' : ''
+                  }`}
               >
                 <td className="p-2 uppercase">{networkData.network}</td>
                 <td className="p-2">$ {networkData.withdrawFee}</td>
