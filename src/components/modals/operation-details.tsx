@@ -3,7 +3,6 @@ import { useLayoutContext } from '@/context/layout-context'
 import { useEffect, useState } from 'react'
 import { Networks } from '../cards/networks'
 import { OrderBook } from '../cards/order-book'
-import { HeaderModal } from '../header/HeaderModal'
 import ProfitCalculator from '../widgets/profit-calculator'
 
 interface Order {
@@ -86,16 +85,36 @@ export function OperationDetails({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen overflow-hidden px-4 md:px-10 ">
         <section className="py-4">
-          <HeaderModal
-            svgIcon={localData.svgIcon || ''}
-            coinName={localData.coinName}
-            symbol={localData.symbol}
-            spreadPercent={localData.spreadPercent}
-            withdrawFee={localData.withdrawFee}
-            textOpportunity={textOpportunity}
-            onClose={onClose}
-            adjustSvgSize={adjustSvgSize}
-          />
+          <header className="flex  justify-between items-center px-10 ">
+            <section className="flex items-center space-x-4">
+              <div
+                className="flex items-center"
+                dangerouslySetInnerHTML={{
+                  __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
+                }}
+                aria-label="coin-icon"
+              />
+              <div className="flex flex-row items-center">
+                <p className="font-semibold text-2xl">{localData.coinName}</p>
+                <p className="font-semibold text-2xl ml-2">({symbol})</p>
+              </div>
+
+              <section className="flex flex-row items-center space-x-5">
+                <p className="text-base">
+                  {textOpportunity.spread}: {localData.spreadPercent}%
+                </p>
+                <p className="text-base">
+                  {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
+                </p>
+              </section>
+            </section>
+            <button
+              className="bg-red-500 text-white rounded-md h-fit py-1 px-3 text-[1rem]"
+              onClick={onClose}
+            >
+              {textOpportunity.cancel}
+            </button>
+          </header>
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
