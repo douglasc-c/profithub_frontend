@@ -46,6 +46,7 @@ export default function Arbitration() {
   const [opportunity, setOpportunity] = useState<Opportunity[]>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true) // Novo estado para loading
 
   useEffect(() => {
     const socket = io('https://socket.profithub.tech/', {
@@ -65,6 +66,7 @@ export default function Arbitration() {
           )
 
           setOpportunity(sortedData)
+          setIsLoading(false) // Dados recebidos, atualize o estado de loading
         } else {
           console.error('Expected an array but received:', data)
         }
@@ -84,6 +86,8 @@ export default function Arbitration() {
     setIsOpen(true)
   }
 
+  console.log(opportunity)
+
   return (
     <main className="flex md:px-20 px-10 py-5 relative">
       <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-9 w-full items-center justify-between">
@@ -98,13 +102,19 @@ export default function Arbitration() {
           />
         )}
 
-        {opportunity.map((item, index) => (
-          <Card
-            key={index}
-            data={item}
-            onModal={() => onLoadIsOpenModal(item.symbol)}
-          />
-        ))}
+        {isLoading ? (
+          <div className="col-span-full text-center">
+            <p>Loading opportunities...</p>
+          </div>
+        ) : (
+          opportunity.map((item, index) => (
+            <Card
+              key={index}
+              data={item}
+              onModal={() => onLoadIsOpenModal(item.symbol)}
+            />
+          ))
+        )}
       </div>
     </main>
   )

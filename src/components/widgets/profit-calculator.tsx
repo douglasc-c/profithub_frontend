@@ -91,18 +91,24 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
       <div className="flex flex-row">
         <div className="w-1/2">
           <p>
-            {textProfitCalculator.actualSaleValue}: {netSaleValue.toFixed(8)}
+            {textProfitCalculator.actualSaleValue}:{' '}
+            <span className="">{netSaleValue.toFixed(8)}</span>
           </p>
           <p>
-            {textProfitCalculator.profitPerCurrency}: {profitPerUnit.toFixed(8)}
+            {textProfitCalculator.grossProfit}:{' '}
+            <span className="">{grossProfit.toFixed(2)}</span>
           </p>
         </div>
         <div className="w-1/2">
           <p>
-            {textProfitCalculator.grossProfit}: {grossProfit.toFixed(2)}
+            {textProfitCalculator.profitPerCurrency}:{' '}
+            <span className="">{profitPerUnit.toFixed(8)}</span>
           </p>
-          <p className="text-xl font-medium">
-            {textProfitCalculator.netProfit}: {netProfit.toFixed(2)}
+          <p>
+            {textProfitCalculator.netProfit}:{' '}
+            <span className="md:text-lg font-semibold">
+              {netProfit.toFixed(2)}
+            </span>
           </p>
         </div>
       </div>
