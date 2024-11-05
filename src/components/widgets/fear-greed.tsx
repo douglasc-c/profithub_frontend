@@ -2,6 +2,7 @@ import React from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { useLayoutContext } from '@/context/layout-context'
+import PuffLoader from 'react-spinners/PuffLoader'
 
 interface FearGreedData {
   value: string
@@ -20,7 +21,18 @@ const FearGreedWidget: React.FC<FearGreedWidgetProps> = ({
 }) => {
   const { textFearGreedIndex } = useLayoutContext()
 
-  if (loading) return <div>Loading...</div>
+  if (loading)
+    return (
+      <p className="col-span-full flex items-center text-center justify-center h-[calc(45vh-9rem)]">
+        <PuffLoader
+          color="#fff"
+          loading={loading}
+          size={60}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </p>
+    )
   if (!fearGreedData)
     return <div className="text-red-500">No data available.</div>
 

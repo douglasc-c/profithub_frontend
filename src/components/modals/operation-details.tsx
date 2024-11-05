@@ -84,25 +84,25 @@ export function OperationDetails({
 
   if (!isOpen || !localData) return null
 
-  const adjustSvgSize = (svgContent: string, width: string, height: string) => {
-    return svgContent
-      .replace(/width="[^"]*"/, `width="${width}"`)
-      .replace(/height="[^"]*"/, `height="${height}"`)
-  }
+  // const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+  //   return svgContent
+  //     .replace(/width="[^"]*"/, `width="${width}"`)
+  //     .replace(/height="[^"]*"/, `height="${height}"`)
+  // }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 overflow-hidden">
+      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 md:overflow-hidden overflow-auto">
         <section className="py-4">
           <header className="flex flex-row items-center justify-between">
             <div className="flex flex-row items-center md:flex-row space-x-2">
-              <div
+              {/* <div
                 className="flex items-center"
                 dangerouslySetInnerHTML={{
                   __html: adjustSvgSize(localData.svgIcon, '45px', '45px'),
                 }}
                 aria-label="coin-icon"
-              />
+              /> */}
               <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
                 <div className="flex items-center">
                   <p className="font-semibold text-xl md:text-2xl">
@@ -123,50 +123,64 @@ export function OperationDetails({
                 </div>
               </div>
             </div>
-
-            <button
-              className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
-              onClick={onClose}
-            >
-              {textOpportunity.cancel}
-            </button>
+            {isMobile ? (
+              <button
+                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
+                onClick={onClose}
+              >
+                X
+              </button>
+            ) : (
+              <button
+                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
+                onClick={onClose}
+              >
+                {textOpportunity.cancel}
+              </button>
+            )}
           </header>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <Networks
-            networksBuy={localData?.allNetworksBuy}
-            networksSell={localData?.allNetworksSell}
-          />
-          <ProfitCalculator />
-        </section>
+        <div className="flex flex-col-reverse md:flex-col md:space-y-6">
+          <section className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse md:flex-co space-y-6 md:space-y-0">
+            <Networks
+              networksBuy={localData?.allNetworksBuy}
+              networksSell={localData?.allNetworksSell}
+            />
+            <ProfitCalculator
+            // withdrawalValue={localData.withdrawFee}
+            // buyLastPrice={localData.buyPrice}
+            // sellLastPrice={localData.sellPrice}
+            />
+          </section>
 
-        <section className="flex flex-row gap-6 h-[calc(100%-300px)]">
-          {isMobile ? (
-            <SelectOrderBook data={localData} />
-          ) : (
-            <>
-              <div className="w-1/2 overflow-y-auto h-full">
-                <OrderBook
-                  title={textOpportunity.purchaseBook}
-                  orders={localData.buyOrderbook.asks}
-                  lastPrice={localData.buyPrice}
-                  exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
-                  isBuy={true}
-                />
-              </div>
-              <div className="w-1/2 overflow-y-auto h-full">
-                <OrderBook
-                  title={textOpportunity.salesBook}
-                  orders={localData.sellOrderbook.bids}
-                  lastPrice={localData.sellPrice}
-                  exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
-                  isBuy={false}
-                />
-              </div>
-            </>
-          )}
-        </section>
+          <section className="flex flex-row gap-6 md:h-[calc(84vh-9rem)] h-[calc(39vh)]">
+            {isMobile ? (
+              <SelectOrderBook data={localData} />
+            ) : (
+              <>
+                <div className="w-1/2 overflow-y-auto h-full">
+                  <OrderBook
+                    title={textOpportunity.purchaseBook}
+                    orders={localData.buyOrderbook.asks}
+                    lastPrice={localData.buyPrice}
+                    exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
+                    isBuy={true}
+                  />
+                </div>
+                <div className="w-1/2 overflow-y-auto h-full">
+                  <OrderBook
+                    title={textOpportunity.salesBook}
+                    orders={localData.sellOrderbook.bids}
+                    lastPrice={localData.sellPrice}
+                    exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
+                    isBuy={false}
+                  />
+                </div>
+              </>
+            )}
+          </section>
+        </div>
       </div>
     </div>
   )

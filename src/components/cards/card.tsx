@@ -22,11 +22,11 @@ interface CardProps {
   onModal: OnModal
 }
 
-const adjustSvgSize = (svgContent: string, width: string, height: string) => {
-  return svgContent
-    .replace(/width="[^"]*"/, `width="${width}"`)
-    .replace(/height="[^"]*"/, `height="${height}"`)
-}
+// const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+//   return svgContent
+//     .replace(/width="[^"]*"/, `width="${width}"`)
+//     .replace(/height="[^"]*"/, `height="${height}"`)
+// }
 
 export function Card({ data, onModal }: CardProps) {
   const { textOpportunity } = useLayoutContext()
@@ -43,14 +43,14 @@ export function Card({ data, onModal }: CardProps) {
   return (
     <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
       <div className="flex justify-center items-center space-x-3 pb-3">
-        <div
+        {/* <div
           className=""
           dangerouslySetInnerHTML={{
             __html: adjustSvgSize(data.svgIcon, '30px', '30px'),
           }}
           aria-label="coin-icon"
           style={{}}
-        />
+        /> */}
         <h1 className="font-bold">
           {data.coinName} ({data?.symbol})
         </h1>
