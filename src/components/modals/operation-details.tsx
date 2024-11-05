@@ -84,11 +84,13 @@ export function OperationDetails({
 
   if (!isOpen || !localData) return null
 
-  const adjustSvgSize = (svgContent: string, width: string, height: string) => {
-    return svgContent
-      .replace(/width="[^"]*"/, `width="${width}"`)
-      .replace(/height="[^"]*"/, `height="${height}"`)
-  }
+  // const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+  //   return svgContent
+  //     .replace(/width="[^"]*"/, `width="${width}"`)
+  //     .replace(/height="[^"]*"/, `height="${height}"`)
+  // }
+
+  console.log('-------------')
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -96,13 +98,13 @@ export function OperationDetails({
         <section className="py-4">
           <header className="flex flex-row items-center justify-between">
             <div className="flex flex-row items-center md:flex-row space-x-2">
-              <div
+              {/* <div
                 className="flex items-center"
                 dangerouslySetInnerHTML={{
                   __html: adjustSvgSize(localData.svgIcon, '45px', '45px'),
                 }}
                 aria-label="coin-icon"
-              />
+              /> */}
               <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
                 <div className="flex items-center">
                   <p className="font-semibold text-xl md:text-2xl">

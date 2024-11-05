@@ -38,6 +38,8 @@ export function SelectOrderBook({ data }: BookProps) {
   const orders =
     isSelected === 'buy' ? data.buyOrderbook.asks : data.sellOrderbook.bids
 
+  console.log('-------------')
+
   return (
     <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden h-[55%]">
       <section className="flex items-center justify-between">

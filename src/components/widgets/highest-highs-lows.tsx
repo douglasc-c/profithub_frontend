@@ -27,6 +27,8 @@ const HighestHighsLows: FC<HighestHighsLowsProps> = ({
 }) => {
   const { textHighestHighsLows } = useLayoutContext()
 
+  console.log('-------------')
+
   return (
     <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] p-4 h-full flex flex-col">
       <h2 className="text-2xl font-medium mb-3">{title}</h2>
