@@ -15,10 +15,11 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
   sellLastPrice: initialSellLastPrice,
 }) => {
   const { textProfitCalculator } = useLayoutContext()
-  const [saleValue, setSaleValue] = useState<number>(0)
-  const [taxPercentage, setTaxPercentage] = useState<number>(0)
+
   const [purchaseValue, setPurchaseValue] = useState<number>(0)
+  const [saleValue, setSaleValue] = useState<number>(0)
   const [volume, setVolume] = useState<number>(0)
+  const [taxPercentage, setTaxPercentage] = useState<number>(0.6)
   const [withdrawalValue, setWithdrawalValue] = useState<number>(0)
 
   const calculateProfit = () => {
@@ -32,12 +33,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
   const { netSaleValue, profitPerUnit, grossProfit, netProfit } =
     calculateProfit()
 
-  console.log(
-    '-------------',
-    initialWithdrawalValue,
-    initialBuyLastPrice,
-    initialSellLastPrice,
-  )
+  console.log(initialWithdrawalValue, initialBuyLastPrice, initialSellLastPrice)
 
   return (
     <div className="p-3 rounded-2xl border border-gray-600 w-full max-w-full overflow-hidden">
