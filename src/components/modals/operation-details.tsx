@@ -84,27 +84,27 @@ export function OperationDetails({
 
   if (!isOpen || !localData) return null
 
-  // const adjustSvgSize = (svgContent: string, width: string, height: string) => {
-  //   return svgContent
-  //     .replace(/width="[^"]*"/, `width="${width}"`)
-  //     .replace(/height="[^"]*"/, `height="${height}"`)
-  // }
+  const adjustSvgSize = (svgContent: string, width: string, height: string) => {
+    return svgContent
+      .replace(/width="[^"]*"/, `width="${width}"`)
+      .replace(/height="[^"]*"/, `height="${height}"`)
+  }
 
   console.log('-------------')
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 md:overflow-hidden overflow-auto">
+      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 overflow-hidden">
         <section className="py-4">
           <header className="flex flex-row items-center justify-between">
             <div className="flex flex-row items-center md:flex-row space-x-2">
-              {/* <div
+              <div
                 className="flex items-center"
                 dangerouslySetInnerHTML={{
                   __html: adjustSvgSize(localData.svgIcon, '45px', '45px'),
                 }}
                 aria-label="coin-icon"
-              /> */}
+              />
               <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
                 <div className="flex items-center">
                   <p className="font-semibold text-xl md:text-2xl">
@@ -125,21 +125,13 @@ export function OperationDetails({
                 </div>
               </div>
             </div>
-            {isMobile ? (
-              <button
-                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
-                onClick={onClose}
-              >
-                X
-              </button>
-            ) : (
-              <button
-                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
-                onClick={onClose}
-              >
-                {textOpportunity.cancel}
-              </button>
-            )}
+
+            <button
+              className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
+              onClick={onClose}
+            >
+              {textOpportunity.cancel}
+            </button>
           </header>
         </section>
 
