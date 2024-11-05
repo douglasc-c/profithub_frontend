@@ -33,7 +33,12 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
   const { netSaleValue, profitPerUnit, grossProfit, netProfit } =
     calculateProfit()
 
-  console.log(initialWithdrawalValue, initialBuyLastPrice, initialSellLastPrice)
+  console.log(
+    '-------------',
+    initialWithdrawalValue,
+    initialBuyLastPrice,
+    initialSellLastPrice,
+  )
 
   return (
     <div className="p-3 rounded-2xl border border-gray-600 w-full max-w-full overflow-hidden">

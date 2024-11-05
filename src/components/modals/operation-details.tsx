@@ -90,6 +90,8 @@ export function OperationDetails({
   //     .replace(/height="[^"]*"/, `height="${height}"`)
   // }
 
+  console.log('-------------')
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 md:overflow-hidden overflow-auto">
