@@ -7,6 +7,8 @@ interface ProfitCalculatorProps {
   withdrawalValue: number
   buyLastPrice: number
   sellLastPrice: number
+  // isOpen: boolean
+  // onClearData: () => void
 }
 
 const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
