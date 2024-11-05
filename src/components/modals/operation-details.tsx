@@ -90,11 +90,9 @@ export function OperationDetails({
   //     .replace(/height="[^"]*"/, `height="${height}"`)
   // }
 
-  console.log('-------------')
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 overflow-hidden">
+      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 md:overflow-hidden overflow-auto">
         <section className="py-4">
           <header className="flex flex-row items-center justify-between">
             <div className="flex flex-row items-center md:flex-row space-x-2">
@@ -125,13 +123,21 @@ export function OperationDetails({
                 </div>
               </div>
             </div>
-
-            <button
-              className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
-              onClick={onClose}
-            >
-              {textOpportunity.cancel}
-            </button>
+            {isMobile ? (
+              <button
+                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
+                onClick={onClose}
+              >
+                X
+              </button>
+            ) : (
+              <button
+                className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
+                onClick={onClose}
+              >
+                {textOpportunity.cancel}
+              </button>
+            )}
           </header>
         </section>
 

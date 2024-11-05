@@ -26,8 +26,6 @@ export function OrderBook({
 }: BookProps) {
   const { textOpportunity } = useLayoutContext()
 
-  console.log('-------------')
-
   return (
     <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden h-[78%]">
       <div className="flex flex-row items-center justify-between p-3 border-b border-gray-600">
