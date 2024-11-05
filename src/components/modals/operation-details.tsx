@@ -133,40 +133,46 @@ export function OperationDetails({
           </header>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <Networks
-            networksBuy={localData?.allNetworksBuy}
-            networksSell={localData?.allNetworksSell}
-          />
-          <ProfitCalculator />
-        </section>
+        <div className="flex flex-col-reverse md:flex-col md:space-y-6">
+          <section className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse md:flex-co space-y-6 md:space-y-0">
+            <Networks
+              networksBuy={localData?.allNetworksBuy}
+              networksSell={localData?.allNetworksSell}
+            />
+            <ProfitCalculator
+              withdrawalValue={localData.withdrawFee}
+              buyLastPrice={localData.buyPrice}
+              sellLastPrice={localData.sellPrice}
+            />
+          </section>
 
-        <section className="flex flex-row gap-6 h-[calc(100%-300px)]">
-          {isMobile ? (
-            <SelectOrderBook data={localData} />
-          ) : (
-            <>
-              <div className="w-1/2 overflow-y-auto h-full">
-                <OrderBook
-                  title={textOpportunity.purchaseBook}
-                  orders={localData.buyOrderbook.asks}
-                  lastPrice={localData.buyPrice}
-                  exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
-                  isBuy={true}
-                />
-              </div>
-              <div className="w-1/2 overflow-y-auto h-full">
-                <OrderBook
-                  title={textOpportunity.salesBook}
-                  orders={localData.sellOrderbook.bids}
-                  lastPrice={localData.sellPrice}
-                  exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
-                  isBuy={false}
-                />
-              </div>
-            </>
-          )}
-        </section>
+          <section className="flex flex-row gap-6 md:h-[calc(84vh-9rem)] h-[calc(39vh)]">
+            {isMobile ? (
+              <SelectOrderBook data={localData} />
+            ) : (
+              <>
+                <div className="w-1/2 overflow-y-auto h-full">
+                  <OrderBook
+                    title={textOpportunity.purchaseBook}
+                    orders={localData.buyOrderbook.asks}
+                    lastPrice={localData.buyPrice}
+                    exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
+                    isBuy={true}
+                  />
+                </div>
+                <div className="w-1/2 overflow-y-auto h-full">
+                  <OrderBook
+                    title={textOpportunity.salesBook}
+                    orders={localData.sellOrderbook.bids}
+                    lastPrice={localData.sellPrice}
+                    exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
+                    isBuy={false}
+                  />
+                </div>
+              </>
+            )}
+          </section>
+        </div>
       </div>
     </div>
   )
