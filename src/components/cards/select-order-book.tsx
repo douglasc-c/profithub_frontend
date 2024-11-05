@@ -39,7 +39,7 @@ export function SelectOrderBook({ data }: BookProps) {
     isSelected === 'buy' ? data.buyOrderbook.asks : data.sellOrderbook.bids
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden">
+    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden h-[55%]">
       <section className="flex items-center justify-between">
         <button
           className={`border-b-4 p-4 ${
