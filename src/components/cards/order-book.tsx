@@ -27,7 +27,7 @@ export function OrderBook({
   const { textOpportunity } = useLayoutContext()
 
   return (
-    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full  overflow-hidden h-[78%]">
+    <div className="flex flex-col border border-gray-600 rounded-xl w-full max-w-full overflow-hidden h-[78%]">
       <div className="flex flex-row items-center justify-between p-3 border-b border-gray-600">
         <div className="flex flex-row items-center space-x-3">
           <Image
@@ -47,7 +47,7 @@ export function OrderBook({
         </div>
         <div className="flex flex-row items-center space-x-2">
           <p className="text-sm text-gray-400">{textOpportunity.lastPrice}:</p>
-          <h2 className="text-lg font-semibold">${lastPrice}</h2>
+          <h2 className="text-lg font-semibold">$ {lastPrice}</h2>
         </div>
       </div>
 
@@ -87,37 +87,6 @@ export function OrderBook({
             ))}
           </tbody>
         </table>
-      </div>
-
-      {/* Lista para telas menores */}
-      <div className="md:hidden overflow-y-auto max-h-[500px] px-3">
-        {orders.map((order, index) => (
-          <div
-            key={index}
-            className={`flex justify-between p-2 rounded-lg ${
-              index % 2 === 0 ? 'bg-[#2c2c31]' : 'bg-[#18181b]'
-            }`}
-          >
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.price}
-              </p>
-              <p className="text-white text-sm">$ {order.price}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.volume}
-              </p>
-              <p className="text-white text-sm">{order.volume}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-xs uppercase">
-                {textOpportunity.liquidity}
-              </p>
-              <p className="text-white text-sm">$ {order.liquidity}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   )

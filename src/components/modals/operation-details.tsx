@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Networks } from '../cards/networks'
 import { OrderBook } from '../cards/order-book'
 import ProfitCalculator from '../widgets/profit-calculator'
+import { SelectOrderBook } from '../cards/select-order-book'
 
 interface Order {
   price: string
@@ -24,7 +25,7 @@ interface Network {
 }
 
 interface Opportunity {
-  svgIcon?: string
+  svgIcon: string
   coinName: string
   symbol: string
   spreadPercent: number
@@ -55,6 +56,7 @@ export function OperationDetails({
 }: OpportunityProps) {
   const { textOpportunity } = useLayoutContext()
   const [localData, setLocalData] = useState<Opportunity | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -73,6 +75,13 @@ export function OperationDetails({
     }
   }, [symbol, opportunity])
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   if (!isOpen || !localData) return null
 
   const adjustSvgSize = (svgContent: string, width: string, height: string) => {
@@ -83,33 +92,40 @@ export function OperationDetails({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen overflow-hidden px-4 md:px-10 ">
+      <div className="bg-stone-950 rounded-xl border border-stone-800 w-full h-full max-h-screen px-4 md:px-10 overflow-hidden">
         <section className="py-4">
-          <header className="flex  justify-between items-center px-10 ">
-            <section className="flex items-center space-x-4">
+          <header className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center md:flex-row space-x-2">
               <div
                 className="flex items-center"
                 dangerouslySetInnerHTML={{
-                  __html: adjustSvgSize(localData.svgIcon, '50px', '50px'),
+                  __html: adjustSvgSize(localData.svgIcon, '45px', '45px'),
                 }}
                 aria-label="coin-icon"
               />
-              <div className="flex flex-row items-center">
-                <p className="font-semibold text-2xl">{localData.coinName}</p>
-                <p className="font-semibold text-2xl ml-2">({symbol})</p>
-              </div>
+              <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
+                <div className="flex items-center">
+                  <p className="font-semibold text-xl md:text-2xl">
+                    {localData.coinName}
+                  </p>
+                  <p className="font-semibold text-xl md:text-2xl ml-1 md:ml-2">
+                    ({symbol})
+                  </p>
+                </div>
 
-              <section className="flex flex-row items-center space-x-5">
-                <p className="text-base">
-                  {textOpportunity.spread}: {localData.spreadPercent}%
-                </p>
-                <p className="text-base">
-                  {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
-                </p>
-              </section>
-            </section>
+                <div className="flex space-x-2">
+                  <p className="text-sm md:text-base">
+                    {textOpportunity.spread}: {localData.spreadPercent}%
+                  </p>
+                  <p className="text-sm md:text-base">
+                    {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <button
-              className="bg-red-500 text-white rounded-md h-fit py-1 px-3 text-[1rem]"
+              className="bg-red-500 text-white rounded-md py-1 px-3 text-[0.875rem] md:text-[1rem]"
               onClick={onClose}
             >
               {textOpportunity.cancel}
@@ -126,24 +142,30 @@ export function OperationDetails({
         </section>
 
         <section className="flex flex-row gap-6 h-[calc(100%-300px)]">
-          <div className="w-1/2 overflow-y-auto h-full">
-            <OrderBook
-              title={textOpportunity.purchaseBook}
-              orders={localData.buyOrderbook.asks}
-              lastPrice={localData.buyPrice}
-              exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
-              isBuy={true}
-            />
-          </div>
-          <div className="w-1/2 overflow-y-auto h-full">
-            <OrderBook
-              title={textOpportunity.salesBook}
-              orders={localData.sellOrderbook.bids}
-              lastPrice={localData.sellPrice}
-              exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
-              isBuy={false}
-            />
-          </div>
+          {isMobile ? (
+            <SelectOrderBook data={localData} />
+          ) : (
+            <>
+              <div className="w-1/2 overflow-y-auto h-full">
+                <OrderBook
+                  title={textOpportunity.purchaseBook}
+                  orders={localData.buyOrderbook.asks}
+                  lastPrice={localData.buyPrice}
+                  exchangeIcon={`/images/exchanges/${localData.exchangeBuy}.svg`}
+                  isBuy={true}
+                />
+              </div>
+              <div className="w-1/2 overflow-y-auto h-full">
+                <OrderBook
+                  title={textOpportunity.salesBook}
+                  orders={localData.sellOrderbook.bids}
+                  lastPrice={localData.sellPrice}
+                  exchangeIcon={`/images/exchanges/${localData.exchangeSell}.svg`}
+                  isBuy={false}
+                />
+              </div>
+            </>
+          )}
         </section>
       </div>
     </div>
