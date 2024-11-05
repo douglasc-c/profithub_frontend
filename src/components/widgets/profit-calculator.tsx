@@ -3,23 +3,14 @@
 import { useLayoutContext } from '@/context/layout-context'
 import React, { useState } from 'react'
 
-interface ProfitCalculatorProps {
-  withdrawalValue: number
-  buyLastPrice: number
-  sellLastPrice: number
-}
+interface ProfitCalculatorProps {}
 
-const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
-  withdrawalValue: initialWithdrawalValue,
-  buyLastPrice: initialBuyLastPrice,
-  sellLastPrice: initialSellLastPrice,
-}) => {
+const ProfitCalculator: React.FC<ProfitCalculatorProps> = () => {
   const { textProfitCalculator } = useLayoutContext()
-
-  const [purchaseValue, setPurchaseValue] = useState<number>(0)
   const [saleValue, setSaleValue] = useState<number>(0)
+  const [taxPercentage, setTaxPercentage] = useState<number>(0)
+  const [purchaseValue, setPurchaseValue] = useState<number>(0)
   const [volume, setVolume] = useState<number>(0)
-  const [taxPercentage, setTaxPercentage] = useState<number>(0.6)
   const [withdrawalValue, setWithdrawalValue] = useState<number>(0)
 
   const calculateProfit = () => {
@@ -32,8 +23,6 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
 
   const { netSaleValue, profitPerUnit, grossProfit, netProfit } =
     calculateProfit()
-
-  console.log(initialWithdrawalValue, initialBuyLastPrice, initialSellLastPrice)
 
   return (
     <div className="p-3 rounded-2xl border border-gray-600 w-full max-w-full overflow-hidden">
