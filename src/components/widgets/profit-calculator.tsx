@@ -34,7 +34,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
     calculateProfit()
 
   console.log(
-    'HERE ------ AQUI',
+    'HERE ------',
     initialWithdrawalValue,
     initialBuyLastPrice,
     initialSellLastPrice,
