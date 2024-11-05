@@ -148,9 +148,9 @@ export function OperationDetails({
               networksSell={localData?.allNetworksSell}
             />
             <ProfitCalculator
-            // withdrawalValue={localData.withdrawFee}
-            // buyLastPrice={localData.buyPrice}
-            // sellLastPrice={localData.sellPrice}
+              withdrawalValue={localData.withdrawFee}
+              buyLastPrice={localData.buyPrice}
+              sellLastPrice={localData.sellPrice}
             />
           </section>
 
