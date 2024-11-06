@@ -9,9 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(220deg, #0646EA 130%, #A300A3 70%)',
+        'custom-gradient': 'linear-gradient(15deg, #430298 30%, #00A9FE 170%)',
         global: "url('/images/bg/global.png')",
         bull: "url('/images/bg/bull.png')",
+        finance: "url('/images/bg/finance.webp')",
+        bgComeia: "url('/images/bg/bg-comeia.webp')",
       },
       fontFamily: {
         euclid: ['EuclidCircularA', 'sans-serif'],

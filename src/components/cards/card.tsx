@@ -2,6 +2,7 @@
 
 import { useLayoutContext } from '@/context/layout-context'
 import Image from 'next/image'
+import ButtonGlobal from '../buttons/global'
 
 interface Data {
   symbol: string
@@ -39,8 +40,6 @@ export function Card({ data, onModal }: CardProps) {
   //     .replace(/width="[^"]*"/, `width="${width}"`)
   //     .replace(/height="[^"]*"/, `height="${height}"`)
   // }
-
-  console.log('-------------')
 
   return (
     <div className="justify-between bg-black bg-opacity-50 translate-x-1 p-5 rounded-lg border border-gray-700 border-opacity-50">
@@ -119,12 +118,13 @@ export function Card({ data, onModal }: CardProps) {
         </section>
       </div>
       <div className="flex items-center justify-center mt-2">
-        <button
+        <ButtonGlobal
           onClick={onModal}
-          className="bg-gradient-to-b from-[#3d2b70] via-[#784bb2] to-[#4c00a3] text-sm py-2 rounded-md w-full"
-        >
-          {textOpportunity.operationDetails}
-        </button>
+          params={{
+            title: textOpportunity.operationDetails,
+            color: 'bg-custom-gradient',
+          }}
+        />
       </div>
     </div>
   )

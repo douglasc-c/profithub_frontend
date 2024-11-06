@@ -9,6 +9,8 @@ import { setToken } from '@/redux/auth-slice'
 import { useRouter } from 'next/navigation'
 import { AppDispatch } from '@/redux/store'
 import api from '@/lib/api'
+import ButtonGlobal from '@/components/buttons/global'
+import { RiseLoader } from 'react-spinners'
 
 export default function SignIn() {
   const { textSignIn, locale } = useAuthContext()
@@ -113,19 +115,30 @@ export default function SignIn() {
             </div>
 
             <div>
-              <button
+              <ButtonGlobal
                 type="submit"
                 disabled={loading}
-                className={`group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white ${loading ? 'bg-gray-500' : 'bg-custom-gradient'}`}
-              >
-                {loading ? 'Signing In...' : textSignIn.signIn}
-              </button>
+                params={{
+                  title: loading ? (
+                    <RiseLoader
+                      color="#fff"
+                      loading={loading}
+                      size={6}
+                      aria-label="Loading Spinner"
+                      data-testid="loader"
+                    />
+                  ) : (
+                    textSignIn.signIn
+                  ),
+                  color: 'bg-custom-gradient',
+                }}
+              />
             </div>
           </form>
         </div>
       </section>
       <section className="hidden md:block w-1/2 relative">
-        <div className="absolute inset-0 bg-bull bg-cover"></div>
+        <div className="absolute inset-0 bg-finance bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 to-transparent"></div>
       </section>
     </main>
