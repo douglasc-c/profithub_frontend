@@ -114,9 +114,9 @@ const CarouselWidgets: React.FC = () => {
   }, [])
 
   return (
-    <div className="h-[calc(105vh-9rem)] px-5 overflow-auto bg-slate-500">
+    <div className="h-[calc(95vh-9rem)] px-5">
       <div className="tradingview-ticker-container__widget" />
-      <div className="py-3 h-[calc(96vh-9rem)]">
+      <div className="py-3 h-[calc(90vh-9rem)]">
         <Swiper
           spaceBetween={20}
           slidesPerView={1}
@@ -133,13 +133,13 @@ const CarouselWidgets: React.FC = () => {
           navigation
         >
           <SwiperSlide>
-            <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] h-[95%]">
+            <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] h-[calc(80vh-9rem)]">
               <div className="tradingview-news-container__widget w-full h-full" />
             </div>
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="space-y-4 flex flex-col">
+            <div className="space-y-4 flex flex-col h-[calc(80vh-9rem)]">
               <HighestHighsLows
                 data={highs}
                 loading={loading}
@@ -149,7 +149,7 @@ const CarouselWidgets: React.FC = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="space-y-4 flex flex-col overflow-auto">
+            <div className="space-y-4 flex flex-col overflow-auto h-[calc(80vh-9rem)]">
               <HighestHighsLows
                 data={lows}
                 loading={loading}
