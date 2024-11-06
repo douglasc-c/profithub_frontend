@@ -18,16 +18,11 @@ export default function ButtonMenu({ params }: IDataProps) {
   return (
     <ul className="px-2">
       <li
-        className={`relative inline-block rounded-lg p-[1px] bg-gradient-to-r from-blue-500 to-purple-600 transition-transform duration-300 hover:scale-110`}
+        className={`block px-6 py-1.5 border border-white rounded-lg font-regular text-sm uppercase transition-colors duration-300 ${
+          isActive ? 'bg-white text-black' : 'bg-black text-white'
+        }`}
       >
-        <a
-          href={path}
-          className={`block px-6 py-[0.38rem] rounded-lg font-regular text-sm uppercase transition-colors duration-300 ${
-            isActive ? 'bg-white text-black' : 'bg-black text-white'
-          }`}
-        >
-          {title}
-        </a>
+        <a href={path}>{title}</a>
       </li>
     </ul>
   )
