@@ -30,8 +30,8 @@ export default function Header({ text, locale }: HeaderProps) {
   }
 
   return (
-    <div className="fixed w-full z-50 flex justify-between items-center px-5 md:px-20 py-5 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-transparent">
-      <a href="/" className="">
+    <div className="fixed w-full z-50 flex justify-between items-center px-5 md:px-20 py-3 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-transparent">
+      <a href="/dashboard" className="">
         <Image src="/images/svg/logo.svg" alt="Logo" width={260} height={100} />
       </a>
 
@@ -45,12 +45,12 @@ export default function Header({ text, locale }: HeaderProps) {
         <ButtonMenu
           params={{ title: text.arbitration, path: `/${locale}/arbitration` }}
         />
-        {/* <ButtonMenu
+        <ButtonMenu
           params={{ title: text.consulting, path: `/${locale}/consulting` }}
-        /> */}
-        {/* <ButtonMenu
+        />
+        <ButtonMenu
           params={{ title: text.settings, path: `/${locale}/settings` }}
-        /> */}
+        />
         <Language locale={locale} availableLocales={availableLocales} />
       </div>
 
@@ -74,12 +74,12 @@ export default function Header({ text, locale }: HeaderProps) {
           <ButtonMenu
             params={{ title: text.arbitration, path: `/${locale}/arbitration` }}
           />
-          {/* <ButtonMenu
+          <ButtonMenu
             params={{ title: text.consulting, path: `/${locale}/consulting` }}
-          /> */}
-          {/* <ButtonMenu
+          />
+          <ButtonMenu
             params={{ title: text.settings, path: `/${locale}/settings` }}
-          /> */}
+          />
           <Language locale={locale} availableLocales={availableLocales} />
         </div>
       )}
