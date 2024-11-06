@@ -114,52 +114,50 @@ const CarouselWidgets: React.FC = () => {
   }, [])
 
   return (
-    <div className="h-[calc(95vh-9rem)] px-5">
+    <div className="px-5">
       <div className="tradingview-ticker-container__widget" />
-      <div className="py-3 h-[calc(90vh-9rem)]">
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={1}
-          breakpoints={{
-            768: {
-              slidesPerView: 3,
-            },
-          }}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          modules={[Pagination]}
-          className="mySwiper h-full"
-          navigation
-        >
-          <SwiperSlide>
-            <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] h-[calc(80vh-9rem)]">
-              <div className="tradingview-news-container__widget w-full h-full" />
-            </div>
-          </SwiperSlide>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          768: {
+            slidesPerView: 3,
+          },
+        }}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        className="mt-2 h-[calc(97vh-9rem)]"
+        navigation
+      >
+        <SwiperSlide>
+          <div className="rounded-2xl bg-[#0d1218] border-2 border-[#384a61] h-[calc(91vh-9rem)]">
+            <div className="tradingview-news-container__widget w-full h-full" />
+          </div>
+        </SwiperSlide>
 
-          <SwiperSlide>
-            <div className="space-y-4 flex flex-col h-[calc(80vh-9rem)]">
-              <HighestHighsLows
-                data={highs}
-                loading={loading}
-                title={textHighestHighsLows.highestHighs}
-              />
-            </div>
-          </SwiperSlide>
+        <SwiperSlide>
+          <div className="space-y-4 flex flex-col">
+            <HighestHighsLows
+              data={highs}
+              loading={loading}
+              title={textHighestHighsLows.highestHighs}
+            />
+          </div>
+        </SwiperSlide>
 
-          <SwiperSlide>
-            <div className="space-y-4 flex flex-col overflow-auto h-[calc(80vh-9rem)]">
-              <HighestHighsLows
-                data={lows}
-                loading={loading}
-                title={textHighestHighsLows.highestLows}
-              />
-              <FearGreedIndex fearGreedData={fearGreed} loading={loading} />
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+        <SwiperSlide>
+          <div className="space-y-4 flex flex-col h-[calc(91vh-9rem)] overflow-auto">
+            <HighestHighsLows
+              data={lows}
+              loading={loading}
+              title={textHighestHighsLows.highestLows}
+            />
+            <FearGreedIndex fearGreedData={fearGreed} loading={loading} />
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   )
 }
