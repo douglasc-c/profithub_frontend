@@ -2,7 +2,7 @@ import React from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { useLayoutContext } from '@/context/layout-context'
-import PuffLoader from 'react-spinners/PuffLoader'
+import { ScaleLoader } from 'react-spinners'
 
 interface FearGreedData {
   value: string
@@ -23,18 +23,28 @@ const FearGreedWidget: React.FC<FearGreedWidgetProps> = ({
 
   if (loading)
     return (
-      <p className="col-span-full flex items-center text-center justify-center h-[calc(45vh-9rem)]">
-        <PuffLoader
+      <p className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center justify-center h-[calc(44vh-9rem)]">
+        <ScaleLoader
           color="#fff"
           loading={loading}
-          size={60}
+          width={4}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
       </p>
     )
   if (!fearGreedData)
-    return <div className="text-red-500">No data available.</div>
+    return (
+      <p className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center justify-center h-[calc(44vh-9rem)]">
+        <ScaleLoader
+          color="#fff"
+          loading={loading}
+          width={4}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </p>
+    )
 
   const fearGreedValue = parseInt(fearGreedData.value || '0')
   const rotation = (100 - fearGreedValue) * (180 / 100)

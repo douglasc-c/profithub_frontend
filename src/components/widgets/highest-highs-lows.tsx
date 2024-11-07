@@ -1,6 +1,6 @@
 import { useLayoutContext } from '@/context/layout-context'
 import { FC } from 'react'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import { ScaleLoader } from 'react-spinners'
 
 interface CryptoData {
   id: number

@@ -3,7 +3,7 @@
 import { Card } from '@/components/cards/card'
 import { OperationDetails } from '@/components/modals/operation-details'
 import { useEffect, useState } from 'react'
-import PropagateLoader from 'react-spinners/PropagateLoader'
+import { PuffLoader } from 'react-spinners'
 import { io } from 'socket.io-client'
 
 interface Order {
@@ -103,10 +103,10 @@ export default function Arbitration() {
 
         {isLoading ? (
           <div className="col-span-full flex items-center text-center h-[calc(100vh-9rem)] justify-center">
-            <PropagateLoader
+            <PuffLoader
               color="#fff"
               loading={isLoading}
-              size={25}
+              size={300}
               aria-label="Loading Spinner"
               data-testid="loader"
             />
