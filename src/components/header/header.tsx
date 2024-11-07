@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import Language from '../buttons/language'
 import ButtonMenu from '../buttons/menu'
+import ButtonSettings from '../buttons/settings'
 
 interface HeaderProps {
   text: {
@@ -19,20 +20,33 @@ interface HeaderProps {
 
 export default function Header({ text, locale }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const availableLocales = [
     { code: 'en', flag: '/images/flags/en.svg', label: 'English' },
     { code: 'pt-BR', flag: '/images/flags/pt-BR.svg', label: 'Português' },
   ]
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
-    <div className="fixed w-full z-50 flex justify-between items-center px-5 md:px-20 py-3 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-transparent">
+    <div className="fixed w-full z-50 flex justify-between items-center px-5 md:px-10 py-3 transition-all duration-300 bg-gradient-to-b from-black via-black/80 to-transparent">
       <a href="/dashboard" className="">
-        <Image src="/images/svg/logo.svg" alt="Logo" width={260} height={100} />
+        <Image
+          src="/images/svg/logo.svg"
+          alt="Logo"
+          width={isMobile ? 180 : 240}
+          height={100}
+        />
       </a>
 
       <div className="hidden md:flex flex-row items-center space-x-4">
@@ -48,10 +62,8 @@ export default function Header({ text, locale }: HeaderProps) {
         <ButtonMenu
           params={{ title: text.consulting, path: `/${locale}/consulting` }}
         />
-        <ButtonMenu
-          params={{ title: text.settings, path: `/${locale}/settings` }}
-        />
         <Language locale={locale} availableLocales={availableLocales} />
+        <ButtonSettings params={{ path: `/${locale}/settings` }} />
       </div>
 
       <div className="md:hidden flex items-center px-5">
@@ -77,10 +89,8 @@ export default function Header({ text, locale }: HeaderProps) {
           <ButtonMenu
             params={{ title: text.consulting, path: `/${locale}/consulting` }}
           />
-          <ButtonMenu
-            params={{ title: text.settings, path: `/${locale}/settings` }}
-          />
           <Language locale={locale} availableLocales={availableLocales} />
+          <ButtonSettings params={{ path: `/${locale}/settings` }} />
         </div>
       )}
     </div>
