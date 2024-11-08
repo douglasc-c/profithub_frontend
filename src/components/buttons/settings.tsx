@@ -5,30 +5,33 @@ import { useRouter } from 'next/navigation'
 
 type IDataProps = {
   params: {
-    path: string
+    title: string
+    assets: string
   }
 }
 
 export default function ButtonSettings({ params }: IDataProps) {
-  const { path } = params
+  const { title, assets } = params
 
   const router = useRouter()
 
   const handleClick = () => {
+    const path = '/settings'
     router.push(path)
   }
 
   return (
     <button
       onClick={handleClick}
-      className="flex items-center bg-transparent border border-white rounded-full"
+      className="flex items-center border-b border-white p-2 font-semibold space-x-3"
     >
       <Image
-        src="/images/svg/avatar.svg"
-        width={28}
-        height={28}
+        src={`/images/svg/${assets}.svg`}
+        width={18}
+        height={18}
         alt="Settings"
       />
+      <span>{title}</span>
     </button>
   )
 }
