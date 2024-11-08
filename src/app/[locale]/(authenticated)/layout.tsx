@@ -101,7 +101,7 @@ export default async function RootLayout({
       <body className="bg-global text-white">
         <Header text={textHeader} locale={locale} />
         <LayoutProvider value={layoutValue}>
-          <div className="h-20" />
+          <div className="md:h-[72px] h-[49px]" />
           {children}
         </LayoutProvider>
       </body>

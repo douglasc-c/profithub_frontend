@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import Language from '../buttons/language'
 import ButtonMenu from '../buttons/menu'
-import ButtonSettings from '../buttons/settings'
+import ButtonAvatar from '../buttons/avatar'
 
 interface HeaderProps {
   text: {
@@ -63,7 +63,7 @@ export default function Header({ text, locale }: HeaderProps) {
           params={{ title: text.consulting, path: `/${locale}/consulting` }}
         />
         <Language locale={locale} availableLocales={availableLocales} />
-        <ButtonSettings params={{ path: `/${locale}/settings` }} />
+        <ButtonAvatar params={{ path: `/${locale}/settings` }} />
       </div>
 
       <div className="md:hidden flex items-center px-5">
@@ -90,7 +90,7 @@ export default function Header({ text, locale }: HeaderProps) {
             params={{ title: text.consulting, path: `/${locale}/consulting` }}
           />
           <Language locale={locale} availableLocales={availableLocales} />
-          <ButtonSettings params={{ path: `/${locale}/settings` }} />
+          <ButtonAvatar params={{ path: `/${locale}/settings` }} />
         </div>
       )}
     </div>

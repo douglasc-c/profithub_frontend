@@ -109,7 +109,7 @@ const CombinedWidgets: React.FC = () => {
   }, [])
 
   return (
-    <div className="h-[calc(100vh-9rem)]">
+    <div className="-mt-2">
       <div className="tradingview-ticker-container__widget" />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-5 py-3 h-full">
