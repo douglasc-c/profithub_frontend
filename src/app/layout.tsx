@@ -40,12 +40,12 @@ export default async function RootLayout({
   const t = await getTranslations(lng)
 
   const textSignIn = {
-    email: t('Signin.email'),
-    password: t('Signin.password'),
-    forgotYourPassword: t('Signin.forgotYourPassword'),
-    signIn: t('Signin.signIn'),
-    dontHaveAnAccount: t('Signin.dontHaveAnAccount'),
-    signUp: t('Signin.signUp'),
+    email: t('TextLang.email'),
+    password: t('TextLang.password'),
+    forgotYourPassword: t('TextLang.forgotYourPassword'),
+    signIn: t('TextLang.signIn'),
+    dontHaveAnAccount: t('TextLang.dontHaveAnAccount'),
+    signUp: t('TextLang.signUp'),
   }
 
   const layoutValue = { textSignIn, locale }

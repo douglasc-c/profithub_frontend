@@ -118,7 +118,10 @@ export function OperationDetails({
                     {textOpportunity.spread}: {localData.spreadPercent}%
                   </p>
                   <p className="text-sm md:text-base">
-                    {textOpportunity.fee}: 0.60% + $ {localData.withdrawFee}
+                    {textOpportunity.fee}: 0.60%
+                  </p>
+                  <p className="text-sm md:text-base">
+                    {textOpportunity.withdrawValue}: $ {localData.withdrawFee}
                   </p>
                 </div>
               </div>

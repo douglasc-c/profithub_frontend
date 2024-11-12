@@ -23,68 +23,69 @@ export default async function RootLayout({
   const t = await getTranslations(lng)
 
   const textHeader = {
-    home: t('Header.home'),
-    heatmap: t('Header.heatmap'),
-    arbitration: t('Header.arbitration'),
-    consulting: t('Header.consulting'),
-    settings: t('Header.settings'),
+    home: t('TextLang.home'),
+    heatmap: t('TextLang.heatmap'),
+    arbitration: t('TextLang.arbitration'),
+    consulting: t('TextLang.consulting'),
+    settings: t('TextLang.settings'),
   }
 
   const textOpportunity = {
-    buy: t('Opportunity.buy'),
-    sell: t('Opportunity.sell'),
-    spread: t('Opportunity.spread'),
-    fee: t('Opportunity.fee'),
-    operationDetails: t('Opportunity.operationDetails'),
-    purchaseBook: t('Opportunity.purchaseBook'),
-    salesBook: t('Opportunity.salesBook'),
-    price: t('Opportunity.price'),
-    volume: t('Opportunity.volume'),
-    liquidity: t('Opportunity.liquidity'),
-    cancel: t('Opportunity.cancel'),
-    lastPrice: t('Opportunity.lastPrice'),
+    buy: t('TextLang.buy'),
+    sell: t('TextLang.sell'),
+    spread: t('TextLang.spread'),
+    fee: t('TextLang.fee'),
+    withdrawValue: t('TextLang.withdrawalValue'),
+    operationDetails: t('TextLang.operationDetails'),
+    purchaseBook: t('TextLang.purchaseBook'),
+    salesBook: t('TextLang.salesBook'),
+    price: t('TextLang.price'),
+    volume: t('TextLang.volume'),
+    liquidity: t('TextLang.liquidity'),
+    cancel: t('TextLang.cancel'),
+    lastPrice: t('TextLang.lastPrice'),
   }
 
   const textFearGreedIndex = {
-    fearGreedIndex: t('FearGreedIndex.fearGreedIndex'),
-    fear: t('FearGreedIndex.fear'),
-    neutral: t('FearGreedIndex.neutral'),
-    greed: t('FearGreedIndex.greed'),
-    extremeGreed: t('FearGreedIndex.extremeGreed'),
-    lastUpdated: t('FearGreedIndex.lastUpdated'),
+    fearGreedIndex: t('TextLang.fearGreedIndex'),
+    fear: t('TextLang.fear'),
+    neutral: t('TextLang.neutral'),
+    greed: t('TextLang.greed'),
+    extremeGreed: t('TextLang.extremeGreed'),
+    lastUpdated: t('TextLang.lastUpdated'),
   }
 
   const textProfitCalculator = {
-    profitCalculator: t('ProfitCalculator.profitCalculator'),
-    buyValue: t('ProfitCalculator.buyValue'),
-    sellValue: t('ProfitCalculator.sellValue'),
-    volume: t('ProfitCalculator.volume'),
-    fee: t('ProfitCalculator.fee'),
-    withdrawalValue: t('ProfitCalculator.withdrawalValue'),
-    results: t('ProfitCalculator.results'),
-    actualSaleValue: t('ProfitCalculator.actualSaleValue'),
-    profitPerCurrency: t('ProfitCalculator.profitPerCurrency'),
-    grossProfit: t('ProfitCalculator.grossProfit'),
-    netProfit: t('ProfitCalculator.netProfit'),
+    profitCalculator: t('TextLang.profitCalculator'),
+    buyValue: t('TextLang.buyValue'),
+    sellValue: t('TextLang.sellValue'),
+    volume: t('TextLang.volume'),
+    fee: t('TextLang.fee'),
+    withdrawalValue: t('TextLang.withdrawalValue'),
+    results: t('TextLang.results'),
+    actualSaleValue: t('TextLang.actualSaleValue'),
+    profitPerCurrency: t('TextLang.profitPerCurrency'),
+    grossProfit: t('TextLang.grossProfit'),
+    netProfit: t('TextLang.netProfit'),
   }
 
   const textNetwork = {
-    networks: t('Network.networks'),
-    network: t('Network.network'),
-    withdrawalFee: t('Network.withdrawalFee'),
-    avaliableForWithdrawal: t('Network.avaliableForWithdrawal'),
-    avaliableForDeposit: t('Network.avaliableForDeposit'),
-    available: t('Network.avaliable'),
-    notAvailable: t('Network.notAvaliable'),
+    networks: t('TextLang.networks'),
+    network: t('TextLang.network'),
+    withdrawalValue: t('TextLang.withdrawalValue'),
+    avaliableForWithdrawal: t('TextLang.avaliableForWithdrawal'),
+    avaliableForDeposit: t('TextLang.avaliableForDeposit'),
+    available: t('TextLang.avaliable'),
+    notAvailable: t('TextLang.notAvaliable'),
   }
 
   const textHighestHighsLows = {
-    highestHighs: t('Highest.highestHighs'),
-    highestLows: t('Highest.highestLows'),
-    rank: t('Highest.rank'),
-    name: t('Highest.name'),
-    symbol: t('Highest.symbol'),
-    price: t('Highest.price'),
+    highestHighs: t('TextLang.highestHighs'),
+    highestLows: t('TextLang.highestLows'),
+    rank: t('TextLang.rank'),
+    name: t('TextLang.name'),
+    symbol: t('TextLang.symbol'),
+    price: t('TextLang.price'),
   }
 
   const layoutValue: LayoutContextProps = {
@@ -101,7 +102,7 @@ export default async function RootLayout({
       <body className="bg-global text-white">
         <Header text={textHeader} locale={locale} />
         <LayoutProvider value={layoutValue}>
-          <div className="md:h-[72px] h-[49px]" />
+          <div className="md:h-[80px] h-[50px]" />
           {children}
         </LayoutProvider>
       </body>

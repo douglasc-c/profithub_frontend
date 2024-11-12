@@ -48,7 +48,7 @@ const FearGreedWidget: React.FC<FearGreedWidgetProps> = ({
 
   const fearGreedValue = parseInt(fearGreedData.value || '0')
   const rotation = (100 - fearGreedValue) * (180 / 100)
-
+  console.log(fearGreedValue)
   return (
     <div className="bg-[#0d1218] rounded-2xl w-full p-6 border-2 border-[#384a61] flex flex-col items-center justify-center">
       <h2 className="text-2xl font-medium mb-3 text-center">
@@ -103,7 +103,7 @@ const FearGreedWidget: React.FC<FearGreedWidgetProps> = ({
                 ? textFearGreedIndex.neutral
                 : fearGreedData.value_classification === 'Greed'
                   ? textFearGreedIndex.greed
-                  : fearGreedData.value_classification === 'Extreme Greed'
+                  : fearGreedData.value_classification === 'Extreme greed'
                     ? textFearGreedIndex.extremeGreed
                     : 'Unknown'}{' '}
           </p>

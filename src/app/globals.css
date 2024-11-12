@@ -35,25 +35,3 @@ body {
     text-wrap: balance;
   }
 }
-
-.gradient-border {
-  position: relative;
-  display: inline-block;
-  border-radius: 0.7rem;
-  background: 
-    linear-gradient(135deg, rgba(6, 175, 234, 1), rgba(163, 0, 163, 1)) padding-box,
-    white;
-  padding: 1px;
-  transition: transform 0.3s ease;
-}
-
-.gradient-border:hover {
-  transform: scale(1.1);
-}
-
-.gradient-border a {
-  display: block;
-  padding: 5px 25px;
-  background: black;
-  border-radius: inherit;
-}

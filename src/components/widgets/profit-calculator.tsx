@@ -2,6 +2,7 @@
 
 import { useLayoutContext } from '@/context/layout-context'
 import React, { useState } from 'react'
+import NumericInput from '../inputs/numeric-input'
 
 interface ProfitCalculatorProps {
   withdrawalValue: number
@@ -45,23 +46,13 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
           <label className="block text-sm font-medium">
             {textProfitCalculator.buyValue}:
           </label>
-          <input
-            type="number"
-            value={purchaseValue}
-            onChange={(e) => setPurchaseValue(Number(e.target.value))}
-            className="mt-1 p-2 border border-gray-600 rounded-md w-full bg-stone-950"
-          />
+          <NumericInput value={purchaseValue} onChange={setPurchaseValue} />
         </div>
         <div>
           <label className="block text-sm font-medium">
             {textProfitCalculator.sellValue}:
           </label>
-          <input
-            type="number"
-            value={saleValue}
-            onChange={(e) => setSaleValue(Number(e.target.value))}
-            className="mt-1 p-2 border border-gray-600 rounded-md w-full bg-stone-950"
-          />
+          <NumericInput value={saleValue} onChange={setSaleValue} />
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4 mb-4">
@@ -69,34 +60,19 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
           <label className="block text-sm font-medium">
             {textProfitCalculator.volume}:
           </label>
-          <input
-            type="number"
-            value={volume}
-            onChange={(e) => setVolume(Number(e.target.value))}
-            className="mt-1 p-2 border border-gray-600 rounded-md w-full bg-stone-950"
-          />
+          <NumericInput value={volume} onChange={setVolume} />
         </div>
         <div>
           <label className="block text-sm font-medium">
             {textProfitCalculator.fee} (%):
           </label>
-          <input
-            type="number"
-            value={taxPercentage}
-            onChange={(e) => setTaxPercentage(Number(e.target.value))}
-            className="mt-1 p-2 border border-gray-600 rounded-md w-full bg-stone-950"
-          />
+          <NumericInput value={taxPercentage} onChange={setTaxPercentage} />
         </div>
         <div>
           <label className="block text-sm font-medium">
             {textProfitCalculator.withdrawalValue}:
           </label>
-          <input
-            type="number"
-            value={withdrawalValue}
-            onChange={(e) => setWithdrawalValue(Number(e.target.value))}
-            className="mt-1 p-2 border border-gray-600 rounded-md w-full bg-stone-950"
-          />
+          <NumericInput value={withdrawalValue} onChange={setWithdrawalValue} />
         </div>
       </div>
       <div className="flex flex-row">

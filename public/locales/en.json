@@ -1,20 +1,16 @@
 {
-  "Signin": {
+  "TextLang": {
       "email": "E-mail",
       "password": "Password",
       "forgotYourPassword": "Forgot your password",
       "signIn": "Sign in",
       "dontHaveAnAccount": "Dont't have an account?",
-      "signUp": "Sign up"
-    },
-  "Header": {
+      "signUp": "Sign up",
       "home": "Home",
       "heatmap": "heatmap",
       "arbitration": "Arbitration",
       "consulting": "Consulting",
-      "settings": "Settings"
-    },
-  "Opportunity": {
+      "settings": "Settings",
       "buy": "Buy",
       "sell": "Sell",
       "spread": "Spread",
@@ -26,44 +22,32 @@
       "volume": "Volume",
       "liquidity": "Liquidity",
       "cancel": "Cancel",
-      "lastPrice": "Last price"
-    },
-    "FearGreedIndex":{
+      "lastPrice": "Last price",
       "fearGreedIndex": "Fear & Greed Index",
       "fear": "Fear",
       "neutral": "Neutral",
       "greed": "Greed",
       "extremeGreed": "Extreme Greed",
-      "lastUpdated": "Last updated"
-    },
-    "ProfitCalculator": {
+      "lastUpdated": "Last updated",
       "profitCalculator": "Profit calculator",
       "buyValue": "Buy value",
       "sellValue": "Sell value",
-      "volume": "Volume",
-      "fee": "Fee",
       "withdrawalValue": "Withdrawal value",
       "results": "Results",
       "actualSaleValue": "Actual sale value",
       "profitPerCurrency": "Profit per currency",
       "grossProfit": "Gross profit",
-      "netProfit": "Net profit"
-    },
-    "Network": {
+      "netProfit": "Net profit",
       "networks": "Networks",
       "network": "Network",
-      "withdrawalFee": "Withdrawal fee",
       "avaliableForWithdrawal": "Withdrawal",
       "avaliableForDeposit": "Deposit",
       "avaliable": "Avaliable",
-      "notAvaliable": "Not Avaliable"
-    },
-    "Highest": {
+      "notAvaliable": "Not Avaliable",
       "highestHighs": "Highest highs",
       "highestLows": "Highest lows",
       "rank": "Rank",
       "name": "Name",
-      "symbol": "Symbol",
-      "price": "Price"
+      "symbol": "Symbol"
     }
 }
