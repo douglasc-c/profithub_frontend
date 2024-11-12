@@ -8,6 +8,7 @@ export interface LayoutContextProps {
     sell: string
     spread: string
     fee: string
+    withdrawValue: string
     operationDetails: string
     purchaseBook: string
     salesBook: string
@@ -44,7 +45,7 @@ export interface LayoutContextProps {
   textNetwork: {
     networks: string
     network: string
-    withdrawalFee: string
+    withdrawalValue: string
     avaliableForWithdrawal: string
     avaliableForDeposit: string
     available: string

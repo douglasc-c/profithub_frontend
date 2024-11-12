@@ -49,6 +49,38 @@ export default function Arbitration() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
+  function formatNumber(value: number): string {
+    let decimalPlaces
+
+    if (value >= 1) {
+      decimalPlaces = 4
+    } else {
+      const decimalPart = value.toString().split('.')[1] || ''
+      const firstSignificantIndex = decimalPart.search(/[1-9]/)
+
+      if (firstSignificantIndex === 0) {
+        decimalPlaces = 4
+      } else if (firstSignificantIndex === 1) {
+        decimalPlaces = 6
+      } else {
+        decimalPlaces = 8
+      }
+    }
+
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: decimalPlaces,
+      maximumFractionDigits: decimalPlaces,
+    }).format(value)
+  }
+
+  function formatOrder(order: Order): Order {
+    return {
+      price: formatNumber(parseFloat(order.price)),
+      volume: order.volume,
+      liquidity: formatNumber(parseFloat(order.liquidity)),
+    }
+  }
+
   useEffect(() => {
     const socket = io('https://socket.profithub.tech/', {
       transports: ['websocket'],
@@ -62,7 +94,21 @@ export default function Arbitration() {
     socket.on('updateOpportunity', (data: Opportunity[]) => {
       try {
         if (Array.isArray(data)) {
-          const sortedData = data.sort(
+          const formattedData = data.map((item) => ({
+            ...item,
+            buyPrice: parseFloat(formatNumber(item.buyPrice)),
+            sellPrice: parseFloat(formatNumber(item.sellPrice)),
+            buyOrderbook: {
+              asks: item.buyOrderbook.asks.map(formatOrder),
+              bids: item.buyOrderbook.bids.map(formatOrder),
+            },
+            sellOrderbook: {
+              asks: item.sellOrderbook.asks.map(formatOrder),
+              bids: item.sellOrderbook.bids.map(formatOrder),
+            },
+          }))
+
+          const sortedData = formattedData.sort(
             (a, b) => b.spreadPercent - a.spreadPercent,
           )
 

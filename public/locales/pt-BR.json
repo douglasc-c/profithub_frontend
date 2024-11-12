@@ -1,20 +1,16 @@
 {
-  "Signin": {
+  "TextLang": {
       "email": "E-mail",
       "password": "Senha",
       "forgotYourPassword": "Esqueçeu sua senha",
       "signIn": "Acessar",
       "dontHaveAnAccount": "Não tem conta?",
-      "signUp": "Criar"
-    },
-  "Header": {
+      "signUp": "Criar",
       "home": "Início",
       "heatmap": "heatmap",
       "arbitration": "Arbitragem",
       "consulting": "Consultoria",
-      "settings": "Configurações"
-    },
-  "Opportunity": {
+      "settings": "Configurações",
       "buy": "Compra",
       "sell": "Venda",
       "spread": "Spread",
@@ -26,44 +22,32 @@
       "volume": "Volume",
       "liquidity": "Liquidez",
       "cancel": "Cancelar",
-      "lastPrice": "Ultimo preço"
-    },
-    "FearGreedIndex":{
+      "lastPrice": "Ultimo preço",
       "fearGreedIndex": "Índice de Medo e Ganância",
       "fear": "Medo",
       "neutral": "Neutro",
       "greed": "Ganância",
       "extremeGreed": "Ganância extrema",
-      "lastUpdated": "Última atualização"
-    },
-    "ProfitCalculator": {
+      "lastUpdated": "Última atualização",
       "profitCalculator": "Calculadora de lucro",
       "buyValue": "Valor de compra",
       "sellValue": "Valor de venda",
-      "volume": "Volume",
-      "fee": "Taxa",
       "withdrawalValue": "Valor de saque",
       "results": "Resultados",
       "actualSaleValue": "Valor real da venda",
       "profitPerCurrency": "Lucro por moeda",
       "grossProfit": "Lucro bruto",
-      "netProfit": "Lucro líquido"
-    },
-    "Network": {
+      "netProfit": "Lucro líquido",
       "networks": "Redes",
       "network": "Rede",
-      "withdrawalFee": "Taxa de saque",
       "avaliableForWithdrawal": "Saque",
       "avaliableForDeposit": "Depósito",
       "avaliable": "Disponível",
-      "notAvaliable": "Não disponível"
-    },
-    "Highest": {
+      "notAvaliable": "Não disponível",
       "highestHighs": "Maiores altas",
       "highestLows": "Maiores baixas",
       "rank": "Rank",
       "name": "Nome",
-      "symbol": "Símbolo",
-      "price": "Preço"
+      "symbol": "Símbolo"
     }
 }

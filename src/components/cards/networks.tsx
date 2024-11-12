@@ -40,7 +40,7 @@ export function Networks({ networksBuy, networksSell }: NetworkProps) {
           <thead className="border-b">
             <tr className="text-white text-base">
               <th className="p-2">{textNetwork.network}</th>
-              <th className="p-2">{textNetwork.withdrawalFee}</th>
+              <th className="p-2">{textNetwork.withdrawalValue}</th>
               <th className="p-2">{textNetwork.avaliableForWithdrawal}</th>
               <th className="p-2">{textNetwork.avaliableForDeposit}</th>
             </tr>
