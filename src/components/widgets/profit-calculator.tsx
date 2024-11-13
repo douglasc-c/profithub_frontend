@@ -28,7 +28,13 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
     const profitPerUnit = netSaleValue - purchaseValue
     const grossProfit = volume * profitPerUnit
     const netProfit = grossProfit - withdrawalValue
-    return { netSaleValue, profitPerUnit, grossProfit, netProfit }
+
+    return {
+      netSaleValue: isNaN(netSaleValue) ? 0 : netSaleValue,
+      profitPerUnit: isNaN(profitPerUnit) ? 0 : profitPerUnit,
+      grossProfit: isNaN(grossProfit) ? 0 : grossProfit,
+      netProfit: isNaN(netProfit) ? 0 : netProfit,
+    }
   }
 
   const { netSaleValue, profitPerUnit, grossProfit, netProfit } =

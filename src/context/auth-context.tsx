@@ -13,6 +13,13 @@ interface AuthContextProps {
     dontHaveAnAccount: string
     signUp: string
   }
+
+  textNotFound: {
+    somethingsMissing: string
+    sorryThePageYouAreLookingForDoesntExistOrHasBeenMoved: string
+    goBackToHome: string
+  }
+
   locale: string
 }
 

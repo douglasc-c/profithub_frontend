@@ -13,7 +13,7 @@ import ButtonGlobal from '@/components/buttons/global'
 import { RiseLoader } from 'react-spinners'
 
 export default function SignIn() {
-  const { textSignIn, locale } = useAuthContext()
+  const { textSignIn } = useAuthContext()
   const dispatch = useDispatch<AppDispatch>()
   const router = useRouter()
   const [formData, setFormData] = useState({ email: '', password: '' })
@@ -44,7 +44,7 @@ export default function SignIn() {
           const maxAge = 60 * 60
           document.cookie = `auth-token=${data.token}; Max-Age=${maxAge}; path=/; SameSite=Strict`
           dispatch(setToken(data.token))
-          router.push(`${locale}/dashboard`)
+          router.push(`/dashboard`)
         } else {
           setError('Token não encontrado na resposta')
           console.error('Token não encontrado na resposta')
