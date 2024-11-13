@@ -1,5 +1,8 @@
 {
   "TextLang": {
+      "somethingsMissing": "Ops, something's missing",
+      "sorryThePageYouAreLookingForDoesntExistOrHasBeenMoved": "Sorry, the page you are looking for doesn't exist or has been moved.",
+      "goBackToHome": "Go back to Home",
       "email": "E-mail",
       "password": "Password",
       "forgotYourPassword": "Forgot your password",

@@ -48,7 +48,15 @@ export default async function RootLayout({
     signUp: t('TextLang.signUp'),
   }
 
-  const layoutValue = { textSignIn, locale }
+  const textNotFound = {
+    somethingsMissing: t('TextLang.somethingsMissing'),
+    sorryThePageYouAreLookingForDoesntExistOrHasBeenMoved: t(
+      'TextLang.sorryThePageYouAreLookingForDoesntExistOrHasBeenMoved',
+    ),
+    goBackToHome: t('TextLang.goBackToHome'),
+  }
+
+  const layoutValue = { textSignIn, textNotFound, locale }
 
   return (
     <html lang={lng}>

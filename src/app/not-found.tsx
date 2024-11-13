@@ -1,31 +1,28 @@
 'use client'
 
-// import ButtonMenu from '@/components/buttons/menu'
-// import { useRouter } from 'next/navigation'
+import ButtonMenu from '@/components/buttons/menu'
+import { useAuthContext } from '@/context/auth-context'
 
 export default function NotFound() {
-  // const router = useRouter()
+  const { textNotFound, locale } = useAuthContext()
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mb-16 items-center justify-center text-center">
-      <span className="bg-gradient-to-b from-foreground to-transparent bg-clip-text text-[10rem] font-extrabold leading-none text-transparent">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center space-y-4 p-6">
+      <span className="bg-gradient-to-b from-white to-transparent bg-clip-text text-[10rem] font-extrabold leading-none text-transparent">
         404
       </span>
-      <h2 className="my-2 font-heading text-2xl font-bold">
-        Something&apos;s missing
+      <h2 className="my-2 font-heading text-3xl font-bold text-gray-900 dark:text-white">
+        {textNotFound.somethingsMissing}
       </h2>
-      <p>
-        Sorry, the page you are looking for doesn&apos;t exist or has been
-        moved.
+      <p className="text-gray-700 dark:text-gray-300">
+        {textNotFound.sorryThePageYouAreLookingForDoesntExistOrHasBeenMoved}
       </p>
-      <div className="mt-8 flex justify-center gap-2">
-        {/* <ButtonMenu onClick={() => router.back()} variant="default" size="lg">
-          Go back
-        </ButtonMenu>
-        <ButtonMenu onClick={() => router.push('/')} variant="ghost" size="lg">
-          Back to Home
-        </ButtonMenu> */}
-      </div>
+      <ButtonMenu
+        params={{
+          title: textNotFound.goBackToHome,
+          path: `/${locale}/dashboard`,
+        }}
+      />
     </div>
   )
 }
