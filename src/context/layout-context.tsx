@@ -61,6 +61,28 @@ export interface LayoutContextProps {
     price: string
   }
 
+  textSettings: {
+    personalData: string
+    security: string
+    plans: string
+    logs: string
+    logout: string
+    name: string
+    email: string
+    save: string
+    currentPassword: string
+    newPassword: string
+    confirmeNewPassword: string
+    changePassword: string
+    theNewPasswordsDontMatch: string
+    yourPlan: string
+    hereAreTheDetailsOfYourCurrentPlanAndUpgradeOptions: string
+    basicPlan: string
+    unlimitedAccess: string
+    upgradePlan: string
+    hereAreYourRecentActivityLogs: string
+  }
+
   locale: string
 }
 

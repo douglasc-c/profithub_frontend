@@ -51,6 +51,23 @@
       "highestLows": "Highest lows",
       "rank": "Rank",
       "name": "Name",
-      "symbol": "Symbol"
+      "symbol": "Symbol",
+      "personalData": "Personal data",
+      "security": "Security",
+      "plans": "Plans",
+      "logs": "Logs",
+      "logout": "Logout",
+      "save": "Save",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmeNewPassword": "Confirm new password",
+      "changePassword": "Change password",
+      "theNewPasswordsDontMatch": "The new passwords don't match",
+      "yourPlan": "Your Plan",
+      "hereAreTheDetailsOfYourCurrentPlanAndUpgradeOptions": "Here are the details of your current plan and upgrade options.",
+      "basicPlan": "Basic Plan",
+      "unlimitedAccess": "Unlimited access",
+      "upgradePlan": "Upgrade plan",
+      "hereAreYourRecentActivityLogs": "Here are your recent activity logs."
     }
 }
