@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 import Input from '@/components/inputs/input'
 import ButtonGlobal from '../buttons/global'
 import { RiseLoader } from 'react-spinners'
-// import { useLayoutContext } from '@/context/layout-context'
+import { useLayoutContext } from '@/context/layout-context'
 
 const PersonalData: React.FC = () => {
-  // const { textSignIn } = useLayoutContext()
+  const { textSettings } = useLayoutContext()
 
   const [formData, setFormData] = useState({ email: '', name: '' })
   const [loading, setLoading] = useState(false)
@@ -37,7 +37,7 @@ const PersonalData: React.FC = () => {
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label htmlFor="name" className="block text-sm font-medium">
-              Nome
+              {textSettings.name}
             </label>
             <Input
               id="name"
@@ -52,7 +52,7 @@ const PersonalData: React.FC = () => {
           </div>
           <div className="space-y-2">
             <label htmlFor="email" className="block text-sm font-medium">
-              Email
+              {textSettings.email}
             </label>
             <Input
               id="email-address"
@@ -79,7 +79,7 @@ const PersonalData: React.FC = () => {
                     data-testid="loader"
                   />
                 ) : (
-                  'Salvar'
+                  textSettings.save
                 ),
                 color: 'bg-green-600',
               }}

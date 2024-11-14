@@ -88,12 +88,37 @@ export default async function RootLayout({
     price: t('TextLang.price'),
   }
 
+  const textSettings = {
+    personalData: t('TextLang.personalData'),
+    security: t('TextLang.security'),
+    plans: t('TextLang.plans'),
+    logs: t('TextLang.logs'),
+    logout: t('TextLang.logout'),
+    name: t('TextLang.name'),
+    email: t('TextLang.email'),
+    save: t('TextLang.save'),
+    currentPassword: t('TextLang.currentPassword'),
+    newPassword: t('TextLang.newPassword'),
+    confirmeNewPassword: t('TextLang.confirmeNewPassword'),
+    changePassword: t('TextLang.changePassword'),
+    theNewPasswordsDontMatch: t('TextLang.theNewPasswordsDontMatch'),
+    yourPlan: t('TextLang.yourPlan'),
+    hereAreTheDetailsOfYourCurrentPlanAndUpgradeOptions: t(
+      'TextLang.hereAreTheDetailsOfYourCurrentPlanAndUpgradeOptions',
+    ),
+    basicPlan: t('TextLang.basicPlan'),
+    unlimitedAccess: t('TextLang.unlimitedAccess'),
+    upgradePlan: t('TextLang.upgradePlan'),
+    hereAreYourRecentActivityLogs: t('TextLang.hereAreYourRecentActivityLogs'),
+  }
+
   const layoutValue: LayoutContextProps = {
     textOpportunity,
     textFearGreedIndex,
     textProfitCalculator,
     textNetwork,
     textHighestHighsLows,
+    textSettings,
     locale,
   }
 

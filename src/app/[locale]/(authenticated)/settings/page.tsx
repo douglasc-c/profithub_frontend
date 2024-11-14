@@ -10,8 +10,10 @@ import PersonalData from '@/components/user-data/personal-data'
 import Security from '@/components/user-data/security'
 import Plans from '@/components/user-data/plans'
 import Image from 'next/image'
+import { useLayoutContext } from '@/context/layout-context'
 
 export default function Settings() {
+  const { textSettings } = useLayoutContext()
   const [activeTab, setActiveTab] = useState<string>('personalData')
   const dispatch = useDispatch()
   const router = useRouter()
@@ -53,7 +55,7 @@ export default function Settings() {
           <span className="border border-zinc-400" />
           <ButtonSettings
             params={{
-              title: 'Dados Pessoais',
+              title: textSettings.personalData,
               assets: 'personalData',
               onClick: () => setActiveTab('personalData'),
             }}
@@ -61,7 +63,7 @@ export default function Settings() {
           <span className="border border-zinc-400" />
           <ButtonSettings
             params={{
-              title: 'Segurança',
+              title: textSettings.security,
               assets: 'security',
               onClick: () => setActiveTab('security'),
             }}
@@ -69,7 +71,7 @@ export default function Settings() {
           <span className="border border-zinc-400" />
           <ButtonSettings
             params={{
-              title: 'Planos',
+              title: textSettings.plans,
               assets: 'plans',
               onClick: () => setActiveTab('plans'),
             }}
@@ -77,7 +79,7 @@ export default function Settings() {
           <span className="border border-zinc-400" />
           <ButtonSettings
             params={{
-              title: 'Logs',
+              title: textSettings.logs,
               assets: 'logs',
               onClick: () => setActiveTab('logs'),
             }}
@@ -85,7 +87,7 @@ export default function Settings() {
           <span className="border border-zinc-400" />
           <ButtonSettings
             params={{
-              title: 'Sair',
+              title: textSettings.logout,
               assets: 'signout',
               onClick: handleSignOut,
             }}

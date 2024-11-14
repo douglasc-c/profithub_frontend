@@ -4,8 +4,10 @@ import React, { useState } from 'react'
 import Input from '@/components/inputs/input'
 import ButtonGlobal from '../buttons/global'
 import { RiseLoader } from 'react-spinners'
+import { useLayoutContext } from '@/context/layout-context'
 
 const Security: React.FC = () => {
+  const { textSettings } = useLayoutContext()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
@@ -27,7 +29,7 @@ const Security: React.FC = () => {
     e.preventDefault()
 
     if (formData.newPassword !== formData.confirmPassword) {
-      setError('As novas senhas não coincidem')
+      setError(textSettings.theNewPasswordsDontMatch)
       return
     }
 
@@ -49,11 +51,13 @@ const Security: React.FC = () => {
   return (
     <div className="p-6 bg-zinc-800 rounded-xl max-w-lg w-full">
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Segurança</h2>
+        <h2 className="text-xl font-semibold">{textSettings.security}</h2>
         <div className="space-y-4">
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="space-y-2">
-              <label className="block text-sm font-medium">Senha Antiga</label>
+              <label className="block text-sm font-medium">
+                {textSettings.currentPassword}
+              </label>
               <Input
                 id="oldPassword"
                 name="oldPassword"
@@ -67,7 +71,9 @@ const Security: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium">Nova Senha</label>
+              <label className="block text-sm font-medium">
+                {textSettings.newPassword}
+              </label>
               <Input
                 id="newPassword"
                 name="newPassword"
@@ -82,7 +88,7 @@ const Security: React.FC = () => {
 
             <div className="space-y-2">
               <label className="block text-sm font-medium">
-                Confirmar Nova Senha
+                {textSettings.confirmeNewPassword}
               </label>
               <Input
                 id="confirmPassword"
@@ -111,7 +117,7 @@ const Security: React.FC = () => {
                       data-testid="loader"
                     />
                   ) : (
-                    'Alterar Senha'
+                    textSettings.changePassword
                   ),
                   color: 'bg-red-600',
                 }}
