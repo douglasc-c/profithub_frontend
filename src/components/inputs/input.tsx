@@ -6,7 +6,7 @@ interface InputProps {
   id: string
   name: string
   type: string
-  placeholder: string
+  placeholder?: string
   autoComplete?: string
   required?: boolean
   className?: string
