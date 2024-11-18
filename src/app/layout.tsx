@@ -46,6 +46,22 @@ export default async function RootLayout({
     signIn: t('TextLang.signIn'),
     dontHaveAnAccount: t('TextLang.dontHaveAnAccount'),
     signUp: t('TextLang.signUp'),
+    failedToRegisterAuthenticationToken: t(
+      'TextLang.failedToRegisterAuthenticationToken',
+    ),
+    loginFailed: t('TextLang.loginFailed'),
+    invalidCredentialsCheckYourEmailAndPassword: t(
+      'TextLang.invalidCredentialsCheckYourEmailAndPassword',
+    ),
+    internalServerErrorTryAgainLater: t(
+      'TextLang.internalServerErrorTryAgainLater',
+    ),
+    anUnexpectedErrorOccurredTryAgainLater: t(
+      'TextLang.anUnexpectedErrorOccurredTryAgainLater',
+    ),
+    errorConnectingToTheServerCheckYourConnection: t(
+      'TextLang.errorConnectingToTheServerCheckYourConnection',
+    ),
   }
 
   const textNotFound = {

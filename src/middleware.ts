@@ -8,8 +8,6 @@ const intlMiddleware = createMiddleware({
 })
 
 export function middleware(request: NextRequest) {
-  console.log('Middleware Executed:', request.nextUrl.pathname)
-
   const [, locale] = request.nextUrl.pathname.split('/')
   const token = request.cookies.get('auth-token')
 

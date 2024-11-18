@@ -12,6 +12,12 @@ interface AuthContextProps {
     signIn: string
     dontHaveAnAccount: string
     signUp: string
+    failedToRegisterAuthenticationToken: string
+    loginFailed: string
+    invalidCredentialsCheckYourEmailAndPassword: string
+    internalServerErrorTryAgainLater: string
+    anUnexpectedErrorOccurredTryAgainLater: string
+    errorConnectingToTheServerCheckYourConnection: string
   }
 
   textNotFound: {

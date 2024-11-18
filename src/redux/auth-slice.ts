@@ -13,7 +13,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setToken(state, action: PayloadAction<string | null>) {
-      console.log('Token recebido:', action.payload)
       state.token = action.payload
     },
     clearToken(state) {
