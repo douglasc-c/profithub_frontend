@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import axios from 'axios'
 import Image from 'next/image'
 import Input from '@/components/inputs/input'
 import { useAuthContext } from '@/context/auth-context'
@@ -46,16 +47,27 @@ export default function SignIn() {
           dispatch(setToken(data.token))
           router.push(`/dashboard`)
         } else {
-          setError('Token não encontrado na resposta')
-          console.error('Token não encontrado na resposta')
+          setError(textSignIn.failedToRegisterAuthenticationToken)
         }
       } else {
-        setError('Falha no login')
-        console.error('Falha no login:', response.statusText)
+        setError(textSignIn.loginFailed)
       }
     } catch (error) {
-      setError('Erro ao conectar ao servidor')
-      console.error('Erro na requisição:', error)
+      if (axios.isAxiosError(error)) {
+        const status = error.response?.status
+
+        if (status === 400) {
+          setError(textSignIn.invalidCredentialsCheckYourEmailAndPassword)
+        } else if (status === 500) {
+          setError(textSignIn.internalServerErrorTryAgainLater)
+        } else {
+          console.error('Unknown error:', error)
+          setError(textSignIn.anUnexpectedErrorOccurredTryAgainLater)
+        }
+      } else {
+        console.error('Error not identified:', error)
+        setError(textSignIn.errorConnectingToTheServerCheckYourConnection)
+      }
     } finally {
       setLoading(false)
     }
